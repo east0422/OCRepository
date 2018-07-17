@@ -1,0 +1,67 @@
+# 内存管理
+
+## 1. 内存泄露检查
+* 使用Analyze进行代码的静态分析。
+* 使用Leak进行动态分析。
+* 为避免不必要的麻烦，开发时尽量使用ARC。
+
+## 2. 非自动内存管理MRC下单例模式实现
+* 创建一个单例对象的静态实例，并初始化为nil。
+* 创建一个类的类工厂方法，当且仅当这个类的实例为nil时生成一个该类的实例。
+* 实现NSCopying协议，覆盖allocWithZone:方法，确保用户在直接分配和初始化对象时不会产生另一个对象。
+* 覆盖release、autorelease、retain、retainCount方法，以此确保单例的状态。
+* 在多线程的环境中，注意使用@synchronized关键字或GCD确保静态实例被正确的创建和初始化。
+
+## 3. block在ARC和MRC中使用区别及注意点
+* 若dealloc能调用super或能够使用retain，release则为MRC。
+* 若没有引用外部局部变量，block都放在全局区，在ARC和MRC中类型都是_NSGlobalBlock_，这种类型的block可以理解成一种全局的block，不需要考虑作用域问题。
+* MRC下若引用外部局部变量，block放在栈里面NSStackBlock，block只能使用copy不能使用retain，用retain，block还是在栈里面。用copy的原因，是把block从栈区拷贝到堆区，因为栈区中的变量出了作用域之后就会被销毁，无法在全局使用，所以应该把栈区的属性拷贝到堆区中全局共享,这样就不会被销毁了。
+* ARC下若引用外部局部变量，block放在堆里面NSMallocBlock，block使用strong，尽量不要使用copy，因为ARC下的属性本来就在堆区。
+* 在block内部访问外部变量时，block内部会对外部的变量进行一次拷贝，在blcok内部操作的是拷贝后的副本，不会影响外部变量，这个变量在堆区。block内部不允许修改外部变量，若非要修改外部变量则需要使用__block修饰外部变量。
+* __block修饰的变量在ARC中引用计数会加一，在MRC中引用计数不变。
+* 应注意避免循环引用。
+
+## 4. 什么时候会发生内存泄漏和内存溢出
+* 当程序在申请内存后，无法释放已申请的内存空间(例如一个对象或变量使用完成后么有释放，这个对象一直占用着内存)就会发生内存泄漏。若内存泄漏一直不停的堆积，则无论多少内存迟早都会被占光，内存泄漏会最终导致内存溢出。
+* 当程序在申请内存时，没有足够的内存空间供其使用，出现out of memory(例如申请了一个int, 当给它存了long才能存下的数)，就是内存溢出。
+
+## 5. 自动释放池底层实现
+* 自动释放池以栈的形式实现：当你创建一个新的自动释放池时，它将被添加到栈顶。当一个对象收到发送autorelease消息时，它被添加到当前线程的处于栈顶的自动释放池中，当自动释放池被回收时，它们从栈中被删除，并且会给池子里面所有的对象都做一次release操作。
+* 一般来说，除了alloc、new或copy之外的方法创建的对象都被声明了autorelease。
+* 不要对一个对象多次调用autorelease，也不要调用autorelease后再调用release，避免野指针。
+
+## 6. 内存管理基本原则
+* 如果使用alloc、copy(mutableCopy)或者retain一个对象时，你就有义务，向它发送一条release或者autorelease消息。其他方法创建的对象，不需要由你来管理释放。
+
+## 7. ARC
+* ARC是Automatic Reference Counting的简称，称之为自动引用计数，是iOS5.0之后推出的内存管理的新特性。
+* 是编译器特性，是Xcode帮我们处理的，当编译器发现alloc、retain等时自动帮我们插入release代码。
+* 本质上还是使用引用计数来管理对象，只是我们在编写代码时，不需要向对象发送release或autorelease方法，也不可以调用delloc方法，编译器会在合适的位置自动给用户生成release消息(autorelease)。
+* GC全程是garbage collection, 内存垃圾回收机制，ARC比GC性能好。iOS开发只支持手动内存管理与ARC, Mac开发支持GC垃圾回收机制，10.8之后弃用了GC, 推荐使用ARC。
+* ARC若内存管理不当的话，同样会存在内存泄漏，例如：ARC中循环引用导致内存不能释放而泄漏，OC对象与CoreFoundation类之间桥接时管理不当也会产生内存泄漏。
+* 不能调用release、retain、autorelease、retainCount。可以重写dealloc但不能调用[super dealloc]。
+
+## 8. 内存中堆区和栈区的区别
+* 栈区(stack)由编译器自动分配释放，存放方法(函数)的参数值，局部变量的值等。
+* 堆区(heap)一般由程序员分配与释放，若程序员不释放，则内存溢出。
+
+## 9. 引用计数器
+* 引用计数器占四个字节，每个对象都有自己的引用计数器，是一个整数，表示对象的引用次数，即有多少人在使用这个OC对象。
+* 当创建一个新的对象时，它的引用计数器默认为1；当一个对象的引用计数为0时，对象占用的内存就会被回收。
+* 给对象发送一条retain消息，计数器加1；给对象发送一条release消息，计数器减1；
+* 每当一个对象的引用计数为0时，那么他将被销毁(可能不是立即销毁，什么时候销毁由系统决定)，其占用的内存将被系统回收；当一个对象被销毁时，系统会自动向对象发送一条dealloc消息。若重写dealloc方法则必须在最后调用[super dealloc]。也不要直接调用dealloc方法。
+
+## 10. property关键字
+* retain默认生成set方法对旧对象release, 对新对象retain。
+* copy默认生成set方法对旧对象release,对新对象copy，用于NSString。
+* assign直接赋值，不管理内存，适用于非OC对象类型。
+* nonatomic非原子属性，高性能，通常会加上该值。
+* atomic原子属性，低性能，默认是该值。
+
+## 其他
+* 系统自带的绝大多数类方法返回的对象都是经过autorelease的。
+* [NSArray arrayWithObject: <id>]方法添加对象后不需要对这个数组做释放操作，因为这个对象被放到自动释放池中。
+
+
+
+
