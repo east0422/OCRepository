@@ -1,4 +1,4 @@
-# 面试题训练
+# 学习笔记
 
 ## 01MultiThread
 	多线程
@@ -26,6 +26,9 @@
 	
 ## 09FileManagement
 	文件管理	
+	
+## 10Terminal
+	终端使用gcc编译运行oc
 	
 
 
