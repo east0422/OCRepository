@@ -9,6 +9,10 @@ gcc -framework Foundation files -o progname
 ./progname
 ```
 
-## 2. nc连接监听tcp和udp
-* nc -lk port监听连接port端口号
+## 2. nc
+* 连接监听tcp和udp。
+* nc -lk port监听连接port端口号。
+
+## 3. clang
+* clang -rewrite-objc main.m将oc代码main.m编译生成c++底层代码，常用参数可clang -help查看。
 

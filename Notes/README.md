@@ -29,6 +29,9 @@
 	
 ## 10Terminal
 	终端使用gcc编译运行oc
+		
+## 11Runtime
+	runtime运行时
 	
 
 
