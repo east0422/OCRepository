@@ -56,7 +56,7 @@ free(properties);
 ```
 
 ## 4. objc_msgSend
-* 使用前需先将build setting中objc_msgSend值YES改为NO。
+* Xcode5开始苹果不建议使用底层函数，若想使用则需先将build setting中objc_msgSend值YES改为NO。
 * 若直接不能使用发生崩溃，则尝试先定义原型再调用。
 
 ## 5. method_exchangeImplementations

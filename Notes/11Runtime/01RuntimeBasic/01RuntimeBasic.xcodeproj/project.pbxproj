@@ -75,9 +75,9 @@
 				456ECA5B2139052A00EB019A /* Teacher.h */,
 				456ECA5C2139052A00EB019A /* Teacher.m */,
 				45B0E54C2137F2D600F69CCC /* Person.h */,
+				45B0E54D2137F2D600F69CCC /* Person.m */,
 				456ECA582138F12900EB019A /* Person+Marry.h */,
 				456ECA592138F12900EB019A /* Person+Marry.m */,
-				45B0E54D2137F2D600F69CCC /* Person.m */,
 			);
 			path = 01RuntimeBasic;
 			sourceTree = "<group>";
