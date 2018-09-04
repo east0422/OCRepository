@@ -32,6 +32,9 @@
 		
 ## 11Runtime
 	runtime运行时
+
+## 12Architecture
+	架构模式
 	
 
 
