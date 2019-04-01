@@ -19,7 +19,7 @@
 	基础知识点
 	
 ## 07Protocol
-	常见协议http, tcp等
+	常见协议http, tcp, socket等
 	
 ## 08Performance
 	性能优化
