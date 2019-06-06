@@ -1,0 +1,28 @@
+PODS:
+  - DCPathButton (2.1.4)
+  - DWBubbleMenuButton (1.0.1)
+  - MCFireworksButton (0.1)
+  - SWRevealViewController (2.3.0)
+
+DEPENDENCIES:
+  - DCPathButton (~> 2.1.4)
+  - DWBubbleMenuButton (~> 1.0.1)
+  - MCFireworksButton (~> 0.1)
+  - SWRevealViewController (~> 2.3.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - DCPathButton
+    - DWBubbleMenuButton
+    - MCFireworksButton
+    - SWRevealViewController
+
+SPEC CHECKSUMS:
+  DCPathButton: 99c8211ef3eafc3b438c917a4c7b4502fa77eee7
+  DWBubbleMenuButton: 4d9bdbb9d662bdf65c93ceb7fc65901871143d1e
+  MCFireworksButton: ba531989811e2483e1b32e243fa2f545fd4fb779
+  SWRevealViewController: 6d3fd97f70112fd7cef9de14df4260eacce4c63a
+
+PODFILE CHECKSUM: 80f712965c8acf1c1c06ca11b1f399f66d6dfaf8
+
+COCOAPODS: 1.5.3
