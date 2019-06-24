@@ -16,6 +16,8 @@
 void getMethodsAndIvars(Class aClass);
 // 使用objc_msgSend调用方法
 void testObjcMsgSend();
+// 懒加载方法，在运行时动态添加方法
+void testMethodAdd();
 // 方法交换
 void testMethodExchange();
 
@@ -31,7 +33,8 @@ int main(int argc, const char * argv[]) {
 //        getMethodsAndIvars([Teacher class]);
         
 //        testObjcMsgSend();
-        testMethodExchange();
+        testMethodAdd();
+//        testMethodExchange();
     }
     
     return 0;
@@ -80,12 +83,26 @@ void getMethodsAndIvars(Class aClass) {
 void testObjcMsgSend() {
     Person *person = [Person new];
     person.name = @"小明";
-    Class personClass = [Person class];
+   // objc_getRequiredClass("Person") == NSClassFromString(@"Person") == [Person class]
+    Class personClass = objc_getRequiredClass("Person"); // NSClassFromString(@"Person"); // [Person class];
     [person performSelector:@selector(drinkWater)]; // 小明 drink water!
     [personClass performSelector:@selector(eatRice)]; // Person eat rice!
     
     // 需先将build setting中objc_msgSend值YES改为NO
     objc_msgSend(person, @selector(eatWith:), @"apple"); // 小明 eat apple!
+    
+    // 不需要引入Person.h，在运行时才会检查是否有对应的对象及方法
+    Class p2Class = objc_msgSend(objc_getRequiredClass("Person"), @selector(alloc));
+    NSObject *p2 = objc_msgSend(p2Class, @selector(init));
+    objc_msgSend(p2, @selector(setName:), @"小李");
+    objc_msgSend(p2, @selector(eatWith:), @"banana");
+}
+
+void testMethodAdd () {
+    Teacher *wang = [[Teacher alloc] init];
+    wang.name = @"小王";
+    // hit方法在运行时动态关联实现
+    objc_msgSend(wang, @selector(hit:), @"李明");
 }
 
 // 使用runtime进行方法交换
