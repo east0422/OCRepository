@@ -38,10 +38,10 @@
 	14. 上一步退出循环后退出RunLoop，通知观察者RunLoop退出。
 
 #### RunLoopMode
-1. Default模式：NSDefaultRunLoopMode(Cocoa)，kCFRunLoopDefaultMode(Core Foundation)几乎包含了所有输入源(NSConnection除外)，一般情况下应使用此模式。
+1. Default模式：NSDefaultRunLoopMode(Cocoa)，kCFRunLoopDefaultMode(Core Foundation)几乎包含了所有输入源(NSConnection除外)，一般情况下应使用此模式，通常情况下app都是运行在这个mode下的。
 2. Connection模式：NSConnectionReplyMode(Cocoa)处理NSConnection对象相关事件，系统内部使用，用户基本不会使用。
 3. Modal模式：NSModalPanelRunLoopMode(Cocoa)处理modal panels事件
-4. Event tracking模式：NSEventTrackingRunLoopMode(Cocoa)，UITrackingRunLoopMode(iOS)在拖动loop或其他user interface tracking loops时处于此种模式下，在此模式下会限制输入事件的处理。手指按住UITableView拖动时就会处于此模式。
+4. Event tracking模式：NSEventTrackingRunLoopMode(Cocoa)，UITrackingRunLoopMode(iOS)，界面跟踪时的mode，一般用于ScrollView滚动时追踪的，保证滑动时不受其他事件影响。在拖动loop或其他user interface tracking loops时处于此种模式下，在此模式下会限制输入事件的处理。手指按住UITableView拖动时就会处于此模式。
 5. Common模式：NSRunLoopCommonModes(Cocoa)，kCFRunLoopCommonModes(Core Foundation)这是一个伪模式，其为一组run loop mode的集合，将输入源加入此模式意味着在Common Modes中包含的所有模式都可以处理。在Cocoa应用程序中，默认情况下Common Modes包含default，modal，event tracking。还可以使用CFRunLoopAddCommonMode方法向Common Modes中添加自定义modes。
 6. 注意：NSTimer和NSURLConnection默认运行在default mode下，当用户在拖动UITableView处于UITrackingRunLoopMode模式时，NSTimer不能fire，NSURLConnection的数据也无法处理；这种情况下可以在另外的线程中处理定时器事件，可把Timer加入到NSOperation中在另一个线程中调度。或者更改Timer运行的run loop mode，将其加入到UITrackingRunLoopMode或NSRunLoopCommonModes中。
 
@@ -54,6 +54,10 @@
 
 #### performSEL
 1. performSEL其实和NSTimer一样，是对CFRunLoopTimerRef的封装。因此，当调用performSelector:afterDelay:后，实际上内部会转化成CFRunLoopTimerRef并添加到当前线程的RunLoop中去，因此，如果当前线程中没有启动RunLoop的时候，该方法会失效。
+
+#### CADisplayLink
+1. Timer的tolerance表示最大延期时间，如果因为阻塞错过了这个时间精度，这个时间点的回调也会跳过去，不会延后执行。
+2. CADisplayLink是一个和屏幕刷新率一致的定时器，如果在两次屏幕刷新之间执行了一个长任务，那其中就会有一帧被跳过去(和NSTimer类似，只是没有tolerance容忍时间)，造成界面卡顿的感觉。
 
 #### CFRunLoopObserverRef
 1. CFRunLoopObserverRef是RunLoop的观察者。每个观察者都可以观察RunLoop在某个模式下事件的触发并处理。可观察的时间点有：
@@ -84,6 +88,11 @@
 4. 界面刷新
 	1. 当在操作UI时，比如改变了Frame、更新了UIView/CALayer的层次时，或者手动调用了UIView/CALayer的setNeedsLayout/setNeedsDisplay方法后，这个UIView/CALayer就被标记为待处理，并被提交到一个全局的容器去。
 	2. 系统注册了一个观察者，这个观察者监听RunLoop即将进入休眠和即将退出的事件，回调_ZN2CA11Transaction17observer_callbackEP19__CFRunLoopObservermPv()方法，该方法中会遍历所有待处理的UIView或CALayer以执行绘制和调整，更新UI界面。
+5. GCD任务
+	1. 当调用dispatch_async(dispatch_get_main_queue(), block)时，libDispatch会向主线程的RunLoop发送消息，RunLoop会被唤醒，并从消息中取得这个block，并在回调里执行这个block。Runloop只处理主线程的block，dispatch到其他线程仍然是由libDispatch处理的。 
+6. 网络请求
+	1. 最底层的是CFSocket层，然后是CFNetwork将其封装，然后是NSURLConnection对CFNetwork进行面向对象的封装，NSURLSession是iOS7中新增的接口，也用到NSURLConnection的loader线程。
+	2. 以NSURLConnection为例，当开始网络传输时，NSURLConnection创建了两个新线程com.apple.NSURLConnectionLoader和com.apple.CFSocket.private。其中CFSocket线程是处理底层socket连接的，NSURLConnectionLoader这个线程内部会使用RunLoop来接收底层socket的事件Source1，并通过之前添加的Source0通知到上层的Delegate。
 
 #### 日常用法
 1. 线程池
@@ -93,6 +102,8 @@
 	1. 通过添加Observer监听主线程RunLoop，可以仿造主线程RunLoop进行UI更新(AsyncDisplayKit开源框架)。
 	2. AsyncDisplayKit框架就是仿造QuartzCore/UIKit框架的模式，实现了一套类似的界面更新的机制。平时的时候将UI对象的创建、设置属性的事件放在队列中，通过在主线程添加Observer监听主线程RunLoop的kCFRunLoopBeforeWaiting和kCFRunLoopExit事件，在收到回调时，遍历队列里所有的事件并执行。
 3. 通过合理利用RunLoop机制，可以将很多不是必须在主线程中执行的操作放在子线程中实现，然后在合适的时机同步到主线程中，这样可以节省在主线程执行操作的事件，避免卡顿。
+4. 滑动与图片刷新
+	1. 当tableview的cell上有需要从网络获取图片时，滚动tableview异步线程会去加载图片，加载完成后主线程就会设置cell的图片，但是会造成卡顿。可以让设置图片的任务在CFRunLoopDefaultMode下进行，当滚动tableview的时候，Runloop是在UITrackingRunLoopMode下进行，不去设置图片，而是当停止的时候再去设置图片。`imageview.performSelector(onMainThread aSelector: Selector, with arg: Any?, waitUntilDone wait: Bool, modes array: [NSDefaultRunLoopMode])`
 
 #### 其他
 1. NSRunLoopCommonModes模式的runloop中若有耗时操作则可能会引起UI的卡顿，解决方法是使用runloop分拆耗时操作。
