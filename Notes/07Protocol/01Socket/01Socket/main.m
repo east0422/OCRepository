@@ -10,19 +10,22 @@
 #import <sys/socket.h>
 #import <netinet/in.h>
 #import <arpa/inet.h>
-void socketDemo();
+void socketClientDemo();
+void socketServerDemo();
 
 // nc -lk 12345另一个终端中连接监听12345端口
+// nc 127.0.0.1 12345打开一个客户端监听本机12345端口
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        socketDemo();
+//        socketClientDemo();
+        socketServerDemo();
     }
     return 0;
 }
 
 
 // socket演示
-void socketDemo() {
+void socketClientDemo() {
     // 1. 创建socket
     /**
      domain：协议域，又称协议族（family）。常用的协议族有AF_INET、AF_INET6、AF_LOCAL（或称AF_UNIX，Unix域Socket）、AF_ROUTE等。协议族决定了socket的地址类型，在通信中必须采用对应的地址，如AF_INET决定了要用ipv4地址（32位的）与端口号（16位的）的组合、AF_UNIX决定了要用一个绝对路径名作为地址。
@@ -71,4 +74,55 @@ void socketDemo() {
     // 关闭连接
     int closeResult = close(socketClient);
     NSLog(@"close result:%d", closeResult);
+}
+
+// socket 服务器
+void socketServerDemo() {
+    int error;
+    int sc = socket(AF_INET, SOCK_STREAM, 0);
+    BOOL success = (sc != -1); // 成功
+    if (success) {
+        struct sockaddr_in addr;
+        addr.sin_family = AF_INET;
+        addr.sin_port = htons(12345);
+        addr.sin_len = sizeof(addr);
+        addr.sin_addr.s_addr = INADDR_ANY;
+        error = bind(sc, (const struct sockaddr *)&addr, sizeof(addr));
+        success = (error == 0);
+    }
+    if (success) { // 绑定成功
+        // 监听，若5秒内没有应答就回关闭
+        error = listen(sc, 5);
+        success = (error == 0);
+    }
+    if (success) { // 监听成功
+//        while (true) { // 监听接受其它客户端连接
+            struct sockaddr_in paddr;
+            socklen_t addrLen = sizeof(paddr);
+            int peer = accept(sc, (struct sockaddr *)&paddr, &addrLen);
+            success = (peer != -1);
+            if (success) {
+                char buffer[1024];
+                size_t len = sizeof(buffer);
+                ssize_t count;
+                while (true) { // 反复接受数据
+                    count = recv(peer, buffer, len, 0);
+                    if (count <= 0) { // 客户端关闭socket
+                        NSLog(@"received nothing!");
+                        break;
+                    }
+                    NSData * data = [NSData dataWithBytes:buffer length:count];
+                    //二进制转字符串
+                    NSString *str = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+                    NSLog(@"received: %@", str);
+                    if ([str isEqualToString:@"exit\n"]) {
+                        NSLog(@"exit");
+                        break;
+                    }
+                }
+            }
+//        }
+    }
+    close(sc);
+    NSLog(@"服务器端关闭！");
 }

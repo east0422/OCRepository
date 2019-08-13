@@ -28,7 +28,7 @@
     // 使用runloop加载大图片滚动不卡顿
     RunloopViewController *rootVC = [[RunloopViewController alloc] init];
     self.window.rootViewController = rootVC;
-    
+
     [self.window makeKeyAndVisible];
     return YES;
 }

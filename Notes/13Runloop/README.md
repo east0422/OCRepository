@@ -10,6 +10,13 @@
 6. 一次runLoop循环需要绘制屏幕上所有的点。
 7. 每个run loop可运行在不同的模式下，一个run loop mode是一个集合，其中包含其监听的若干输入事件源，定时器，以及在事件发生时需要通知的run loop observers。
 
+#### Runloop和线程的关系
+1. loop表示某种昂循环，和run放在一起就表示一直在运行着的循环。runloop与线程是一一对应的，一个线程对应一个核心runloop，runloop可以嵌套的，但是核心的只能有一个，他们的关系保存在一个全局的字典里。
+2. 主线程的runloop默认自动开启，所以程序在开启后会一直运行不会退出。子线程runloop需要手动开启默认是不开启的，若需要更多的线程交互则可以手动配置和启动，若线程只是去执行一个长时间的已确定的任务则不需要。
+3. runloop是来管理线程的，当线程的runloop开启(run)后，线程就会在执行完任务后处于休眠状态，随时等待接受新的任务而不是退出。
+4. runloop在第一次获取的时候创建，线程结束时销毁。
+5. 获取当前线程的runloop：[NSRunLoop currentRunLoop];。
+
 #### NSRunLoop
 1. NSRunLoop对象是OC对象，是对CFRunLoopRef的封装，可以通过getCFRunLoop方法获取其对应的CFRunLoopRef对象。NSRunLoop不是线程安全的，但CFRunLoopRef是线程安全的。
 2. NSRunLoop对象是一序列RunLoopMode的集合，每个mode包括有这个模式下所有的Source源、Timer源和观察者。每次RunLoop调用的时候都只能调用其中的一个mode，接收这个mode下的源，通知这个mode下的观察者。这样设计的主要目的是为了隔离各个模式下的源和观察者，使其不相互影响。

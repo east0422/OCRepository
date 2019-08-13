@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45A88C2E22FA6D5A00C2B52F /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A88C2D22FA6D5A00C2B52F /* Person.m */; };
+		45A88C3122FA7C2D00C2B52F /* NSObject+KVO.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A88C3022FA7C2D00C2B52F /* NSObject+KVO.m */; };
+		45A88C3422FAC61100C2B52F /* Animal.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A88C3322FAC61100C2B52F /* Animal.m */; };
 		45F45A83212A6B2000CF40A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F45A82212A6B2000CF40A0 /* main.m */; };
 		45F45A8B212A6CBE00CF40A0 /* Baby.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F45A8A212A6CBE00CF40A0 /* Baby.m */; };
 		45F45A8E212A6CC900CF40A0 /* Nanny.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F45A8D212A6CC900CF40A0 /* Nanny.m */; };
@@ -25,6 +28,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		45A88C2C22FA6D5A00C2B52F /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		45A88C2D22FA6D5A00C2B52F /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		45A88C2F22FA7C2D00C2B52F /* NSObject+KVO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+KVO.h"; sourceTree = "<group>"; };
+		45A88C3022FA7C2D00C2B52F /* NSObject+KVO.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+KVO.m"; sourceTree = "<group>"; };
+		45A88C3222FAC61100C2B52F /* Animal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Animal.h; sourceTree = "<group>"; };
+		45A88C3322FAC61100C2B52F /* Animal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Animal.m; sourceTree = "<group>"; };
 		45F45A7F212A6B2000CF40A0 /* 03KVO */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 03KVO; sourceTree = BUILT_PRODUCTS_DIR; };
 		45F45A82212A6B2000CF40A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		45F45A89212A6CBE00CF40A0 /* Baby.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Baby.h; sourceTree = "<group>"; };
@@ -64,10 +73,16 @@
 			isa = PBXGroup;
 			children = (
 				45F45A82212A6B2000CF40A0 /* main.m */,
+				45A88C3222FAC61100C2B52F /* Animal.h */,
+				45A88C3322FAC61100C2B52F /* Animal.m */,
 				45F45A89212A6CBE00CF40A0 /* Baby.h */,
 				45F45A8A212A6CBE00CF40A0 /* Baby.m */,
 				45F45A8C212A6CC900CF40A0 /* Nanny.h */,
 				45F45A8D212A6CC900CF40A0 /* Nanny.m */,
+				45A88C2C22FA6D5A00C2B52F /* Person.h */,
+				45A88C2D22FA6D5A00C2B52F /* Person.m */,
+				45A88C2F22FA7C2D00C2B52F /* NSObject+KVO.h */,
+				45A88C3022FA7C2D00C2B52F /* NSObject+KVO.m */,
 			);
 			path = 03KVO;
 			sourceTree = "<group>";
@@ -130,6 +145,9 @@
 			files = (
 				45F45A8E212A6CC900CF40A0 /* Nanny.m in Sources */,
 				45F45A83212A6B2000CF40A0 /* main.m in Sources */,
+				45A88C3122FA7C2D00C2B52F /* NSObject+KVO.m in Sources */,
+				45A88C3422FAC61100C2B52F /* Animal.m in Sources */,
+				45A88C2E22FA6D5A00C2B52F /* Person.m in Sources */,
 				45F45A8B212A6CBE00CF40A0 /* Baby.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,6 +268,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -258,6 +277,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

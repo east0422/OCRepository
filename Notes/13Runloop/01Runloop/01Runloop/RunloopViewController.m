@@ -164,7 +164,8 @@ void runLoopObserverCallBack(CFRunLoopObserverRef observer, CFRunLoopActivity ac
     };
     
     CFRunLoopObserverRef observerRef = CFRunLoopObserverCreate(NULL, kCFRunLoopBeforeWaiting, YES, 0, &runLoopObserverCallBack, &context);
-    CFRunLoopAddObserver(runloopRef, observerRef, kCFRunLoopDefaultMode);
+    // kCFRunLoopDefaultMode 滚动结束才开始渲染，kCFRunLoopCommonModes滚动是也渲染
+    CFRunLoopAddObserver(runloopRef, observerRef, kCFRunLoopCommonModes);
     CFRelease(observerRef);
 }
 

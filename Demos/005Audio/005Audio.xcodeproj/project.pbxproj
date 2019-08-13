@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		452BEECC22D88B8B005E6520 /* FourthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 452BEECB22D88B8B005E6520 /* FourthViewController.m */; };
 		453310A722DC142000852F24 /* TextSpeech.m in Sources */ = {isa = PBXBuildFile; fileRef = 453310A622DC142000852F24 /* TextSpeech.m */; };
+		453F480022FD180E0085A4CE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 453F47FF22FD180E0085A4CE /* README.md */; };
 		45965A5222D819E1008171FE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45965A5122D819E1008171FE /* AppDelegate.m */; };
 		45965A5522D819E1008171FE /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45965A5422D819E1008171FE /* FirstViewController.m */; };
 		45965A5822D819E1008171FE /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45965A5722D819E1008171FE /* SecondViewController.m */; };
@@ -27,6 +28,7 @@
 		452BEECB22D88B8B005E6520 /* FourthViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FourthViewController.m; sourceTree = "<group>"; };
 		453310A522DC142000852F24 /* TextSpeech.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TextSpeech.h; sourceTree = "<group>"; };
 		453310A622DC142000852F24 /* TextSpeech.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TextSpeech.m; sourceTree = "<group>"; };
+		453F47FF22FD180E0085A4CE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		45965A4D22D819E1008171FE /* 005Audio.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 005Audio.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45965A5022D819E1008171FE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		45965A5122D819E1008171FE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			children = (
 				45965A4F22D819E1008171FE /* 005Audio */,
 				45965A4E22D819E1008171FE /* Products */,
+				453F47FF22FD180E0085A4CE /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -168,6 +171,7 @@
 				45965A6F22D81B7A008171FE /* JingleBells.mp3 in Resources */,
 				45965A6D22D81B68008171FE /* s6.wav in Resources */,
 				45965A6022D819E3008171FE /* LaunchScreen.storyboard in Resources */,
+				453F480022FD180E0085A4CE /* README.md in Resources */,
 				45965A5D22D819E3008171FE /* Assets.xcassets in Resources */,
 				45965A5B22D819E1008171FE /* Main.storyboard in Resources */,
 				45965A6B22D81B0B008171FE /* wonderful.wav in Resources */,
