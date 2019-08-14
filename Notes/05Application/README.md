@@ -11,10 +11,12 @@
 #### APP启动过程
 1. main函数。
 2. UIApplicationMain创建UIApplication对象和delegate对象。
-3. 有storyboard时根据Info.plist中设置文件名加载storyboard并创建UIWindow。
-4. 无storyboard时，delegate对象开始处理(监听)系统事件，程序启动完毕的时候会调用代理的application:didFinishLaunchingWithOptions:方法并在方法中创建UIWindow。
-5. 创建和设置UIWindow的rootViewController。
-6. 显示窗口。
+3. 开启一个主运行循环，保证应用程序不退出。
+4. 加载Info.plist配置文件，判断Info.plist文件当中有没有Main storyboard file base name及其有没有指定storyboard文件。
+5. 有storyboard时根据Info.plist中设置文件名加载storyboard并创建UIWindow。
+6. 无storyboard时，delegate对象开始处理(监听)系统事件，程序启动完毕的时候会调用代理的application:didFinishLaunchingWithOptions:方法并在方法中创建UIWindow。
+7. 创建和设置UIWindow的rootViewController。
+8. 显示窗口。
 
 #### 本地通知和远程推送通知
 1. 本地通知和远程推送通知都可以向不在前台运行的应用发送消息，这种消息可能是即将发生的事件，也可能是服务器的新数据。他们在程序界面的显示效果相同，都能显示为一段警告信息或应用程序图标上的徽章。基本目的都是让应用程序能够通知用户某些事情而不需要应用程序在前台运行。

@@ -141,7 +141,7 @@
 			return [super forwardingTargetForSelector:aSEL];
 		}
 		```
-	3. Normal forwarding：这一步是runtime最后一次挽救的机会，首先它会发送-methodSignatureForSelector:消息获得函数的参数和返回值类型，若返回nil则会发出-doesNotRecognizeSelector:消息，程序这时也就挂掉了。若赶回了一个函数签名，runtime就会创建一个NSInvocation对象并发送-forwardInvocation:消息给目标对象。NSInvocation实际上就是对一个消息的描述，包括selector以及参数等信息。所以你可以在-forwardInvocation:里修改传进来的NSInvocation对象，然后发送-invokeWithTarget:消息给它，穿进去一个新的目标。
+	3. Normal forwarding：这一步是runtime最后一次挽救的机会，首先它会发送-methodSignatureForSelector:消息获得函数的参数和返回值类型，若返回nil则会发出-doesNotRecognizeSelector:消息，程序这时也就挂掉了。若返回了一个函数签名，runtime就会创建一个NSInvocation对象并发送-forwardInvocation:消息给目标对象。NSInvocation实际上就是对一个消息的描述，包括selector以及参数等信息。所以你可以在-forwardInvocation:里修改传进来的NSInvocation对象，然后发送-invokeWithTarget:消息给它，传进去一个新的目标。
 
 		```
 		- (void)forwardInvocation:(NSInvocation *)invocation {

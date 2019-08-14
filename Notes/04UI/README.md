@@ -38,9 +38,11 @@
   * 设置Item的字体大小
  [navItem setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18]}forState:UIControlStateNormal];
 
-#### CALayer与UIView的区别
-1. 两者最大的区别是，图层不会直接渲染到屏幕上，UIView是iOS系统中界面元素的基础，所有的界面元素都是继承自它。它本身完全是由CoreAnimation来实现的，它真正的绘图部分，是由一个CALayer类来管理。
-2. UIView本身更像一个CALayer的管理器，一个UIView上可以有n个CALayer，每个layer显示一种东西，增强UIView的展现能力。
+#### UIView与CALayer
+1. UIView属于UIKit负责渲染矩形区域的内容，为矩形区域添加动画，响应区域的触摸事件(继承UIResponder)，布局和管理一个或多个子视图。
+2. CALayer属于QuartzCore，是用来绘制内容的，对内容进行动画处理，依赖于UIView来进行显示，不能处理用户事件。
+3. 两者最大的区别是，图层不会直接渲染到屏幕上，UIView是iOS系统中界面元素的基础，所有的界面元素都是继承自它。它本身完全是由CoreAnimation来实现的，它真正的绘图部分，是由一个CALayer类来管理。
+4. UIView和CALayer是相互依赖的，UIView依赖CALayer提供内容，CALayer依赖UIView的容器显示绘制内容。UIView本身更像一个CALayer的管理器，一个UIView上可以有n个CALayer，每个layer显示一种东西，增强UIView的展现能力。
 
 #### frame与bounds
 1. frame指的是该view在父view坐标系统中的位置和大小(参照点是父视图的坐标系统)。
@@ -61,6 +63,9 @@
 	* 没有设置contentSize(滚动范围)
 	* 禁用滚动scrollEnabled = NO或禁用了用户交互userInteractionEnabled = NO
 	* 没有取消autolayout功能(要想scrollView滚动，必须取消autolayout)
+2. 通常情况下可以在viewDidLoad中设置contentSize，但是在autolayout下，系统会在viewDidAppear之前根据subview的constraint重新计算scrollview的contentsize，所以前面手动设置的值会被覆盖掉也就是所谓的contentsize设置无效。解决方法有
+	* 去除autolayout选项，自己手动设置contentsize。
+	* 若要使用autolayout，要么自己设置完subview的constraint，然后让系统自动根据constraint计算出contentsize。要么延迟在viewDidAppear里面自己手动设置contentsize。
 
 #### UIButton
 1. UIButton的imageView属性是只读属性不能赋值，故不能通过该属性更改图片。
@@ -80,15 +85,31 @@
 3. 放在xcassets里面的图片只能通过imageNamed方法加载，图片放在非cassettes中则可以通过[[NSBundle mainBundle] pathForResource: imageName ofType: imageType];获取对应图片路径后再使用上述2加载图片。
 4. 可将多张图片放入一个数组赋值给UIImageView的animationImages属性然后调用startAnimating开始动画播放，不过需要注意的是在动画播放完成后记得将animationImages置为nil避免长期占用内存资源[self.imageView performSelector:@selector(setAnimationImages:) withObject:nil after:self.imageView.animationDuration+0.1]。
 
-#### UITableView优化
-1. 高度缓存，正确使用reuseIdentifier来重用cells。
-2. 滚动很快时，只加载目标范围内的Cell，这样按需加载，极大的提高流畅度。提前计算并缓存好高度(布局)，因为heightForRowAtIndexPath:是调用最频繁的方法。滑动时按需加载在大量图片展示，网络加载的时候很管用。
-3. 尽量使所有的view opaque，包括cell自身。
-4. 尽量少用或不用透明图层。
-5. 如果cell内显示的内容来自web，使用异步加载，缓存请求结果。
-6. 减少subviews的数量和层级。
-7. 在heightForRowAtIndexPath:中尽量不使用cellForRowAtIndexPath:，如果你需要用到它，只用一次然后缓存结果。
-8. 尽量少用addView给cell动态添加view，可以初始化时就添加，然后通过hide来控制是否显示。
+#### UIImageView添加圆角
+1. 最直接的方法就是使用属性设置`imageView.layer.cornerRadius = 10; imageView.masksToBounds = YES;`，该方法好处是使用简单，操作方便。但坏处是离屏渲染(off-screen-rendering)需要消耗性能。对于图片较多的视图不建议使用这种方法来设置圆角。在iOS9之后系统做了优化不会产生离屏渲染。
+	* 通常来说，计算机系统中CPU、GPU、显示器是协同工作的。CPU计算好显示内容提交到GPU，GPU渲染完成后将渲染结果放入帧缓冲区。
+	* 离屏渲染导致本该CPU干的活交给了CPU来干，而CPU又不擅长GPU干的活，于是拖慢了UI层的数据帧率(FPS)，并且离屏需要创建新的缓冲区和上下文切换，因此消耗较大的性能。
+2. 给UIImage添加生成圆角图片的扩展API，然后调用时就直接传一个圆角来处理`imageView.image = [[UIImage imageNamed:@"test"] east_imageWithCornerRadius:10];`，这么做就是在屏渲染了(on-screen-rendering)。通过模拟器->debug->Color Off-screen-rendering看到没有离屏渲染了(黄色的小圆角没有显示了说明这个不是离屏渲染了)。
+
+	```
+	- (UIImage *)east_imageWithCornerRadius:(CGFloat)radius inBounds:(CGRect)bounds {
+		UIGraphicsBeginImageContextWithOptions(bounds.size, NO, UIScreen.mainScreen.scale);
+		CGContextAddPath(UIGraphicsGetCurrentContext(), [UIBezierPath bezierPathWithRoundedRect:bounds cornerRadius:radius].CGPath);
+		CGContextClip(UIGraphicsGetCurrentContext());
+		[self drawInRect:bounds];
+		UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+		UIGraphicsEndImageContext();
+		return image;
+	}
+	```
+3. 通过mask遮罩实现，性能消耗比设置属性的消耗更大。
+
+	```
+	CAShapeLayer *layer = [CAShapeLayer layer];
+  	UIBezierPath *bezierPath = [UIBezierPath bezierPathWithOvalInRect:self.imageView.bounds];
+  	layer.path = bezierPath.CGPath;
+   self.imageView.layer.mask = layer;
+	```
 
 #### storyboard
 1. IBAction
@@ -115,7 +136,6 @@
 	* 若使用UIView绘图，只能在drawRect：方法中获取相应的contextRef并绘图。如果在其他方法中获取将获取到一个invalidate的ref并且不能用于画图。drawRect:方法不能手动显示调用，必须通过调用setNeedsDisplay或者setNeedsDisplayInRect，让系统自动调用该方法。
 	* 若使用CAlayer绘图，只能在drawInContext：中绘制，或者在delegate中的相应方法绘制。同样也是调用setNeedDisplay等间接调用以上方法。
 	* 若要实时画图，不能使用gestureRecognizer，只能使用touchBegan等方法来调用setNeedsDisplay实时刷新屏幕。
-
 
 
 #### UIViewController
