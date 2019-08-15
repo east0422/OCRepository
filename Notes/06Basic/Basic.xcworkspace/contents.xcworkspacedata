@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:01Predicate"
+      name = "01Predicate">
+      <FileRef
+         location = "group:01Predicate.xcodeproj">
+      </FileRef>
+      <Group
+         location = "group:01Predicate"
+         name = "01Predicate">
+         <FileRef
+            location = "group:Person.h">
+         </FileRef>
+         <FileRef
+            location = "group:Person.m">
+         </FileRef>
+         <FileRef
+            location = "group:main.m">
+         </FileRef>
+      </Group>
+   </Group>
+   <FileRef
+      location = "group:README.md">
+   </FileRef>
+</Workspace>

@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:001UIImageView/001UIImageView.xcodeproj">
+      location = "group:01Prog.m">
    </FileRef>
    <FileRef
       location = "group:README.md">

@@ -8,17 +8,28 @@
 
 #import <Foundation/Foundation.h>
 
-void testNoParaNoReturn();
-void testHasParaNoReturn();
-void testHasParaHasReturn();
-void testChangeExternalVariable();
+void testNoParaNoReturn(void);
+void testHasParaNoReturn(void);
+void testHasParaHasReturn(void);
+void testChangeExternalVariable(void);
+
+// block普通局部变量传值，其他情况传址
+void testBlock1(void);
+void testBlock2(void);
+void testBlock3(void);
+void testBlock4(void);
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        //        testNoParaNoReturn();
-        //        testHasParaNoReturn();
-        //        testHasParaHasReturn();
-        testChangeExternalVariable();
+//        testNoParaNoReturn();
+//        testHasParaNoReturn();
+//        testHasParaHasReturn();
+//        testChangeExternalVariable();
+        
+        testBlock1();
+//        testBlock2();
+//        testBlock3();
+//        testBlock4();
     }
     return 0;
 }
@@ -29,10 +40,10 @@ void testNoParaNoReturn() {
         NSLog(@"block------");
     }
     
-    void (^block1)() = ^() {
+    void (^block1)(void) = ^() {
         NSLog(@"block1 with no paramter and no return");
     };
-    void (^block2)() = ^{
+    void (^block2)(void) = ^{
         NSLog(@"block2 no param and no return");
     };
     
@@ -76,4 +87,43 @@ void testChangeExternalVariable () {
     
     block();
     NSLog(@"a:%d, b:%d", a, b); // 20
+}
+
+// 普通局部变量
+void testBlock1() {
+    int a1 = 10;
+    void (^block1)(void) = ^() {
+        NSLog(@"a1 is %d", a1);
+    };
+    a1 = 20;
+    block1(); // a1 is 10
+}
+
+void testBlock2()
+{
+    __block int a2 = 10;
+    void (^block2)(void) = ^{
+        NSLog(@"a2 is %d", a2);
+    };
+    a2 = 20;
+    block2(); // 20
+}
+void testBlock3()
+{
+    static int a3 = 10;
+    void (^block3)(void) = ^{
+        NSLog(@"a3 is %d", a3);
+    };
+    a3 = 30;
+    block3(); // 30
+}
+
+int a4 = 10;
+void testBlock4()
+{
+    void (^block4)(void) = ^{
+        NSLog(@"a4 is %d", a4);
+    };
+    a4 = 40;
+    block4(); // 40
 }

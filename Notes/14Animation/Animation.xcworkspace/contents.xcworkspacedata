@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:01Animation"
+      name = "01Animation">
+      <FileRef
+         location = "group:01Animation.xcworkspace">
+      </FileRef>
+      <FileRef
+         location = "group:01Animation.xcodeproj">
+      </FileRef>
+      <Group
+         location = "group:Pods"
+         name = "Pods">
+         <Group
+            location = "group:MCFireworksButton"
+            name = "MCFireworksButton">
+            <Group
+               location = "group:MCFireworksButton"
+               name = "MCFireworksButton">
+               <FileRef
+                  location = "group:MCFireworksButton.m">
+               </FileRef>
+               <FileRef
+                  location = "group:MCFireworksView.m">
+               </FileRef>
+               <FileRef
+                  location = "group:MCFireworksButton.h">
+               </FileRef>
+               <FileRef
+                  location = "group:MCFireworksView.h">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:LICENSE">
+            </FileRef>
+            <FileRef
+               location = "group:README.md">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:Pods.xcodeproj">
+         </FileRef>
+         <Group
+            location = "group:Target Support Files"
+            name = "Target Support Files">
+            <Group
+               location = "group:MCFireworksButton"
+               name = "MCFireworksButton">
+               <FileRef
+                  location = "group:MCFireworksButton.modulemap">
+               </FileRef>
+               <FileRef
+                  location = "group:MCFireworksButton-prefix.pch">
+               </FileRef>
+               <FileRef
+                  location = "group:MCFireworksButton-umbrella.h">
+               </FileRef>
+               <FileRef
+                  location = "group:MCFireworksButton-dummy.m">
+               </FileRef>
+               <FileRef
+                  location = "group:MCFireworksButton.xcconfig">
+               </FileRef>
+               <FileRef
+                  location = "group:Info.plist">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:Pods-01Animation"
+               name = "Pods-01Animation">
+               <FileRef
+                  location = "group:Pods-01Animation-acknowledgements.plist">
+               </FileRef>
+               <FileRef
+                  location = "group:Pods-01Animation.debug.xcconfig">
+               </FileRef>
+               <FileRef
+                  location = "group:Pods-01Animation.release.xcconfig">
+               </FileRef>
+               <FileRef
+                  location = "group:Pods-01Animation-umbrella.h">
+               </FileRef>
+               <FileRef
+                  location = "group:Pods-01Animation.modulemap">
+               </FileRef>
+               <FileRef
+                  location = "group:Pods-01Animation-acknowledgements.markdown">
+               </FileRef>
+               <FileRef
+                  location = "group:Pods-01Animation-frameworks.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:Pods-01Animation-resources.sh">
+               </FileRef>
+               <FileRef
+                  location = "group:Info.plist">
+               </FileRef>
+               <FileRef
+                  location = "group:Pods-01Animation-dummy.m">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:SWRevealViewController"
+               name = "SWRevealViewController">
+               <FileRef
+                  location = "group:SWRevealViewController-dummy.m">
+               </FileRef>
+               <FileRef
+                  location = "group:SWRevealViewController.modulemap">
+               </FileRef>
+               <FileRef
+                  location = "group:SWRevealViewController-umbrella.h">
+               </FileRef>
+               <FileRef
+                  location = "group:Info.plist">
+               </FileRef>
+               <FileRef
+                  location = "group:SWRevealViewController-prefix.pch">
+               </FileRef>
+               <FileRef
+                  location = "group:SWRevealViewController.xcconfig">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:DCPathButton"
+               name = "DCPathButton">
+               <FileRef
+                  location = "group:DCPathButton-umbrella.h">
+               </FileRef>
+               <FileRef
+                  location = "group:DCPathButton.modulemap">
+               </FileRef>
+               <FileRef
+                  location = "group:DCPathButton-prefix.pch">
+               </FileRef>
+               <FileRef
+                  location = "group:DCPathButton.xcconfig">
+               </FileRef>
+               <FileRef
+                  location = "group:DCPathButton-dummy.m">
+               </FileRef>
+               <FileRef
+                  location = "group:Info.plist">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:DWBubbleMenuButton"
+               name = "DWBubbleMenuButton">
+               <FileRef
+                  location = "group:DWBubbleMenuButton.modulemap">
+               </FileRef>
+               <FileRef
+                  location = "group:DWBubbleMenuButton-prefix.pch">
+               </FileRef>
+               <FileRef
+                  location = "group:DWBubbleMenuButton-umbrella.h">
+               </FileRef>
+               <FileRef
+                  location = "group:DWBubbleMenuButton-dummy.m">
+               </FileRef>
+               <FileRef
+                  location = "group:DWBubbleMenuButton.xcconfig">
+               </FileRef>
+               <FileRef
+                  location = "group:Info.plist">
+               </FileRef>
+            </Group>
+         </Group>
+         <FileRef
+            location = "group:Manifest.lock">
+         </FileRef>
+         <Group
+            location = "group:SWRevealViewController"
+            name = "SWRevealViewController">
+            <Group
+               location = "group:SWRevealViewController"
+               name = "SWRevealViewController">
+               <FileRef
+                  location = "group:SWRevealViewController.h">
+               </FileRef>
+               <FileRef
+                  location = "group:SWRevealViewController.m">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:README.md">
+            </FileRef>
+            <FileRef
+               location = "group:LICENSE.txt">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:DCPathButton"
+            name = "DCPathButton">
+            <Group
+               location = "group:DCPathButton"
+               name = "DCPathButton">
+               <Group
+                  location = "group:Classes"
+                  name = "Classes">
+                  <FileRef
+                     location = "group:DCPathItemButton.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:DCPathButton.m">
+                  </FileRef>
+                  <FileRef
+                     location = "group:DCPathItemButton.m">
+                  </FileRef>
+                  <FileRef
+                     location = "group:DCPathButton.h">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Sounds"
+                  name = "Sounds">
+                  <FileRef
+                     location = "group:selected.caf">
+                  </FileRef>
+                  <FileRef
+                     location = "group:fold.caf">
+                  </FileRef>
+                  <FileRef
+                     location = "group:bloom.caf">
+                  </FileRef>
+               </Group>
+            </Group>
+            <FileRef
+               location = "group:README.md">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:Local Podspecs"
+            name = "Local Podspecs">
+         </Group>
+         <Group
+            location = "group:Headers"
+            name = "Headers">
+            <Group
+               location = "group:Public"
+               name = "Public">
+               <Group
+                  location = "group:MCFireworksButton"
+                  name = "MCFireworksButton">
+                  <FileRef
+                     location = "group:MCFireworksButton.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:MCFireworksView.h">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:SWRevealViewController"
+                  name = "SWRevealViewController">
+                  <FileRef
+                     location = "group:SWRevealViewController.h">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:DCPathButton"
+                  name = "DCPathButton">
+                  <FileRef
+                     location = "group:DCPathItemButton.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:DCPathButton.h">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:DWBubbleMenuButton"
+                  name = "DWBubbleMenuButton">
+                  <FileRef
+                     location = "group:DWBubbleMenuButton.h">
+                  </FileRef>
+               </Group>
+            </Group>
+            <Group
+               location = "group:Private"
+               name = "Private">
+               <Group
+                  location = "group:MCFireworksButton"
+                  name = "MCFireworksButton">
+                  <FileRef
+                     location = "group:MCFireworksButton.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:MCFireworksView.h">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:SWRevealViewController"
+                  name = "SWRevealViewController">
+                  <FileRef
+                     location = "group:SWRevealViewController.h">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:DCPathButton"
+                  name = "DCPathButton">
+                  <FileRef
+                     location = "group:DCPathItemButton.h">
+                  </FileRef>
+                  <FileRef
+                     location = "group:DCPathButton.h">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:DWBubbleMenuButton"
+                  name = "DWBubbleMenuButton">
+                  <FileRef
+                     location = "group:DWBubbleMenuButton.h">
+                  </FileRef>
+               </Group>
+            </Group>
+         </Group>
+         <Group
+            location = "group:DWBubbleMenuButton"
+            name = "DWBubbleMenuButton">
+            <FileRef
+               location = "group:LICENSE.md">
+            </FileRef>
+            <Group
+               location = "group:Source"
+               name = "Source">
+               <FileRef
+                  location = "group:DWBubbleMenuButton.m">
+               </FileRef>
+               <FileRef
+                  location = "group:DWBubbleMenuButton.h">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:README.md">
+            </FileRef>
+         </Group>
+      </Group>
+      <FileRef
+         location = "group:Podfile">
+      </FileRef>
+      <Group
+         location = "group:01Animation"
+         name = "01Animation">
+         <FileRef
+            location = "group:RootViewController.m">
+         </FileRef>
+         <FileRef
+            location = "group:AppDelegate.h">
+         </FileRef>
+         <Group
+            location = "group:category"
+            name = "category">
+            <FileRef
+               location = "group:UIButton+initWithFrameAndTitle.h">
+            </FileRef>
+            <FileRef
+               location = "group:UIButton+initWithFrameAndTitle.m">
+            </FileRef>
+         </Group>
+         <Group
+            location = "group:Assets.xcassets"
+            name = "Assets.xcassets">
+            <Group
+               location = "group:chooser-button-input-highlighted.imageset"
+               name = "chooser-button-input-highlighted.imageset">
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+               <FileRef
+                  location = "group:chooser-button-input-highlighted@2x.png">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:chooser-button-tab.imageset"
+               name = "chooser-button-tab.imageset">
+               <FileRef
+                  location = "group:chooser-button-tab@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:Sparkle.imageset"
+               name = "Sparkle.imageset">
+               <FileRef
+                  location = "group:Sparkle.png">
+               </FileRef>
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:chooser-moment-icon-camera-highlighted.imageset"
+               name = "chooser-moment-icon-camera-highlighted.imageset">
+               <FileRef
+                  location = "group:chooser-moment-icon-camera-highlighted@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:chooser-button-input.imageset"
+               name = "chooser-button-input.imageset">
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+               <FileRef
+                  location = "group:chooser-button-input@2x.png">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:chooser-moment-icon-place-highlighted.imageset"
+               name = "chooser-moment-icon-place-highlighted.imageset">
+               <FileRef
+                  location = "group:chooser-moment-icon-place-highlighted@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:chooser-moment-icon-music-highlighted.imageset"
+               name = "chooser-moment-icon-music-highlighted.imageset">
+               <FileRef
+                  location = "group:chooser-moment-icon-music-highlighted@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:Like-Blue.imageset"
+               name = "Like-Blue.imageset">
+               <FileRef
+                  location = "group:Like-Blue@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:AppIcon.appiconset"
+               name = "AppIcon.appiconset">
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:chooser-button-tab-highlighted.imageset"
+               name = "chooser-button-tab-highlighted.imageset">
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+               <FileRef
+                  location = "group:chooser-button-tab-highlighted@2x.png">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:chooser-moment-icon-place.imageset"
+               name = "chooser-moment-icon-place.imageset">
+               <FileRef
+                  location = "group:chooser-moment-icon-place@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:Contents.json">
+            </FileRef>
+            <Group
+               location = "group:Like.imageset"
+               name = "Like.imageset">
+               <FileRef
+                  location = "group:Like@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:chooser-moment-button.imageset"
+               name = "chooser-moment-button.imageset">
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+               <FileRef
+                  location = "group:chooser-moment-button@2x.png">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:chooser-moment-icon-camera.imageset"
+               name = "chooser-moment-icon-camera.imageset">
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+               <FileRef
+                  location = "group:chooser-moment-icon-camera@2x.png">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:chooser-moment-icon-music.imageset"
+               name = "chooser-moment-icon-music.imageset">
+               <FileRef
+                  location = "group:chooser-moment-icon-music@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:chooser-moment-icon-sleep-highlighted.imageset"
+               name = "chooser-moment-icon-sleep-highlighted.imageset">
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+               <FileRef
+                  location = "group:chooser-moment-icon-sleep-highlighted@2x.png">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:chooser-moment-icon-thought-highlighted.imageset"
+               name = "chooser-moment-icon-thought-highlighted.imageset">
+               <FileRef
+                  location = "group:chooser-moment-icon-thought-highlighted@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:chooser-moment-icon-thought.imageset"
+               name = "chooser-moment-icon-thought.imageset">
+               <FileRef
+                  location = "group:chooser-moment-icon-thought@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:chooser-moment-icon-sleep.imageset"
+               name = "chooser-moment-icon-sleep.imageset">
+               <FileRef
+                  location = "group:chooser-moment-icon-sleep@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:chooser-moment-button-highlighted.imageset"
+               name = "chooser-moment-button-highlighted.imageset">
+               <FileRef
+                  location = "group:chooser-moment-button-highlighted@2x.png">
+               </FileRef>
+               <FileRef
+                  location = "group:Contents.json">
+               </FileRef>
+            </Group>
+         </Group>
+         <FileRef
+            location = "group:ViewController.m">
+         </FileRef>
+         <Group
+            location = "group:Base.lproj"
+            name = "Base.lproj">
+            <FileRef
+               location = "group:LaunchScreen.storyboard">
+            </FileRef>
+            <FileRef
+               location = "group:Main.storyboard">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:main.m">
+         </FileRef>
+         <FileRef
+            location = "group:AppDelegate.m">
+         </FileRef>
+         <Group
+            location = "group:left-right"
+            name = "left-right">
+            <FileRef
+               location = "group:LeftViewController.h">
+            </FileRef>
+            <FileRef
+               location = "group:RightViewController.m">
+            </FileRef>
+            <FileRef
+               location = "group:RightViewController.h">
+            </FileRef>
+            <FileRef
+               location = "group:LeftViewController.m">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:RootViewController.h">
+         </FileRef>
+         <FileRef
+            location = "group:PrefixHeader.pch">
+         </FileRef>
+         <FileRef
+            location = "group:Info.plist">
+         </FileRef>
+         <Group
+            location = "group:animations"
+            name = "animations">
+            <FileRef
+               location = "group:GroupAnimationVC.h">
+            </FileRef>
+            <FileRef
+               location = "group:KeyFrameAnimationVC.m">
+            </FileRef>
+            <FileRef
+               location = "group:BaseViewController.m">
+            </FileRef>
+            <FileRef
+               location = "group:IntegrationAnimationVC.h">
+            </FileRef>
+            <FileRef
+               location = "group:BasicAnimationVC.m">
+            </FileRef>
+            <FileRef
+               location = "group:TransitionAnimationVC.m">
+            </FileRef>
+            <FileRef
+               location = "group:AffineTransformVC.m">
+            </FileRef>
+            <FileRef
+               location = "group:GroupAnimationVC.m">
+            </FileRef>
+            <FileRef
+               location = "group:KeyFrameAnimationVC.h">
+            </FileRef>
+            <FileRef
+               location = "group:TransitionAnimationVC.h">
+            </FileRef>
+            <FileRef
+               location = "group:BasicAnimationVC.h">
+            </FileRef>
+            <FileRef
+               location = "group:IntegrationAnimationVC.m">
+            </FileRef>
+            <FileRef
+               location = "group:BaseViewController.h">
+            </FileRef>
+            <FileRef
+               location = "group:AffineTransformVC.h">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:ViewController.h">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:Podfile.lock">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:README.md">
+   </FileRef>
+</Workspace>
