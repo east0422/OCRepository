@@ -64,6 +64,13 @@
 #### 内存管理基本原则
 1. 如果使用alloc、copy(mutableCopy)或者retain一个对象时，你就有义务，向它发送一条release或者autorelease消息。其他方法创建的对象，不需要由你来管理释放。
 
+#### autorelease释放
+1. 手动干预释放就是指定autoreleasepool，当前作用域大括号结束就立即释放。
+2. 系统自动去释放：不手动指定autoreleasepool，autorelease对象会在当前的runloop迭代结束时释放。
+3. kCFRunLoopEntry(1)：第一次进入会自动创建一个autorelease。
+4. kCFRunLoopBeforeWaiting(32)：进入休眠状态前会自动销毁一个autorelease，然后重新创建一个新的autorelease。
+5. kCFRunLoopExit(128)：退出runloop时会自动销毁最后一个创建的autorelease。
+
 #### ARC
 1. ARC是Automatic Reference Counting的简称，称之为自动引用计数，是iOS5.0之后推出的内存管理的新特性。
 2. 是编译器特性，是Xcode帮我们处理的，当编译器发现alloc、retain等时自动帮我们插入release代码。

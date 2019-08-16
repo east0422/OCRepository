@@ -1,8 +1,8 @@
 # Runloop运行循环
 
 
-#### 定义及作用
-1. 保持程序的持续运行不退出，本质是一个死循环。
+#### Runloop
+1. 保持程序的持续运行不退出，本质是一个死循环do-while，在这个循环内部不断地处理各种任务。
 2. 处理app中各种事件(触摸、定时器、selector等)。
 3. 节省cpu资源，提高程序性能：该做事时做事，该休息时休息。
 4. 每个线程都有唯一的一个与之对应的runloop对象用来循环处理输入事件(来自Input sources的异步事件和来自Timer sources的同步事件)，UIApplicationMain函数内部启动了一个与主线程相关联的runloop，故常说主线程的runloop自动创建好了而子线程的runloop需要主动创建；runloop在首次获取时创建在线程结束时销毁。
@@ -15,7 +15,8 @@
 2. 主线程的runloop默认自动开启，所以程序在开启后会一直运行不会退出。子线程runloop需要手动开启默认是不开启的，若需要更多的线程交互则可以手动配置和启动，若线程只是去执行一个长时间的已确定的任务则不需要。
 3. runloop是来管理线程的，当线程的runloop开启(run)后，线程就会在执行完任务后处于休眠状态，随时等待接受新的任务而不是退出。
 4. runloop在第一次获取的时候创建，线程结束时销毁。
-5. 获取当前线程的runloop：[NSRunLoop currentRunLoop];。
+5. 获取当前线程的runloop: [NSRunLoop currentRunLoop];或CFRunLoopGetCurrent();。
+6. 获取主线程的runloop: [NSRunLoop mainRunLoop];或CFRunLoopGetMain();。
 
 #### NSRunLoop
 1. NSRunLoop对象是OC对象，是对CFRunLoopRef的封装，可以通过getCFRunLoop方法获取其对应的CFRunLoopRef对象。NSRunLoop不是线程安全的，但CFRunLoopRef是线程安全的。
@@ -52,28 +53,41 @@
 5. Common模式：NSRunLoopCommonModes(Cocoa)，kCFRunLoopCommonModes(Core Foundation)这是一个伪模式，其为一组run loop mode的集合，将输入源加入此模式意味着在Common Modes中包含的所有模式都可以处理。在Cocoa应用程序中，默认情况下Common Modes包含default，modal，event tracking。还可以使用CFRunLoopAddCommonMode方法向Common Modes中添加自定义modes。
 6. 注意：NSTimer和NSURLConnection默认运行在default mode下，当用户在拖动UITableView处于UITrackingRunLoopMode模式时，NSTimer不能fire，NSURLConnection的数据也无法处理；这种情况下可以在另外的线程中处理定时器事件，可把Timer加入到NSOperation中在另一个线程中调度。或者更改Timer运行的run loop mode，将其加入到UITrackingRunLoopMode或NSRunLoopCommonModes中。
 
+#### CFRunLoopModeRef
+1. CFRunLoopModeRef代表RunLoop的运行模式。
+2. 一个RunLoop包含若干个Mode，每个Mode又包含若干个(set)Source/(array)Timer/(array)Observer。
+3. 每次RunLoop启动是，只能指定其中一个Mode，这个Mode被称作CurrentMode，如果需要切换Mode，只能退出Loop，再重新指定一个Mode进入。这样做主要是为了分隔开不同组的Source/Timer/Observer，让其互不影响。
+
 #### CFRunLoopSourceRef(事件源产生的地方)
 1. Source0：只包含一个函数指针(回调函数)，不能自动触发，只能手动触发，触发方式是先通过CFRunLoopSourceSignal(source)将这个Source标记为待处理，然后再调用CFRunLoopWakeUp(runloop)来唤醒RunLoop处理这个事件。
 2. Source1：基于port的Source源，包含一个port和一个函数指针(回调方法)。该Source源可通过内核和其他线程相互发送消息，而且可以主动唤醒RunLoop。
 
 #### CFRunLoopTimerRef
-1. CFRunLoopTimerRef是基于事件的触发器，其中包含一段时间长度、延期容忍度和一个函数指针(回调方法)。当其加入到RunLoop中时，RunLoop会注册一个时间点，当到达这个时间点后会触发对应的事件。
+1. CFRunLoopTimerRef是基于时间的触发器，其中包含一段时间长度、延期容忍度和一个函数指针(回调方法)。当其加入到RunLoop中时，RunLoop会注册一个时间点，当到达这个时间点后会触发对应的事件。
+2. CFRunLoopTimerRef基本上说的就是NSTimer，它受RunLoop的Mode影响。GCD的定时器不受RunLoop的Mode影响。
 
 #### performSEL
 1. performSEL其实和NSTimer一样，是对CFRunLoopTimerRef的封装。因此，当调用performSelector:afterDelay:后，实际上内部会转化成CFRunLoopTimerRef并添加到当前线程的RunLoop中去，因此，如果当前线程中没有启动RunLoop的时候，该方法会失效。
 
-#### CADisplayLink
-1. Timer的tolerance表示最大延期时间，如果因为阻塞错过了这个时间精度，这个时间点的回调也会跳过去，不会延后执行。
-2. CADisplayLink是一个和屏幕刷新率一致的定时器，如果在两次屏幕刷新之间执行了一个长任务，那其中就会有一帧被跳过去(和NSTimer类似，只是没有tolerance容忍时间)，造成界面卡顿的感觉。
-
 #### CFRunLoopObserverRef
-1. CFRunLoopObserverRef是RunLoop的观察者。每个观察者都可以观察RunLoop在某个模式下事件的触发并处理。可观察的时间点有：
+1. CFRunLoopObserverRef是RunLoop的观察者，能够监听RunLoop的状态改变。每个观察者都可以观察RunLoop在某个模式下事件的触发并处理。可观察的时间点有：
 	* kCFRunLoopEntry：即将进入RunLoop。
 	* kCFRunLoopBeforeTimers：即将处理Timer。
 	* kCFRunLoopBeforeSources：即将处理Source。
 	* kCFRunLoopBeforeWaiting：即将进入休眠。
 	* kCFRunLoopAfterWaiting：刚从休眠中被唤醒。
 	* kCFRunLoopExit：即将退出RunLoop。
+2. 添加Observer
+
+	```
+	CFRunLoopObserverRef observer = CFRunLoopObserverCreateWithHandler(CFAllocatorGetDefault(), kCFRunLoopAllActivities, YES, 0, ^(CFRunLoopObserverRef observer, CFRunLoopActivity activity) {
+		NSLog(@"监听到RunLoop状态发生改变%zd", activity);
+	});
+	// 添加观察者，监听RunLoop状态
+	CFRunLoopAddObserver(CFRunLoopGetCurrent(), observer, kCFRunLoopDefaultMode);
+	// 释放Observer
+	CFRelease(observer);
+	```
 
 #### modeItem
 1. 上面的Source/Timer/Observer被统称为mode item，一个item可以被同时加入多个mode。但一个item被重复加入同一个mode时是不会有效果的。如果一个mode中一个item都没有，则RunLoop会直接退出，不进入循环。

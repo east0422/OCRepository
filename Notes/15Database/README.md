@@ -2,12 +2,17 @@
 
 #### 数据存储
 1. Plist：自动存储数组、字典，但是数组和字典里面不能有自定义对象。
-2. Preference：偏好设置，NSUserDefaults。也不能存储自定义对象
+2. Preference：偏好设置，NSUserDefaults。也不能存储自定义对象。
 3. 归档：NSCoding(NSKeyedArchiver/NSKeyedUnarchiver)，存储自定义对象。一次性读取和存储操作，即一次只能读取或存储所有内容。
 4. SQLite：是一款轻型的嵌入式数据库，占用资源非常的低、在嵌入式设备中只需几百K内存就够了。处理速度比Mysql、PostgreSQL都还快。
-5. Core Data
+5. Core Data。
 
-#### SQLite定义
+#### SQL
+1. 增加表字段：ALTER TABLE 表名 ADD COLUMN 字段名 字段类型；
+2. 删除表字段：ALTER TABLE 表名 DROP COLUMN 字段名；
+3. 修改表字段：ALTER TABLE 表名 RENAME COLUMN 旧字段名 TO 新字段名；
+
+#### SQLite
 1. 是一个内嵌式的数据库，数据库服务器就在你的程序中，不需要网络配置和管理。数据库的服务器和客户端运行在同一个进程中，可以减少网络访问的消耗，简化数据库管理，使得程序部署更容易。
 2. 后端(Back-end)
 	1. 后端由B-tree、页缓冲(page cache，pager)和操作系统接口(即系统调用)构成。B-tree和page cache共同对数据进行管理。它们操作的是数据库页，这些页具有相同的大小，就像集装箱。页里面的"货物"是表示信息的大量bit，这些信息包括记录、字段和索引入口等。B-tree和pager都不知道信息的具体内容，它们只负责"运输"这些页，页不关心这些"集装箱"里面是什么。
@@ -34,5 +39,29 @@
 	* DEFERRED：一个DEFERRED事务不获取任何锁(直到它需要锁的时候)，BEGIN语句本身也不会做什么事情————它开始于UNLOCK状态。默认情况下就是这样的，如果仅仅用BEGIN开始一个事务，那么事务就是DEFERRED的，同时它不会获取任何锁。当对数据库进行第一次读操作时，它会获取SHARED锁。同样，当进行第一次写操作时，它会获取RESERVED锁。
 	* IMMEDIATE：由BEGIN开始的IMMEDIATE事务会尝试获取RESERVED锁，如果成功，BEGIN IMMEDIATE保证没有别的连接可以写数据库，但别的连接可以对数据库进行读操作；但是，RESERVED锁会阻止其它连接的BEGIN IMMEDIATE或BEGIN EXCLUSIVE命令，当其它连接执行上述命令时，会返回SQLITE_BUSY错误。这时就可以对数据库进行修改操作了，但是你还不能提交，当你COMMIT时，会返回SQLITE_BUSY错误，这意味着它还有其它的读事务没有完成，得等它们执行完后才能提交事务。
 	* EXCLUSIVE：EXCLUSIVE事务会试着获取对数据库的EXCLUSIVE锁，这与IMMEDIATE类似，但是一旦成功，EXCLUSIVE事务保证没有其它的连接，所以就可对数据库进行读写操作了。
+10. 基本操作步骤(需先导入libsqlite3框架)
+	1. 打开数据库，利用sqlite3_open()打开数据库会指定一个数据库文件保存路径。若文件存在则直接打开，否则创建并打开，打开数据库会得到一个sqlite3类型的对象，后面需要借助这个对象进行其他操作。
+	2. 执行SQL语句，执行SQL语句又包括有返回值的语句和无返回值语句。
+	3. 对于无返回值的语句(如增加、删除、修改等)直接通过sqlite3_exec()函数执行。
+	4. 对于有返回值的语句则首先通过sqlite3_prepare_v2()进行sql语句评估(语法检测)，然后通过sqlite3_step()依次取出查询结果的每一行数据，对于每行数据都可以通过对应的sqlite3_column_类型()方法获得对应列的数据，如此反复循环直到遍历完成。
+	5. 最后需要释放句柄。
+
+#### CoreData
+1. CoreData是对SQLite数据库的封装，CoreData中有三个对象是必须掌握的。
+	1. NSManagedObject:是NSObject的子类，是一个通用类。
+		* 实现了CoreData模型层所需的基本功能，用户可以通过NSManagedObject建立自己的数据模型。
+		* 只要定义一个类继承于该类就会创建一张与之对应的表，也就是一个继承于该类的类就对应一张表。每一个通过继承该类创建出来的对象，都是该类对应表中的一条数据。
+	2. NSManagedObjectContext:用于操作数据库，只要有类它就能对数据库的表进行增删改查。
+	3. NSPersistentStoreCoordinator:决定数据存储的位置(SQLite/XML/其它文件中)。
+2. Core data本身并不是一个并发安全的架构所以在多线程中实现Core data会有以下问题
+	1. CoreData中的NSManagedObjectContext在多线程中不安全。
+	2. 如果想要多线程访问CoreData的话，最好的方法是一个线程一个NSManagedObjectContext。
+	3. 每个NSManagedObjectContext对象实例都可以使用同一个NSPersistentStoreCoordinator实例，这是因为NSManagedObjectContext会在用NSPersistentStoreCoordinator前上锁。
+3. 基本操作步骤
+	1. 创建管理上下文。创建管理上下文可以细分为:加载模型文件->指定数据存储路径->创建对应数据类型的存储->创建管理对象上下文并指定存储。经过这几个步骤之后可以得到管理对象上下文NSManagedObjectContext，以后所有的数据操作都由此对象负责。同时如果是第一次创建上下文，Core Data会自动创建存储文件，并根据模型对象创建对应的表结构。
+	2. 查询数据。对于有条件的查询，在Core Data中是通过谓词来实现的。首先创建一个请求，然后设置请求条件，最后调用上下文执行请求的方法。
+	3. 插入数据。插入数据需要调用实体描述对象NSEntityDescription返回一个实体对象，然后设置对象属性，最后保存当前上下文即可。这里需要主要，增、删、改操作完最后必须调用管理对象上下文的保存方法，否则操作不会执行。
+	4. 删除数据。删除数据可以直接调用管理对象上下文的deleteObject方法，删除完保存上下文即可。注意，删除数据前必须先查询到对应对象。
+	5. 修改数据。修改数据首先也是取出对应的实体对象，然后通过修改对象的属性，最后保存上下文。
 
 
