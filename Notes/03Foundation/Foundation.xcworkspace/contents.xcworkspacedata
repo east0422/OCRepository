@@ -156,6 +156,9 @@
       </FileRef>
    </Group>
    <FileRef
+      location = "group:06Block/06Block.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:README.md">
    </FileRef>
 </Workspace>
