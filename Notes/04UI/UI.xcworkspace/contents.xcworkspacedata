@@ -5,6 +5,9 @@
       location = "group:001UIImageView/001UIImageView.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:002UIScrollView/002UIScrollView.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:README.md">
    </FileRef>
 </Workspace>
