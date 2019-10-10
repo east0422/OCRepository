@@ -19,6 +19,8 @@
 		454A320B2340AB6F00C18B94 /* ShopView.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A320A2340AB6F00C18B94 /* ShopView.m */; };
 		454A320D2340AB8200C18B94 /* ShopView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 454A320C2340AB8200C18B94 /* ShopView.xib */; };
 		454A32102340B22B00C18B94 /* ShopModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 454A320F2340B22B00C18B94 /* ShopModel.m */; };
+		45AF33CD234F01290045004D /* CustomPageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45AF33CC234F01290045004D /* CustomPageView.m */; };
+		45AF33CF234F014E0045004D /* CustomPageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45AF33CE234F014E0045004D /* CustomPageView.xib */; };
 		45B03DC9234D7EBA0097EB26 /* CustomScrollViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B03DC8234D7EBA0097EB26 /* CustomScrollViewDelegate.m */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,9 @@
 		454A320C2340AB8200C18B94 /* ShopView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShopView.xib; sourceTree = "<group>"; };
 		454A320E2340B22B00C18B94 /* ShopModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ShopModel.h; sourceTree = "<group>"; };
 		454A320F2340B22B00C18B94 /* ShopModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShopModel.m; sourceTree = "<group>"; };
+		45AF33CB234F01290045004D /* CustomPageView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomPageView.h; sourceTree = "<group>"; };
+		45AF33CC234F01290045004D /* CustomPageView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomPageView.m; sourceTree = "<group>"; };
+		45AF33CE234F014E0045004D /* CustomPageView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomPageView.xib; sourceTree = "<group>"; };
 		45B03DC7234D7EBA0097EB26 /* CustomScrollViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomScrollViewDelegate.h; sourceTree = "<group>"; };
 		45B03DC8234D7EBA0097EB26 /* CustomScrollViewDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomScrollViewDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -87,6 +92,9 @@
 				4547EEFE2340568A00BBB43B /* AppDelegate.m */,
 				4547EF002340568A00BBB43B /* ViewController.h */,
 				4547EF012340568A00BBB43B /* ViewController.m */,
+				45AF33CB234F01290045004D /* CustomPageView.h */,
+				45AF33CC234F01290045004D /* CustomPageView.m */,
+				45AF33CE234F014E0045004D /* CustomPageView.xib */,
 				45B03DC7234D7EBA0097EB26 /* CustomScrollViewDelegate.h */,
 				45B03DC8234D7EBA0097EB26 /* CustomScrollViewDelegate.m */,
 				454A320E2340B22B00C18B94 /* ShopModel.h */,
@@ -169,6 +177,7 @@
 				45473B2B2341A848004A94F1 /* shops1.plist in Resources */,
 				4547EF072340568D00BBB43B /* Assets.xcassets in Resources */,
 				454A320D2340AB8200C18B94 /* ShopView.xib in Resources */,
+				45AF33CF234F014E0045004D /* CustomPageView.xib in Resources */,
 				4547EF052340568A00BBB43B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -185,6 +194,7 @@
 				4547EF022340568A00BBB43B /* ViewController.m in Sources */,
 				4547EF0D2340568D00BBB43B /* main.m in Sources */,
 				454A320B2340AB6F00C18B94 /* ShopView.m in Sources */,
+				45AF33CD234F01290045004D /* CustomPageView.m in Sources */,
 				4547EEFF2340568A00BBB43B /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

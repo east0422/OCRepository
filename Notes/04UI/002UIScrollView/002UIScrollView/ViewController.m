@@ -10,6 +10,7 @@
 #import "ShopView.h"
 #import "ShopModel.h"
 #import "CustomScrollViewDelegate.h"
+#import "CustomPageView.h"
 
 #define SHOPWIDTH 90
 #define SHOPHEIGHT 120
@@ -38,23 +39,47 @@
     // contentsize左上角与scrollview左上角的差值
     self.scrollView.contentOffset = CGPointMake(-10, -40);
 
-    // 是否显示水平垂直滚动条，两个滚动条也是scrollview的两个UIImageView子控件，使用scrollview子控件是需要注意一下
+    // note: 是否显示水平垂直滚动条，两个滚动条也是scrollview的两个UIImageView子控件，使用scrollview子控件是需要注意一下
 //    self.scrollView.showsHorizontalScrollIndicator = NO;
 //    self.scrollView.showsVerticalScrollIndicator = NO;
     
     // 代理通常设为自己，但也可以设置为其他实现对应协议的对象
 //    self.scrollView.delegate = self;
     
-    // delegate是弱引用，直接将生成的代理对象赋值给它，赋值完后会释放掉的
+    // note: delegate是弱引用，直接将生成的代理对象赋值给它，赋值完后会释放掉的
 //    self.scrollView.delegate = [[CustomScrollViewDelegate alloc] init];
     
-    // 先生成局部变量scrollViewDelegate再赋值给弱引用代理属性，局部变量会在该方法体结束后释放掉，不能一直保存
+    // note: 先生成局部变量scrollViewDelegate再赋值给弱引用代理属性，局部变量会在该方法体结束后释放掉，不能一直保存
 //    CustomScrollViewDelegate *scrollViewDelegate = [[CustomScrollViewDelegate alloc] init];
 //    self.scrollView.delegate = scrollViewDelegate;
     
     // 定义一个强引用变量用来保存代理属性
     self.cusScrollviewDelegate = [[CustomScrollViewDelegate alloc] init];
     self.scrollView.delegate = self.cusScrollviewDelegate;
+    
+    [self testCusPageView];
+    
+//    // 格式化测试
+//    for (int i = 0; i < 3; i++) {
+//        NSLog(@"%03d, 1%02d", i, i); // 000, 100 / 001, 101 / 002, 102
+//    }
+}
+
+- (void)testCusPageView {
+    // 删除其他视图
+    [self.view.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    
+//    CustomPageView *pageView = [CustomPageView pageView];
+    CustomPageView *pageView = [[CustomPageView alloc] init];
+    pageView.frame = CGRectMake(50, 150, 250, 120);
+    pageView.frame = CGRectMake(50, 250, 250, 120);
+//    pageView.images = @[@"100", @"101", @"102"];
+    pageView.imageNames = @[@"100", @"101", @"102"];
+    pageView.pageCurColor = [UIColor yellowColor];
+    pageView.pageTintColor = [UIColor redColor];
+    [self.view addSubview:pageView];
+    // note: 这里多次更改frame但是layoutSubviews只会执行一次是因为多次更改frame是在一次运行循环中，只有运行循环结束时才会选入ui的所有更改
+    pageView.frame = CGRectMake(40, 300, 250, 200);
 }
 
 - (NSMutableArray<ShopModel *> *)shops {
