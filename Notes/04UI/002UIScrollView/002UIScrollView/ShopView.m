@@ -16,6 +16,7 @@
 @implementation ShopView
 
 + (instancetype)shopView {
+    NSLog(@"%s", __func__);
     // name: The name of the nib file, which need not include the .nib extension.
     // owner: The object to assign as the nib’s File's Owner object.
     // options: A dictionary containing the options to use when opening the nib file. For a list of available keys for this dictionary, see UIKit Nib Loading Options.
@@ -42,9 +43,22 @@
 }
 
 // note: 加载xib文件会触发该方法，上面shopView中有加载xib文件，所以该方法中不可再调用shopView，否则会死循环
-//- (void)awakeFromNib {
-//    [super awakeFromNib];
-//}
+// 只要对象是从文件解析来的，就会调用initWithCoder
+- (instancetype)initWithCoder:(NSCoder *)coder
+{
+    NSLog(@"%s", __func__);
+    self = [super initWithCoder:coder];
+    if (self) {
+        
+    }
+    return self;
+}
+
+// 从xib或者storyboard加载完毕就会调用，此方法同理initWithCoder也不可再调用shopView
+- (void)awakeFromNib {
+    NSLog(@"%s", __func__);
+    [super awakeFromNib];
+}
 
 - (void)setModel:(ShopModel *)model {
     _model = model;

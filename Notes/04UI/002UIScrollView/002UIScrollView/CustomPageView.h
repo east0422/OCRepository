@@ -17,6 +17,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) NSArray *imageNames;  // 滚动图片名称数组
 @property (nonatomic, strong) UIColor *pageCurColor; // pageControl当前选中颜色
 @property (nonatomic, strong) UIColor *pageTintColor; // pageControl未选中颜色
+@property (nonatomic, assign) NSTimeInterval timeInterval; // 图片视图自动切换间隔秒数
 
 @end
 

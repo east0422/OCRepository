@@ -80,6 +80,7 @@
     [self.view addSubview:pageView];
     // note: 这里多次更改frame但是layoutSubviews只会执行一次是因为多次更改frame是在一次运行循环中，只有运行循环结束时才会选入ui的所有更改
     pageView.frame = CGRectMake(40, 300, 250, 200);
+    pageView.timeInterval = 1.5;
 }
 
 - (NSMutableArray<ShopModel *> *)shops {

@@ -11,6 +11,7 @@
 @interface CustomPageView () <UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @property (weak, nonatomic) IBOutlet UIPageControl *pageControl;
+@property (nonatomic, weak) NSTimer *timer; // 定时器
 
 @end
 
@@ -35,6 +36,10 @@
     return self;
 }
 
+- (void)awakeFromNib {
+    [super awakeFromNib];
+}
+
 // frame有改变时
 - (void)layoutSubviews {
     [super layoutSubviews];
@@ -53,6 +58,12 @@
     
     CGSize pageControlSize = self.pageControl.frame.size;
     self.pageControl.frame = CGRectMake(self.bounds.size.width - pageControlSize.width - 20, self.bounds.size.height - pageControlSize.height, pageControlSize.width, pageControlSize.height);
+}
+
+- (void)setTimeInterval:(NSTimeInterval)timeInterval {
+    _timeInterval = timeInterval;
+    [self stopTimer];
+    [self startTimer];
 }
 
 - (void)setImageNames:(NSArray *)imageNames {
@@ -79,6 +90,8 @@
     self.pageControl.hidesForSinglePage = YES;
     // pageControl指示器点个数
     self.pageControl.numberOfPages = imageNames.count;
+    
+    [self startTimer];
 }
 
 // 删除scrollview所有的子视图
@@ -110,10 +123,70 @@
 }
 
 #pragma mark --- scrollviewdelegate
-
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     NSInteger page = (scrollView.contentOffset.x / scrollView.bounds.size.width + 0.5);
     self.pageControl.currentPage = page;
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self stopTimer];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+    [self startTimer];
+}
+
+// 开启定时器
+- (void)startTimer {
+    if (self.imageNames.count <= 1) {
+        return;
+    }
+    NSTimeInterval interval = self.timeInterval;
+    if (interval == 0) {
+        interval = 1;
+    }
+    // 使用timerWithTimeInterval方法timer需要为强引用且需要加入到runloop对应的mode中，否则不会触发timerHandle
+//    self.timer = [NSTimer timerWithTimeInterval:interval target:self selector:@selector(timerHandle) userInfo:nil repeats:YES];
+//    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    
+    // scheduledTimerWithTimeInterval方法系统内部会自动强引用而且会放入defaultmode中
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:interval target:self selector:@selector(timerHandle) userInfo:nil repeats:YES];
+    // 添加到runloop模式中，使得ui更新时不会阻塞timeHandle(可以尝试去除滚动视图代理方法中拖动的监听再看下述代码加否的区别)
+//    [[NSRunLoop currentRunLoop] addTimer:self.timer forMode:NSRunLoopCommonModes];
+    
+    // 崩溃
+//    NSThread *thread = [[NSThread alloc] initWithBlock:^{
+//        // 不会触发timerHandle
+//        self.timer = [NSTimer timerWithTimeInterval:interval target:self selector:@selector(timerHandle) userInfo:nil repeats:YES];
+////        [self.timer fire];
+//        NSRunLoop *runloop = [NSRunLoop currentRunLoop];
+//        [runloop addTimer:self.timer forMode:NSRunLoopCommonModes];
+//        [runloop run];
+//    }];
+//    [thread start];
+}
+
+// 停止定时器
+- (void)stopTimer {
+    [self.timer invalidate];
+}
+
+// 定时器响应函数
+- (void)timerHandle {
+    NSLog(@"%s", __func__);
+    NSInteger newCurPage = self.pageControl.currentPage + 1;
+    if (newCurPage == self.imageNames.count) { // 最后一个
+        newCurPage = 0;
+    }
+    // 更改当前pageControl指示器，scrollView的contentOffset变化会触发scrollViewDidScroll而进行指示器的修改
+//    self.pageControl.currentPage = newCurPage;
+    
+    // 设置scrollview偏移量
+    CGPoint offset = self.scrollView.contentOffset;
+    offset.x = newCurPage * self.scrollView.frame.size.width;
+//    self.scrollView.contentOffset = offset;
+    
+    [self.scrollView setContentOffset:offset animated:YES];
 }
 
 @end
