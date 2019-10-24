@@ -11,10 +11,7 @@
             location = "group:AppDelegate.h">
          </FileRef>
          <FileRef
-            location = "group:spaceship.png">
-         </FileRef>
-         <FileRef
-            location = "group:RunloopNoneViewController.h">
+            location = "group:AppDelegate.m">
          </FileRef>
          <Group
             location = "group:Assets.xcassets"
@@ -30,9 +27,6 @@
                location = "group:Contents.json">
             </FileRef>
          </Group>
-         <FileRef
-            location = "group:ViewController.m">
-         </FileRef>
          <Group
             location = "group:Base.lproj"
             name = "Base.lproj">
@@ -44,25 +38,31 @@
             </FileRef>
          </Group>
          <FileRef
-            location = "group:RunloopViewController.m">
+            location = "group:Info.plist">
          </FileRef>
          <FileRef
             location = "group:main.m">
          </FileRef>
          <FileRef
-            location = "group:RunloopNoneViewController.m">
+            location = "group:RunloopNoneViewController.h">
          </FileRef>
          <FileRef
-            location = "group:AppDelegate.m">
+            location = "group:RunloopNoneViewController.m">
          </FileRef>
          <FileRef
             location = "group:RunloopViewController.h">
          </FileRef>
          <FileRef
-            location = "group:Info.plist">
+            location = "group:RunloopViewController.m">
+         </FileRef>
+         <FileRef
+            location = "group:spaceship.png">
          </FileRef>
          <FileRef
             location = "group:ViewController.h">
+         </FileRef>
+         <FileRef
+            location = "group:ViewController.m">
          </FileRef>
       </Group>
       <FileRef

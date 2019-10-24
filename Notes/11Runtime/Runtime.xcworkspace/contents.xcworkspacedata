@@ -8,28 +8,28 @@
          location = "group:01RuntimeBasic"
          name = "01RuntimeBasic">
          <FileRef
-            location = "group:Person.h">
-         </FileRef>
-         <FileRef
-            location = "group:NSURL+url.m">
-         </FileRef>
-         <FileRef
-            location = "group:Teacher.h">
-         </FileRef>
-         <FileRef
-            location = "group:Person+Marry.m">
-         </FileRef>
-         <FileRef
-            location = "group:Person.m">
+            location = "group:main.m">
          </FileRef>
          <FileRef
             location = "group:NSURL+url.h">
          </FileRef>
          <FileRef
-            location = "group:main.m">
+            location = "group:NSURL+url.m">
+         </FileRef>
+         <FileRef
+            location = "group:Person.h">
+         </FileRef>
+         <FileRef
+            location = "group:Person.m">
          </FileRef>
          <FileRef
             location = "group:Person+Marry.h">
+         </FileRef>
+         <FileRef
+            location = "group:Person+Marry.m">
+         </FileRef>
+         <FileRef
+            location = "group:Teacher.h">
          </FileRef>
          <FileRef
             location = "group:Teacher.m">
