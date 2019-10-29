@@ -14,6 +14,9 @@
       location = "group:004Autolayout/004Autolayout.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:005UITableView/005UITableView.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:README.md">
    </FileRef>
 </Workspace>
