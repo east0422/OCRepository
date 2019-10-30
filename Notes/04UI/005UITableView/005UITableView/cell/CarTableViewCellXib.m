@@ -43,7 +43,7 @@
 }
 
 + (instancetype)cellWithTableView:(UITableView *)tableView {
-    CarTableViewCellXib *cell = [tableView dequeueReusableCellWithIdentifier:REUSECELLXIBID];
+    CarTableViewCellXib *cell = [tableView dequeueReusableCellWithIdentifier:XIBREUSECELLID];
     if (!cell) {
         cell = [CarTableViewCellXib loadFromNib];
     }

@@ -23,6 +23,9 @@
 		4523BEF223667C4F00967C8C /* cars.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4523BEF123667C4F00967C8C /* cars.plist */; };
 		4523BEF8236681D400967C8C /* CarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4523BEF7236681D400967C8C /* CarModel.m */; };
 		4523BEFB236681E400967C8C /* CarGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4523BEFA236681E400967C8C /* CarGroupModel.m */; };
+		4527F2432368789F00AB62D0 /* DifferHeightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4527F2412368789F00AB62D0 /* DifferHeightTableViewCell.m */; };
+		4527F2472369125E00AB62D0 /* DifferHeightModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4527F2462369125E00AB62D0 /* DifferHeightModel.m */; };
+		4527F2492369143900AB62D0 /* differheights.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4527F2482369143900AB62D0 /* differheights.plist */; };
 		4536277023619AB200700C6D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4536276F23619AB200700C6D /* AppDelegate.m */; };
 		4536277623619AB200700C6D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4536277423619AB200700C6D /* Main.storyboard */; };
 		4536277823619AB300700C6D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4536277723619AB300700C6D /* Assets.xcassets */; };
@@ -68,6 +71,11 @@
 		4523BEF7236681D400967C8C /* CarModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarModel.m; sourceTree = "<group>"; };
 		4523BEF9236681E400967C8C /* CarGroupModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarGroupModel.h; sourceTree = "<group>"; };
 		4523BEFA236681E400967C8C /* CarGroupModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarGroupModel.m; sourceTree = "<group>"; };
+		4527F2402368789F00AB62D0 /* DifferHeightTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DifferHeightTableViewCell.h; sourceTree = "<group>"; };
+		4527F2412368789F00AB62D0 /* DifferHeightTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DifferHeightTableViewCell.m; sourceTree = "<group>"; };
+		4527F2452369125E00AB62D0 /* DifferHeightModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DifferHeightModel.h; sourceTree = "<group>"; };
+		4527F2462369125E00AB62D0 /* DifferHeightModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DifferHeightModel.m; sourceTree = "<group>"; };
+		4527F2482369143900AB62D0 /* differheights.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = differheights.plist; sourceTree = "<group>"; };
 		4536276B23619AB200700C6D /* 005UITableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 005UITableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4536276E23619AB200700C6D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4536276F23619AB200700C6D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -131,6 +139,8 @@
 				4523BEF7236681D400967C8C /* CarModel.m */,
 				4523BEF9236681E400967C8C /* CarGroupModel.h */,
 				4523BEFA236681E400967C8C /* CarGroupModel.m */,
+				4527F2452369125E00AB62D0 /* DifferHeightModel.h */,
+				4527F2462369125E00AB62D0 /* DifferHeightModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -143,6 +153,8 @@
 				4523BEE92366733B00967C8C /* CarTableViewCellXib.xib */,
 				4523BEEC2366734D00967C8C /* CarTableViewCell.h */,
 				4523BEED2366734D00967C8C /* CarTableViewCell.m */,
+				4527F2402368789F00AB62D0 /* DifferHeightTableViewCell.h */,
+				4527F2412368789F00AB62D0 /* DifferHeightTableViewCell.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -188,6 +200,7 @@
 				4536277C23619AB300700C6D /* Info.plist */,
 				4523BEF123667C4F00967C8C /* cars.plist */,
 				4536277D23619AB300700C6D /* main.m */,
+				4527F2482369143900AB62D0 /* differheights.plist */,
 			);
 			path = 005UITableView;
 			sourceTree = "<group>";
@@ -250,6 +263,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4536277B23619AB300700C6D /* LaunchScreen.storyboard in Resources */,
+				4527F2492369143900AB62D0 /* differheights.plist in Resources */,
 				4536277823619AB300700C6D /* Assets.xcassets in Resources */,
 				4536278523619B3700700C6D /* README.md in Resources */,
 				4523BEEB2366733B00967C8C /* CarTableViewCellXib.xib in Resources */,
@@ -267,6 +281,7 @@
 			files = (
 				4536277E23619AB300700C6D /* main.m in Sources */,
 				4523BEFB236681E400967C8C /* CarGroupModel.m in Sources */,
+				4527F2472369125E00AB62D0 /* DifferHeightModel.m in Sources */,
 				45049FC22368282E00841C63 /* NSArray+MASAdditions.m in Sources */,
 				4536277023619AB200700C6D /* AppDelegate.m in Sources */,
 				45049FC62368282E00841C63 /* MASViewAttribute.m in Sources */,
@@ -281,6 +296,7 @@
 				45049FC02368282E00841C63 /* MASConstraintMaker.m in Sources */,
 				45049FBD2368282E00841C63 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				45049FC42368282E00841C63 /* MASConstraint.m in Sources */,
+				4527F2432368789F00AB62D0 /* DifferHeightTableViewCell.m in Sources */,
 				45049FC52368282E00841C63 /* MASViewConstraint.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

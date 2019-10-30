@@ -48,19 +48,19 @@
 // 布局子视图
 - (void)layoutSubviews {
     [super layoutSubviews];
-    [self.iconImageView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.iconImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.top.mas_offset(10);
         make.bottom.mas_offset(-10);
         make.width.mas_equalTo(80);
     }];
-    [self.nameLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.nameLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_equalTo(self.iconImageView.mas_right).mas_offset(25);
         make.centerY.mas_equalTo(-20);
         make.right.mas_offset(-10);
         make.height.mas_equalTo(20);
         make.width.mas_lessThanOrEqualTo(200);
     }];
-    [self.priceLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.priceLabel mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.width.height.mas_equalTo(self.nameLabel);
         make.left.mas_lessThanOrEqualTo(self.nameLabel.mas_left);
         make.centerY.mas_equalTo(20);

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 @class CarModel;
 
-#define REUSECELLXIBID @"reuseCellXibId"
+#define XIBREUSECELLID @"xibReuseCellId"
 
 NS_ASSUME_NONNULL_BEGIN
 

@@ -4,13 +4,16 @@
 #### 常用使用步骤
 1. 设置数据源和代理，实现数据源和代理协议方法(可提前注册cell)。
 2. 自定义cell(纯代码)。
-	1. 重写initWithFrame:(最好也重写initWithStyle:reuseIdentifier:外面注册后调用dequeueReusableCellWithIdentifier会调用initWithStyle)。
-	2. 重写layoutSubviews进行子视图布局。
-	3. 重写模型，设置cell子视图控件显示值。
+	1. 重写initWithFrame:(最好也重写initWithStyle:reuseIdentifier:外面注册后调用dequeueReusableCellWithIdentifier只会调用initWithStyle)。
+	2. 定义子视图初始化方法，在上initWithFrame:和initWithStyle:reuseIdentifier:中调用它进行子视图的初始化。
+	3. 重写layoutSubviews进行子视图布局。
+	4. 重写模型，设置cell子视图控件显示值。
 3. 取出cell进行数据赋值。
 
-#### 注意点
-1. 先注册可以使得用dequeueReusableCellWithIdentifier: 都会返回一个非nil的cell
+#### dequeueReusableCellWithIdentifier使用注意点
+1. 可以先注册再使用，正确注册后再使用都会返回一个非nil的cell。
+2. 纯代码创建的自定义cell，若先注册再通过dequeueReusableCellWithIdentifier:获取会调用initWithStyle: reuseIdentifier:方法而不会调用initWithFrame:，所以纯代码创建的自定义cell通常将子视图初始化提取为一个方法在上两个方法中调用。
+3. 对于使用xib创建的自定义cell，注册需要使用registerNib:forCellReuseIdentifier:而不是registerClass:forCellReuseIdentifier:，同时在cell实现文件中需要通过NSBundle加载cell。
 	
 	```
 	// 提前注册一个table cell类，通常在viewDidLoad中
@@ -18,18 +21,21 @@
 	[tableView registerClass:UITableViewCell.class forCellReuseIdentifier:@"identifier"];
 	// 如果是xib则需要使用registerNib
 	// UINib *nib = [UINib nibWithNibName:@"xibname" bundle:[NSBundle mainBundle]];
-	// [self.tableView registerNib:nib forHeaderFooterViewReuseIdentifier:@"identifier"];
+	// [self.tableView registerNib:nib forCellReuseIdentifier:@"identifier"];
 	
 	// 后面使用，通常在数据源代理方法tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath中使用显示cell内容
 	// 如果缓存池中有相同identifier的cell则取出来，如果没有的话就使用前面注册的创建一个新的。
 	[tableView dequeueReusableCellWithIdentifier:@"identifier"];
 	```
-2. UITableViewController中的view实质是定义的tableView然后赋值给UIViewController的view属性。两者指向同一个地址只是类型不一样而已。
-3. UITableViewCell属性backgroundView会填充整个cell，而且cell的backgroundView属性优先级高于cell的backgroundColor属性。cell的contentView属性在内部其backgroundColor属性优先级又高于cell的backgroundView。多使用Debug->View Debugging->Capture View Hierarchy查看视图层次结构。
-4. 如创建style为Plain的UITableView则对应的header往上滚动时当滚动到顶部时会保留在顶部而不再继续往上滚动，直到下一个header替代它；而style为Grouped时则会一直滚到。
-5. UITableViewCell分割线默认有一个间距，可通过设置`cell.separatorInset = UIEdgeInsetsZero;`简单消除间距；也可以先设置`tableView.separatorStyle = UITableViewCellSeparatorStyleNone;`不显示分割线再自定义一个分割线视图。
-6. 使用setValuesForKeysWithDictionary:给数据模型赋值注意点：
-		
+	
+#### 自定义模型使用setValuesForKeysWithDictionary
+1. 注意点：
+	1. 实现一个setValue:forUndefinedKey:以免模型中没有属性和字典中key对应而报错。
+	2. 字典中key关键子可以在模型中使用一个别名然后通过setValue:forUndefinedKey:或setValue:forKey:方法依据对应key值进行特殊赋值。
+	3. 一些字典数组需要一一遍历出来封装成新的对象数组再赋值给模型数组属性。
+	4. 字典中嵌套字典也需要单独将其提取出来封装成新的对象再赋值给模型对象属性。
+	5. 对于多层嵌套的依此上述。
+2. 示例代码
 	```
 	// PersonModel.h
 	#import <Foundation/Foundation.h>
@@ -121,5 +127,13 @@
 		NSLog(@"UndefinedKey:%@", key);
 	}
 	@end	
-	```
+	``` 
+
+#### 注意点
+1. UITableViewController中的view实质是定义的tableView然后赋值给UIViewController的view属性。两者指向同一个地址只是类型不一样而已。
+2. UITableViewCell属性backgroundView会填充整个cell，而且cell的backgroundView属性优先级高于cell的backgroundColor属性。cell的contentView属性在内部其backgroundColor属性优先级又高于cell的backgroundView。多使用Debug->View Debugging->Capture View Hierarchy查看视图层次结构。
+3. 如创建style为Plain的UITableView则对应的header往上滚动时当滚动到顶部时会保留在顶部而不再继续往上滚动，直到下一个header替代它；而style为Grouped时则会一直滚到。
+4. UITableViewCell分割线默认有一个间距，可通过设置`cell.separatorInset = UIEdgeInsetsZero;`简单消除间距；也可以先设置`tableView.separatorStyle = UITableViewCellSeparatorStyleNone;`不显示分割线再自定义一个分割线视图。
+5. 使用Masonry时mas_makeConstraints每次都是新增不会删除以前的容易造成重复添加多条相同的约束，mas_remakeConstraints每次都是先删除之前所有约束再添加新的。
+6. 如果自定义cell需要依据内容调整计算高度，可以将cell高度值保存到模型中，不过在cell中赋值cell高度前需要[self layoutIfNeeded]强制刷新一下布局，否则计算高度有可能是以前值。对于UILabel若要自动换行设置其numberOfLines为0，若想要文字高度计算正确，必须给每一行文字设置最大宽度preferredMaxLayoutWidth。		
 
