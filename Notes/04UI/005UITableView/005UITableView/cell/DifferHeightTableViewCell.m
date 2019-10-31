@@ -85,6 +85,20 @@
     }];
 }
 
+- (void)updateConstraintsIfNeeded {
+    [self.pictureImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_offset(10);
+        make.right.mas_offset(-10);
+        make.height.mas_equalTo(200);
+        if (self.detailLabel.isHidden) {
+            make.top.mas_equalTo(self.avtarImageView.mas_bottom).mas_offset(10);
+        } else {
+            make.top.mas_equalTo(self.detailLabel.mas_bottom).mas_offset(10);
+        }
+    }];
+    [super updateConstraintsIfNeeded];
+}
+
 // 初始化子视图
 - (void)initSubViews {
     [self.contentView addSubview:self.avtarImageView];
@@ -166,11 +180,14 @@
     if (differModel.picture && ![differModel.picture isEqualToString:@""]) { // 如果picture有值就赋值显示，否则就隐藏
         self.pictureImageView.image = [UIImage imageNamed:differModel.picture];
         self.pictureImageView.hidden = NO;
+        // 放在这里避免每次调用
+        [self updateConstraintsIfNeeded];
     } else {
         self.pictureImageView.hidden = YES;
     }
     
     // 强制布局，更新ui后再计算cell高度，否则计算的是以前的高度
+    // 如果有需要刷新的标记，立即调用layoutSubviews进行布局（如果没有标记，不会调用layoutSubviews）
     [self layoutIfNeeded];
     
     CGFloat cellHeight = 100;

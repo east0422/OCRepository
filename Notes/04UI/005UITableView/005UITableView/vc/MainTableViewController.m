@@ -97,6 +97,9 @@ typedef NS_ENUM(NSUInteger, CELLTYPE) {
     
     // 注册cell
     [self registerTableViewCell];
+    
+    // 设置预估高度可以避免heightForRowAtIndexPath开始的多次计算从而得到一定的优化
+//    self.tableView.estimatedRowHeight = 250;
 }
 
 // 注册cell
@@ -209,6 +212,11 @@ typedef NS_ENUM(NSUInteger, CELLTYPE) {
             break;
     }
     return height;
+}
+
+// 设置预估高度，避免多次执行heightForRowAtIndexPath从而进行一定程度上的优化和设置tableView.estimatedRowHeight作用相同
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 250;
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
