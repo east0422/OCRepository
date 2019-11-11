@@ -23,6 +23,9 @@
 		4523BEF223667C4F00967C8C /* cars.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4523BEF123667C4F00967C8C /* cars.plist */; };
 		4523BEF8236681D400967C8C /* CarModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4523BEF7236681D400967C8C /* CarModel.m */; };
 		4523BEFB236681E400967C8C /* CarGroupModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4523BEFA236681E400967C8C /* CarGroupModel.m */; };
+		45279778237402C400A2F8D9 /* EmoticModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45279777237402C400A2F8D9 /* EmoticModel.m */; };
+		4527977A2374040900A2F8D9 /* emotics.plist in Resources */ = {isa = PBXBuildFile; fileRef = 452797792374040900A2F8D9 /* emotics.plist */; };
+		452797822374207200A2F8D9 /* NSDate+Formatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 452797812374207200A2F8D9 /* NSDate+Formatter.m */; };
 		4527F2432368789F00AB62D0 /* DifferHeightTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4527F2412368789F00AB62D0 /* DifferHeightTableViewCell.m */; };
 		4527F2472369125E00AB62D0 /* DifferHeightModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4527F2462369125E00AB62D0 /* DifferHeightModel.m */; };
 		4527F2492369143900AB62D0 /* differheights.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4527F2482369143900AB62D0 /* differheights.plist */; };
@@ -32,7 +35,13 @@
 		4536277B23619AB300700C6D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4536277923619AB300700C6D /* LaunchScreen.storyboard */; };
 		4536277E23619AB300700C6D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4536277D23619AB300700C6D /* main.m */; };
 		4536278523619B3700700C6D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4536278423619B3700700C6D /* README.md */; };
+		454C6700237571F200FACA27 /* ChatMessageTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 454C66FF237571F200FACA27 /* ChatMessageTableView.m */; };
 		459B16452361EECD008246E1 /* MainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 459B16442361EECD008246E1 /* MainTableViewController.m */; };
+		45A38A6C23744F2A0001D822 /* TransformViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45A38A6B23744F2A0001D822 /* TransformViewController.m */; };
+		45C9046F236BD432009D3C7E /* ChatVewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C9046E236BD432009D3C7E /* ChatVewController.m */; };
+		45C90471236BD4FB009D3C7E /* chatmessages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45C90470236BD4FB009D3C7E /* chatmessages.plist */; };
+		45C90477236BD90B009D3C7E /* ChatMessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C90476236BD90B009D3C7E /* ChatMessageModel.m */; };
+		45C9047A236BDE53009D3C7E /* ChatMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 45C90479236BDE53009D3C7E /* ChatMessageTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +80,11 @@
 		4523BEF7236681D400967C8C /* CarModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarModel.m; sourceTree = "<group>"; };
 		4523BEF9236681E400967C8C /* CarGroupModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarGroupModel.h; sourceTree = "<group>"; };
 		4523BEFA236681E400967C8C /* CarGroupModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarGroupModel.m; sourceTree = "<group>"; };
+		45279776237402C400A2F8D9 /* EmoticModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EmoticModel.h; sourceTree = "<group>"; };
+		45279777237402C400A2F8D9 /* EmoticModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EmoticModel.m; sourceTree = "<group>"; };
+		452797792374040900A2F8D9 /* emotics.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = emotics.plist; sourceTree = "<group>"; };
+		452797802374207200A2F8D9 /* NSDate+Formatter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+Formatter.h"; sourceTree = "<group>"; };
+		452797812374207200A2F8D9 /* NSDate+Formatter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Formatter.m"; sourceTree = "<group>"; };
 		4527F2402368789F00AB62D0 /* DifferHeightTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DifferHeightTableViewCell.h; sourceTree = "<group>"; };
 		4527F2412368789F00AB62D0 /* DifferHeightTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DifferHeightTableViewCell.m; sourceTree = "<group>"; };
 		4527F2452369125E00AB62D0 /* DifferHeightModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DifferHeightModel.h; sourceTree = "<group>"; };
@@ -85,8 +99,19 @@
 		4536277C23619AB300700C6D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4536277D23619AB300700C6D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4536278423619B3700700C6D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		454C66FE237571F200FACA27 /* ChatMessageTableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatMessageTableView.h; sourceTree = "<group>"; };
+		454C66FF237571F200FACA27 /* ChatMessageTableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatMessageTableView.m; sourceTree = "<group>"; };
 		459B16432361EECD008246E1 /* MainTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainTableViewController.h; sourceTree = "<group>"; };
 		459B16442361EECD008246E1 /* MainTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainTableViewController.m; sourceTree = "<group>"; };
+		45A38A6A23744F2A0001D822 /* TransformViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TransformViewController.h; sourceTree = "<group>"; };
+		45A38A6B23744F2A0001D822 /* TransformViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TransformViewController.m; sourceTree = "<group>"; };
+		45C9046D236BD432009D3C7E /* ChatVewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatVewController.h; sourceTree = "<group>"; };
+		45C9046E236BD432009D3C7E /* ChatVewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatVewController.m; sourceTree = "<group>"; };
+		45C90470236BD4FB009D3C7E /* chatmessages.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = chatmessages.plist; sourceTree = "<group>"; };
+		45C90475236BD90B009D3C7E /* ChatMessageModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatMessageModel.h; sourceTree = "<group>"; };
+		45C90476236BD90B009D3C7E /* ChatMessageModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatMessageModel.m; sourceTree = "<group>"; };
+		45C90478236BDE53009D3C7E /* ChatMessageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatMessageTableViewCell.h; sourceTree = "<group>"; };
+		45C90479236BDE53009D3C7E /* ChatMessageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatMessageTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +166,10 @@
 				4523BEFA236681E400967C8C /* CarGroupModel.m */,
 				4527F2452369125E00AB62D0 /* DifferHeightModel.h */,
 				4527F2462369125E00AB62D0 /* DifferHeightModel.m */,
+				45C90475236BD90B009D3C7E /* ChatMessageModel.h */,
+				45C90476236BD90B009D3C7E /* ChatMessageModel.m */,
+				45279776237402C400A2F8D9 /* EmoticModel.h */,
+				45279777237402C400A2F8D9 /* EmoticModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -155,18 +184,33 @@
 				4523BEED2366734D00967C8C /* CarTableViewCell.m */,
 				4527F2402368789F00AB62D0 /* DifferHeightTableViewCell.h */,
 				4527F2412368789F00AB62D0 /* DifferHeightTableViewCell.m */,
+				45C90478236BDE53009D3C7E /* ChatMessageTableViewCell.h */,
+				45C90479236BDE53009D3C7E /* ChatMessageTableViewCell.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
 		};
-		4523BEF52366819C00967C8C /* vc */ = {
+		4523BEF52366819C00967C8C /* controller */ = {
 			isa = PBXGroup;
 			children = (
 				459B16432361EECD008246E1 /* MainTableViewController.h */,
 				459B16442361EECD008246E1 /* MainTableViewController.m */,
 				4536277423619AB200700C6D /* Main.storyboard */,
+				45C9046D236BD432009D3C7E /* ChatVewController.h */,
+				45C9046E236BD432009D3C7E /* ChatVewController.m */,
+				45A38A6A23744F2A0001D822 /* TransformViewController.h */,
+				45A38A6B23744F2A0001D822 /* TransformViewController.m */,
 			);
-			path = vc;
+			path = controller;
+			sourceTree = "<group>";
+		};
+		4527977F2374205F00A2F8D9 /* category */ = {
+			isa = PBXGroup;
+			children = (
+				452797802374207200A2F8D9 /* NSDate+Formatter.h */,
+				452797812374207200A2F8D9 /* NSDate+Formatter.m */,
+			);
+			path = category;
 			sourceTree = "<group>";
 		};
 		4536276223619AB200700C6D = {
@@ -190,9 +234,11 @@
 			isa = PBXGroup;
 			children = (
 				45049FA32368282E00841C63 /* Masonry */,
-				4523BEF52366819C00967C8C /* vc */,
+				4527977F2374205F00A2F8D9 /* category */,
+				4523BEF52366819C00967C8C /* controller */,
 				4523BEF42366818400967C8C /* cell */,
 				4523BEF32366817C00967C8C /* model */,
+				454C66FD2375718400FACA27 /* view */,
 				4536276E23619AB200700C6D /* AppDelegate.h */,
 				4536276F23619AB200700C6D /* AppDelegate.m */,
 				4536277723619AB300700C6D /* Assets.xcassets */,
@@ -201,8 +247,19 @@
 				4523BEF123667C4F00967C8C /* cars.plist */,
 				4536277D23619AB300700C6D /* main.m */,
 				4527F2482369143900AB62D0 /* differheights.plist */,
+				45C90470236BD4FB009D3C7E /* chatmessages.plist */,
+				452797792374040900A2F8D9 /* emotics.plist */,
 			);
 			path = 005UITableView;
+			sourceTree = "<group>";
+		};
+		454C66FD2375718400FACA27 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				454C66FE237571F200FACA27 /* ChatMessageTableView.h */,
+				454C66FF237571F200FACA27 /* ChatMessageTableView.m */,
+			);
+			path = view;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -262,6 +319,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4527977A2374040900A2F8D9 /* emotics.plist in Resources */,
+				45C90471236BD4FB009D3C7E /* chatmessages.plist in Resources */,
 				4536277B23619AB300700C6D /* LaunchScreen.storyboard in Resources */,
 				4527F2492369143900AB62D0 /* differheights.plist in Resources */,
 				4536277823619AB300700C6D /* Assets.xcassets in Resources */,
@@ -280,6 +339,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4536277E23619AB300700C6D /* main.m in Sources */,
+				45C9047A236BDE53009D3C7E /* ChatMessageTableViewCell.m in Sources */,
 				4523BEFB236681E400967C8C /* CarGroupModel.m in Sources */,
 				4527F2472369125E00AB62D0 /* DifferHeightModel.m in Sources */,
 				45049FC22368282E00841C63 /* NSArray+MASAdditions.m in Sources */,
@@ -289,15 +349,21 @@
 				45049FC12368282E00841C63 /* MASLayoutConstraint.m in Sources */,
 				45049FC32368282E00841C63 /* View+MASAdditions.m in Sources */,
 				45049FBF2368282E00841C63 /* MASCompositeConstraint.m in Sources */,
+				452797822374207200A2F8D9 /* NSDate+Formatter.m in Sources */,
 				459B16452361EECD008246E1 /* MainTableViewController.m in Sources */,
 				45049FBE2368282E00841C63 /* ViewController+MASAdditions.m in Sources */,
 				4523BEEE2366734D00967C8C /* CarTableViewCell.m in Sources */,
+				45A38A6C23744F2A0001D822 /* TransformViewController.m in Sources */,
 				4523BEEA2366733B00967C8C /* CarTableViewCellXib.m in Sources */,
+				45279778237402C400A2F8D9 /* EmoticModel.m in Sources */,
 				45049FC02368282E00841C63 /* MASConstraintMaker.m in Sources */,
 				45049FBD2368282E00841C63 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				45C9046F236BD432009D3C7E /* ChatVewController.m in Sources */,
+				454C6700237571F200FACA27 /* ChatMessageTableView.m in Sources */,
 				45049FC42368282E00841C63 /* MASConstraint.m in Sources */,
 				4527F2432368789F00AB62D0 /* DifferHeightTableViewCell.m in Sources */,
 				45049FC52368282E00841C63 /* MASViewConstraint.m in Sources */,
+				45C90477236BD90B009D3C7E /* ChatMessageModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

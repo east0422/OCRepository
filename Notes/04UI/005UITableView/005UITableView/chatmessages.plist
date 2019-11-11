@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>type</key>
+		<integer>0</integer>
+		<key>time</key>
+		<string>前天 10:05</string>
+		<key>msg</key>
+		<string>你好</string>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>0</integer>
+		<key>time</key>
+		<string>前天 10:05</string>
+		<key>msg</key>
+		<string>在吗?</string>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>1</integer>
+		<key>time</key>
+		<string>前天 10:07</string>
+		<key>msg</key>
+		<string>你好，有什么事吗，有事说事</string>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>0</integer>
+		<key>time</key>
+		<string>前天 10:15</string>
+		<key>msg</key>
+		<string>千万别动!静静的看着这条短信!看看上面，看看下面，别忘了左边和右边!看完了吗?看完就删除吧!</string>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>0</integer>
+		<key>time</key>
+		<string>前天 10:15</string>
+		<key>msg</key>
+		<string>怎么搞的?拨你的手机，语音提示说：您拨打的是外地小懒猪，请在所拨打的号码前加拨猪圈区号。真不敢相信，再拨打一遍，语音提示：机主已被屠宰。</string>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>1</integer>
+		<key>time</key>
+		<string>前天 10:22</string>
+		<key>msg</key>
+		<string>我能想到最浪漫的事，就是看你慢慢地变胖。那样我就有猪肉吃咯。哦耶!</string>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>1</integer>
+		<key>time</key>
+		<string>昨天 19:24</string>
+		<key>msg</key>
+		<string>听说吃大蒜可以预防甲流，觉得很有道理，你想呀：吃了大蒜，别人嫌你有味儿，不愿接近你，甲流病毒也就近不了身了!哈哈，出门前别忘了含两瓣大蒜哦!</string>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>0</integer>
+		<key>time</key>
+		<string>昨天 20:05</string>
+		<key>msg</key>
+		<string>遇到你是我心动的开始，爱上你是我幸福的选择;追求你是我走向幸福的起点;拥有你是我最珍贵的财富;踏入红毯是我永恒的动力!遗憾的是我发错人了!</string>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>0</integer>
+		<key>time</key>
+		<string>昨天 20:08</string>
+		<key>msg</key>
+		<string>耳朵痒吗?那代表我在想你，眼睛痒吗?那代表我想见你，嘴痒吗?那代表我想吻你，身体痒吗?那代表……别瞎想了，都快长虱子了，赶快洗澡去吧!</string>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>0</integer>
+		<key>time</key>
+		<string>昨天 20:08</string>
+		<key>msg</key>
+		<string>我有三句话想跟你说，包括下面这一句，谢谢我讲完了</string>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>1</integer>
+		<key>time</key>
+		<string>昨天 20:35</string>
+		<key>msg</key>
+		<string>“很怀念那段日子，你在我前面扭捏的走在乡间的小路，低着头，乡亲们见了我们都夸你：嘿，又漂亮又干净!也夸我：多好的孩子，这么小年级就出来放猪!”</string>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>0</integer>
+		<key>time</key>
+		<string>昨天 20:35</string>
+		<key>msg</key>
+		<string>这次发信息，主要有三个目的：一是联络感情;二是打发时间;三是我很负责任地告诉你：天气凉了，记得不要再穿开裆裤了。”</string>
+	</dict>
+	<dict>
+		<key>type</key>
+		<integer>1</integer>
+		<key>time</key>
+		<string>昨天 20:40</string>
+		<key>msg</key>
+		<string>有一天，狗问狼：你有房子车子吗？狼说没有。狗又问：你有一日三餐和水果吗？狼说没有。那你有人哄你玩带你逛街吗？狼说没有。狗鄙视的说：你真无能，怎么什么都没有！狼笑了：我有不吃屎的个性，我有我追逐的目标，我有你没有的自由，我是孤寂的狼，而你只是一只自以为幸福的狗！</string>
+	</dict>
+</array>
+</plist>

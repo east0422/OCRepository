@@ -12,14 +12,20 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface DifferHeightModel : NSObject
 
-@property (nonatomic, copy) NSString *text; // 文本内容
-@property (nonatomic, copy) NSString *icon; // 图像
-@property (nonatomic, copy) NSString *picture; // 内容图片
-@property (nonatomic, copy) NSString *name; // 名称
-@property (nonatomic, assign, getter=isVip) Boolean vip; // 是否vip
+/** 文本内容 */
+@property (nonatomic, copy) NSString *text;
+/** 图像 */
+@property (nonatomic, copy) NSString *icon;
+/** 内容图片 */
+@property (nonatomic, copy) NSString *picture;
+/** 名称 */
+@property (nonatomic, copy) NSString *name;
+/** 是否vip */
+@property (nonatomic, assign, getter=isVip) Boolean vip;
+/** cell高度 */
+@property (nonatomic, assign) CGFloat cellHeight;
 
-@property (nonatomic, assign) CGFloat cellHeight; // cell高度
-
+/** 字典对象实例化对象 */
 + (instancetype)initWithDic:(NSDictionary *)dic;
 
 @end

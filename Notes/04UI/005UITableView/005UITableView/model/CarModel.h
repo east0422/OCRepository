@@ -12,10 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CarModel : NSObject
 
-@property (nonatomic, copy) NSString *name; // 名称
-@property (nonatomic, copy) NSString *icon; // 图片
-@property (nonatomic, copy) NSString *price; // 价格
+/** 名称 */
+@property (nonatomic, copy) NSString *name;
+/** 图片 */
+@property (nonatomic, copy) NSString *icon;
+/** 价格 */
+@property (nonatomic, copy) NSString *price;
 
+/** 以字典实例化汽车模型对象 */
 + (instancetype)initWithDict:(NSDictionary *)dict;
 
 @end

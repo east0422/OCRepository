@@ -72,7 +72,7 @@
     [self.pictureImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_offset(10);
         make.right.mas_offset(-10);
-        make.height.mas_equalTo(200);
+//        make.height.mas_equalTo(200);
         if (self.detailLabel.isHidden) {
             make.top.mas_equalTo(self.avtarImageView.mas_bottom).mas_offset(10);
         } else {
@@ -89,7 +89,7 @@
     [self.pictureImageView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.mas_offset(10);
         make.right.mas_offset(-10);
-        make.height.mas_equalTo(200);
+//        make.height.mas_equalTo(200);
         if (self.detailLabel.isHidden) {
             make.top.mas_equalTo(self.avtarImageView.mas_bottom).mas_offset(10);
         } else {
