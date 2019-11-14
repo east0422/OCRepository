@@ -26,6 +26,8 @@
 	1. 每次cell需要显示，都需要重新调用-(UITableViewCell)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{}方法。
 	2. 每次调用tableView显示行的数据源方法时，如果需要从网络加载图片，就需要将加载图片这样的耗时操作放在子线程上执行，从网络上下载的图片可以以键值对的形式保存在定义的可变字典中，将每张图片的唯一路径作为键，将从网络下载下来的图片作为值，保存在内存缓存中，这样每次滑动tableView，cell重用时就直接判断内存缓存中有没有需要的图片，如果有就不需要再次下载，在没有出现内存警告或程序员手动清理内存缓存时，就直接从内存缓存中获取图片。
 	3. 为了每次退出程序再次进入程序时，不浪费用户流量，需要将第一次进入程序时加载的图片保存在本地沙盒缓存文件中，在沙盒中保存的图片数据没有被改变之前，下次开启程序就直接从沙盒的缓存文件中读取需要显示的图片，并将沙盒缓存文件夹(Cache)中保存的图片保存到内存缓存中，这样用户每次滑动tableView Cell重用时直接从内存缓存中读取而不是从沙盒中读取，节约时间。
+	4. 默认缓存时长一周，SDImageCacheConfig中`static const NSInteger kDefaultCacheMaxCacheAge = 60 * 60 * 24 * 7; // 1 week`
+	5. 防止url对应图片重复下载：先看icon->再看内存缓存->沙盒缓存，如果已经存在于下载队列中就不再添加到里面。
 	 
 #### AFNetworking
 1. 开源地址 [https://github.com/AFNetworking/AFNetworking](https://github.com/AFNetworking/AFNetworking)。

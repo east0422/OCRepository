@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		45ACB058237BD594006E30AE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 45ACB057237BD594006E30AE /* README.md */; };
 		45E629ED2303B370006B6578 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E629EC2303B370006B6578 /* AppDelegate.m */; };
 		45E629F02303B370006B6578 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 45E629EF2303B370006B6578 /* ViewController.m */; };
 		45E629F32303B370006B6578 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45E629F12303B370006B6578 /* Main.storyboard */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		45ACB057237BD594006E30AE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		45E629E82303B370006B6578 /* 001UIImageView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 001UIImageView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45E629EB2303B370006B6578 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		45E629EC2303B370006B6578 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 			children = (
 				45E629EA2303B370006B6578 /* 001UIImageView */,
 				45E629E92303B370006B6578 /* Products */,
+				45ACB057237BD594006E30AE /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -151,6 +154,7 @@
 			files = (
 				45E62A052303B3DE006B6578 /* ImageViewCornerRadiusVC.xib in Resources */,
 				45E629F82303B371006B6578 /* LaunchScreen.storyboard in Resources */,
+				45ACB058237BD594006E30AE /* README.md in Resources */,
 				45E629F52303B371006B6578 /* Assets.xcassets in Resources */,
 				45E629F32303B370006B6578 /* Main.storyboard in Resources */,
 			);

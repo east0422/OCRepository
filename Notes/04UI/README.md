@@ -44,10 +44,6 @@
 3. 两者最大的区别是，图层不会直接渲染到屏幕上，UIView是iOS系统中界面元素的基础，所有的界面元素都是继承自它。它本身完全是由CoreAnimation来实现的，它真正的绘图部分，是由一个CALayer类来管理。
 4. UIView和CALayer是相互依赖的，UIView依赖CALayer提供内容，CALayer依赖UIView的容器显示绘制内容。UIView本身更像一个CALayer的管理器，一个UIView上可以有n个CALayer，每个layer显示一种东西，增强UIView的展现能力。
 
-#### frame与bounds
-1. frame指的是该view在父view坐标系统中的位置和大小(参照点是父视图的坐标系统)。
-2. bounds指的是该view在本身系统中的位置和大小(参照点是本身的坐标系统)。设置当前视图左上角相对子视图新的坐标值，默认为(0,0)，若设为(50,0)则子视图在视觉上向左偏移50，即以前的原点 (0,0)变为了(50,0)。
-
 #### 视图UIView的创建
 1. 创建流程：控制器view加载顺序从高到低依次为loadView() > storyboard > nibName.xib > View.xib > ViewController.xib > 空白view。
 2. 用系统的loadView方法创建控制器的视图。
@@ -58,66 +54,10 @@
 7. 如果以上都没有就创建一个空的控制器的视图。
 8. 当你alloc并init了一个ViewController时，这个ViewController应该是还没有创建view的。ViewController的view是使用了lazyInit方式创建，就是说你调用的view属性的getter方法self.view。在getter里会先判断view是否创建，如果没有创建，那么会调用loadView来创建view。loadView完成时会继续调用viewDidLoad。loadView和viewDidLoad的一个区别就是loadView时还没有view，而viewDidLoad时view已经创建好了。
 
-#### UIScrollView
-1. 不能滚动常见原因：
-	* 没有设置contentSize(滚动范围)
-	* 禁用滚动scrollEnabled = NO或禁用了用户交互userInteractionEnabled = NO
-	* 没有取消autolayout功能(要想scrollView滚动，必须取消autolayout)
-2. 通常情况下可以在viewDidLoad中设置contentSize，但是在autolayout下，系统会在viewDidAppear之前根据subview的constraint重新计算scrollview的contentsize，所以前面手动设置的值会被覆盖掉也就是所谓的contentsize设置无效。解决方法有
-	* 去除autolayout选项，自己手动设置contentsize。
-	* 若要使用autolayout，要么自己设置完subview的constraint，然后让系统自动根据constraint计算出contentsize。要么延迟在viewDidAppear里面自己手动设置contentsize。
-3. 获取子控件视图时需要注意若显示滚动条则两个UIImageView滚动条控件也在其子控件数组中，两个滚动条子控件通常在设置contentSize(对比旧值有更改)后会放在数组末尾，设置之前在数组中位置并不确定。
-
 #### UIButton
 1. UIButton的imageView属性是只读属性不能赋值，故不能通过该属性更改图片。
 2. `btn.titleLabel.text = @"title"`不显示title，使用`[btn setTitle:title forState:UIControlStateNormal];`。
 3. 默认image在左，title在右，若想重新排列image和title布局样式，只需自定义一个CusUIButton继承UIButton，然后实现titleRectForContentRect和imageRectForContentRect在其中重新布局即可。
-
-#### UIImage两种加载方式(内存优化)
-1. `+ (UIImage *) imageNamed:(NSString *)name;` // name是图片文件名
-	* 加载到内存以后，会一直停留在内存中，不会随着对象销毁而销毁，有缓存。
-	* 加载图片到内存以后，占用的内存归系统管理，程序员无法管理。
-	* 相同的图片不会重复加载，重复加载同一张图片占据内存不会增大。
-	* 加载到内存当中后，占据内存空间较大。
-2. `类方法+ (UIImage *)imageWithContentsOfFile:(NSString *)path 对象方法- (id)initWithContentsOfFile:(NSString *)path // path是图片全路径`
-	* 加载到内存当中后，占据内存空间较小，无缓存。
-	* 相同的图片会被重复加载到内存当中，重复加载同一张图片占据内存会不断增大。
-	* 对象销毁的时候，加载到内存中的图片会随着一起销毁，图片所占用的内存会（在一些特定操作后）被清除。
-3. 放在xcassets里面的图片只能通过imageNamed方法加载，图片放在非cassettes中则可以通过[[NSBundle mainBundle] pathForResource: imageName ofType: imageType];获取对应图片路径后再使用上述2加载图片。
-4. 可将多张图片放入一个数组赋值给UIImageView的animationImages属性然后调用startAnimating开始动画播放，不过需要注意的是在动画播放完成后记得将animationImages置为nil避免长期占用内存资源[self.imageView performSelector:@selector(setAnimationImages:) withObject:nil after:self.imageView.animationDuration+0.1]。
-
-#### UIImageView添加圆角
-1. 最直接的方法就是使用属性设置`imageView.layer.cornerRadius = 10; imageView.masksToBounds = YES;`，该方法好处是使用简单，操作方便。但坏处是离屏渲染(off-screen-rendering)需要消耗性能。对于图片较多的视图不建议使用这种方法来设置圆角。在iOS9之后系统做了优化不会产生离屏渲染。
-	* 通常来说，计算机系统中CPU、GPU、显示器是协同工作的。CPU计算好显示内容提交到GPU，GPU渲染完成后将渲染结果放入帧缓冲区。
-	* 离屏渲染导致本该CPU干的活交给了CPU来干，而CPU又不擅长GPU干的活，于是拖慢了UI层的数据帧率(FPS)，并且离屏需要创建新的缓冲区和上下文切换，因此消耗较大的性能。
-2. 给UIImage添加生成圆角图片的扩展API，然后调用时就直接传一个圆角来处理`imageView.image = [[UIImage imageNamed:@"test"] east_imageWithCornerRadius:10];`，这么做就是在屏渲染了(on-screen-rendering)。通过模拟器->debug->Color Off-screen-rendering看到没有离屏渲染了(黄色的小圆角没有显示了说明这个不是离屏渲染了)。
-
-	```
-	- (UIImage *)east_imageWithCornerRadius:(CGFloat)radius inBounds:(CGRect)bounds {
-		UIGraphicsBeginImageContextWithOptions(bounds.size, NO, UIScreen.mainScreen.scale);
-		CGContextAddPath(UIGraphicsGetCurrentContext(), [UIBezierPath bezierPathWithRoundedRect:bounds cornerRadius:radius].CGPath);
-		CGContextClip(UIGraphicsGetCurrentContext());
-		[self drawInRect:bounds];
-		UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
-		UIGraphicsEndImageContext();
-		return image;
-	}
-	```
-3. 通过mask遮罩实现，性能消耗比设置属性的消耗更大。
-
-	```
-	CAShapeLayer *layer = [CAShapeLayer layer];
-  	UIBezierPath *bezierPath = [UIBezierPath bezierPathWithOvalInRect:self.imageView.bounds];
-  	layer.path = bezierPath.CGPath;
-   self.imageView.layer.mask = layer;
-	```
-
-#### storyboard
-1. IBAction
-	* 从返回值角度上看，作用相当于void。
-	* 只有返回值声明为IBAction的方法，才能跟storyboard中的控件进行连线。
-2. IBOutlet
-	* 只有声明为IBOutlet的属性，才能跟storyboard中的控件进行连线。
 
 #### layoutSubViews和drawRects
 1. layoutSubViews在以下情况下会被调用(视图位置变化是触发)：
@@ -138,6 +78,13 @@
 	* 若使用CAlayer绘图，只能在drawInContext：中绘制，或者在delegate中的相应方法绘制。同样也是调用setNeedDisplay等间接调用以上方法。
 	* 若要实时画图，不能使用gestureRecognizer，只能使用touchBegan等方法来调用setNeedsDisplay实时刷新屏幕。
 
+
+
+
+
+
+
+# UIViewController控制器
 
 #### UIViewController
 1. 每当显示一个新界面时，首先会创建一个新的UIViewController对象，然后创建一个对应的全局UIView，UIViewController负责管理这个UIView。
@@ -182,4 +129,6 @@
 
 
 
+
+
 

@@ -11,6 +11,7 @@
 		450A1DC123794AAB00552713 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 450A1DC023794AAB00552713 /* MainViewController.m */; };
 		450A1DCD23795B2D00552713 /* CategoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 450A1DCC23795B2D00552713 /* CategoryTableViewController.m */; };
 		450A1DD023795B4300552713 /* DetailTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 450A1DCF23795B4300552713 /* DetailTableViewController.m */; };
+		45ACB054237BD56A006E30AE /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 45ACB053237BD56A006E30AE /* README.md */; };
 		45BF1188237907BD00CB61B3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45BF1187237907BD00CB61B3 /* AppDelegate.m */; };
 		45BF118E237907BD00CB61B3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45BF118C237907BD00CB61B3 /* Main.storyboard */; };
 		45BF1190237907C000CB61B3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45BF118F237907C000CB61B3 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 		450A1DCC23795B2D00552713 /* CategoryTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CategoryTableViewController.m; sourceTree = "<group>"; };
 		450A1DCE23795B4300552713 /* DetailTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailTableViewController.h; sourceTree = "<group>"; };
 		450A1DCF23795B4300552713 /* DetailTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailTableViewController.m; sourceTree = "<group>"; };
+		45ACB053237BD56A006E30AE /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		45BF1183237907BD00CB61B3 /* 006UIView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 006UIView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		45BF1186237907BD00CB61B3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		45BF1187237907BD00CB61B3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 			children = (
 				45BF1185237907BD00CB61B3 /* 006UIView */,
 				45BF1184237907BD00CB61B3 /* Products */,
+				45ACB053237BD56A006E30AE /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -234,6 +237,7 @@
 			files = (
 				45BF1193237907C000CB61B3 /* LaunchScreen.storyboard in Resources */,
 				45BF1190237907C000CB61B3 /* Assets.xcassets in Resources */,
+				45ACB054237BD56A006E30AE /* README.md in Resources */,
 				45BF118E237907BD00CB61B3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -28,6 +28,16 @@
 	[tableView dequeueReusableCellWithIdentifier:@"identifier"];
 	```
 	
+#### UITableViewCell重用机制
+1. 一个UITableView中有许多需要显示的cell，但我们不可能每个都浏览到，若我们把这些数据全部都加载进去可能会造成内存的负担。所能显示的区域通常只有一个屏幕的大小，那么屏幕之外的信息是不需要一次性全都加载完的，只有当我们滑动屏幕需要浏览时才需要加载进来，因此就有了UITableViewCell的重用机制。
+2. 重用机制实现了数据和显示的分离，并不是为每个数据创建一个UITableViewCell，只创建屏幕可显示最大的cell个数+1，然后去循环重复使用这些cell，既节省空间又达到我们需要显示的效果。
+3. 这种机制下系统默认有一个可变数组NSMutableArray *visibleCells用来保存当前显示的cell，还有一个可变字典NSMutableDictionary *reusableTableCells用来保存可重复利用的cell(用字典是因为可重用的cell有不止一种样式，需要根据它的reuseIdentifier重用标识符来查找是否有可重用的该样式的cell)。
+4. 当数据过多，整个屏幕的cell显示不完全时cellForRowAtIndexPath执行情况为：
+	 1. 先执行[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:identifier]创建整个屏幕能显示的cell数+1的cell(当拖动UITableView第一个cell没有移出屏幕，最下面的cell就已经存在时)，并指定相同或不同标识符identifier。把创建出屏幕能显示的cell全部都加入到visibleCells数组中(最后一个创建的先不加入数组)，reusableTableCells为空。
+	 2. 当拖动屏幕时，顶端cell移出屏幕并加入到reusableTableCells字典中，键为identifier，并把之前已经创建但还未加入到visibleCells的cell加入到visibleCells数组中。
+	 3. 当接着拖动时，因为reusableTableCells中已有值，当需要显示新cell，cellForRowAtIndexPath再次被调用，执行[tableView dequeueReusableCellWithIdentifier:identifier]，返回一个标识符为identifier的cell。该cell移出reusableTableCells后加入到visibleCells；顶端cell移出visibleCells并加入到reusableTableCells。如果reusableTableCells数组中没有找到identifier类型的cell则再次重新alloc一个。
+5. iOS6之后系统加入了一种单元格注册的方法[self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:identifier]。该方法作用是当从重用队列中取cell时，若没有则系统会帮我们创建给定类型的cell，若有则直接重用，这种方式cell的样式为系统默认样式。只需在tableView初始化时注册一下然后就可以在cellForRowAtIndexPath中直接使用[tableView dequeueReusableCellWithIdentifier:identifier forIndexPath:indexPath];获取cell。
+	
 #### 自定义模型使用setValuesForKeysWithDictionary
 1. 注意点：
 	1. 实现一个setValue:forUndefinedKey:以免模型中没有属性和字典中key对应而报错。

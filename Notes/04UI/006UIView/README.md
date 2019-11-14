@@ -1,6 +1,18 @@
 # UIView
 	继承于UIResponder，能够对事件作出响应。
     
+        
+#### storyboard
+1. IBAction
+	* 从返回值角度上看，作用相当于void。
+	* 只有返回值声明为IBAction的方法，才能跟storyboard中的控件进行连线。
+2. IBOutlet
+	* 只有声明为IBOutlet的属性，才能跟storyboard中的控件进行连线。
+	
+#### frame与bounds
+1. frame指的是该view在父view坐标系统中的位置和大小(参照点是父视图的坐标系统)。
+2. bounds指的是该view在本身系统中的位置和大小(参照点是本身的坐标系统)。设置当前视图左上角相对子视图新的坐标值，默认为(0,0)，若设为(50,0)则子视图在视觉上向左偏移50，即以前的原点 (0,0)变为了(50,0)。
+	
 #### intrinsicContentSize
 1. 固有内容大小，UILabel(会依据内容、字体、行数、换行模式等计算出它的大小)和UIButton等不需要设置大小有默认大小就是因为有该属性值。若想UILabel的大小总是比内容宽高都大一些(即所谓的留白)可以创建一个子UILabel然后重写该方法
 
@@ -20,7 +32,6 @@
 2. contentHuggingPriority属性代表控件拒绝本身size大于intrinsicSize的优先级。通俗理解就是该属性拉伸优先级，在垂直或水平方向上，若有多个视图控件，该优先级数值高的优先拉伸(优先级低的先不拉伸，先满足优先级低的约束)，xib中默认值为251，代码创建默认值为250。常和小于或等于约束一起使用。
 3. contentCompressionResistance属性代表控件拒绝本身size小于intrinsicSize的优先级。简单理解该属性是指压缩优先级，同样在一个方向上，谁的优先级数值高就谁先压缩(先满足优先级数值低的约束)，xib和代码中默认值都是750。常和大于等于约束一起使用。
 4. 如果是代码自动布局，自定义UIView常写在init方法中。自定义UIViewController常写在-(void)viewDidLoad()中。
-
 
 #### setNeedsLayout
 1. 标记为需要重新布局，异步调用layoutIfNeeded()刷新布局，不立即刷新，但是layoutSubViews()一定会被调用。
