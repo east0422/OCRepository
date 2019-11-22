@@ -2,7 +2,13 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:001GCD/001GCD.xcodeproj">
+      location = "group:001NSThread/001NSThread.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:002GCD/002GCD.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:003NSOperation/003NSOperation.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:README.md">
