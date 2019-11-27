@@ -1,58 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <Group
-      location = "group:01ReferenceCount"
-      name = "01ReferenceCount">
-      <Group
-         location = "group:01ReferenceCount"
-         name = "01ReferenceCount">
-         <FileRef
-            location = "group:Person.h">
-         </FileRef>
-         <FileRef
-            location = "group:Book.h">
-         </FileRef>
-         <FileRef
-            location = "group:Card.h">
-         </FileRef>
-         <FileRef
-            location = "group:Car.h">
-         </FileRef>
-         <FileRef
-            location = "group:Book.m">
-         </FileRef>
-         <FileRef
-            location = "group:Person.m">
-         </FileRef>
-         <FileRef
-            location = "group:main.m">
-         </FileRef>
-         <FileRef
-            location = "group:Card.m">
-         </FileRef>
-         <FileRef
-            location = "group:Car.m">
-         </FileRef>
-      </Group>
-      <FileRef
-         location = "group:01ReferenceCount.xcodeproj">
-      </FileRef>
-   </Group>
-   <Group
-      location = "group:/Users/NewAdmin/East/EastGithub/OCRepository/Notes/02MemoryManagement/02Block"
-      name = "02Block">
-      <Group
-         location = "group:02Block"
-         name = "02Block">
-         <FileRef
-            location = "group:main.m">
-         </FileRef>
-      </Group>
-      <FileRef
-         location = "group:02Block.xcodeproj">
-      </FileRef>
-   </Group>
+   <FileRef
+      location = "group:01ReferenceCount/01ReferenceCount.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:02Block/02Block.xcodeproj">
+   </FileRef>
    <FileRef
       location = "group:README.md">
    </FileRef>

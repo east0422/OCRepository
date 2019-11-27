@@ -14,6 +14,7 @@
 		45211BE62305038D005618D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 45211BE52305038D005618D3 /* Assets.xcassets */; };
 		45211BE92305038D005618D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 45211BE72305038D005618D3 /* LaunchScreen.storyboard */; };
 		45211BEC2305038D005618D3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45211BEB2305038D005618D3 /* main.m */; };
+		4567D7C1238ECC5000BA4BD1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4567D7C0238ECC5000BA4BD1 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		45211BE82305038D005618D3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		45211BEA2305038D005618D3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45211BEB2305038D005618D3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4567D7C0238ECC5000BA4BD1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		50D4B86968513A3BEDB4577E /* Pods-001SDWebImage.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-001SDWebImage.debug.xcconfig"; path = "Pods/Target Support Files/Pods-001SDWebImage/Pods-001SDWebImage.debug.xcconfig"; sourceTree = "<group>"; };
 		9D7DAF42CDE0567EBA4E0002 /* libPods-001SDWebImage.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-001SDWebImage.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD8069A87304B81ADF6234F4 /* Pods-001SDWebImage.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-001SDWebImage.release.xcconfig"; path = "Pods/Target Support Files/Pods-001SDWebImage/Pods-001SDWebImage.release.xcconfig"; sourceTree = "<group>"; };
@@ -59,6 +61,7 @@
 				45211BDA2305038A005618D3 /* Products */,
 				8518FF70ADDECE82B4D03FDE /* Pods */,
 				0F063A5D6CF6670CE4EFA32A /* Frameworks */,
+				4567D7C0238ECC5000BA4BD1 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -155,6 +158,7 @@
 			files = (
 				45211BE92305038D005618D3 /* LaunchScreen.storyboard in Resources */,
 				45211BE62305038D005618D3 /* Assets.xcassets in Resources */,
+				4567D7C1238ECC5000BA4BD1 /* README.md in Resources */,
 				45211BE42305038A005618D3 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

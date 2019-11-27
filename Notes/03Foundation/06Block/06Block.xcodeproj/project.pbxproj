@@ -34,6 +34,7 @@
 		455CB1D8231DFB4A0010576B /* SumManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SumManager.m; sourceTree = "<group>"; };
 		455CB1DA231DFB5A0010576B /* NSObject+Sum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+Sum.h"; sourceTree = "<group>"; };
 		455CB1DB231DFB5A0010576B /* NSObject+Sum.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Sum.m"; sourceTree = "<group>"; };
+		4567D7B2238EC42F00BA4BD1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +53,7 @@
 			children = (
 				45345273231D21530095001E /* 06Block */,
 				45345272231D21530095001E /* Products */,
+				4567D7B2238EC42F00BA4BD1 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};

@@ -28,6 +28,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		4567D7AF238EC35600BA4BD1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		45A88C2C22FA6D5A00C2B52F /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
 		45A88C2D22FA6D5A00C2B52F /* Person.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
 		45A88C2F22FA7C2D00C2B52F /* NSObject+KVO.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+KVO.h"; sourceTree = "<group>"; };
@@ -58,6 +59,7 @@
 			children = (
 				45F45A81212A6B2000CF40A0 /* 03KVO */,
 				45F45A80212A6B2000CF40A0 /* Products */,
+				4567D7AF238EC35600BA4BD1 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};

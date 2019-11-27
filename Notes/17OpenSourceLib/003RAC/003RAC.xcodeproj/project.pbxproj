@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4567D7BD238ECBD800BA4BD1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4567D7BC238ECBD700BA4BD1 /* README.md */; };
 		457A10162330722800E8194A /* RedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 457A10152330722800E8194A /* RedView.m */; };
 		457A10182330757F00E8194A /* RedView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 457A10172330757F00E8194A /* RedView.xib */; };
 		45DC7B4E231FCC010098FB92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 45DC7B4D231FCC010098FB92 /* AppDelegate.m */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4567D7BC238ECBD700BA4BD1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		457A10142330722800E8194A /* RedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RedView.h; sourceTree = "<group>"; };
 		457A10152330722800E8194A /* RedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RedView.m; sourceTree = "<group>"; };
 		457A10172330757F00E8194A /* RedView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RedView.xib; sourceTree = "<group>"; };
@@ -56,6 +58,7 @@
 				45DC7B4A231FCC010098FB92 /* Products */,
 				CB42EE599534095345AF0CE1 /* Pods */,
 				D2D8DACEA6DBB1C9F4E402B2 /* Frameworks */,
+				4567D7BC238ECBD700BA4BD1 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -163,6 +166,7 @@
 			files = (
 				45DC7B59231FCC020098FB92 /* LaunchScreen.storyboard in Resources */,
 				45DC7B56231FCC020098FB92 /* Assets.xcassets in Resources */,
+				4567D7BD238ECBD800BA4BD1 /* README.md in Resources */,
 				457A10182330757F00E8194A /* RedView.xib in Resources */,
 				45DC7B54231FCC010098FB92 /* Main.storyboard in Resources */,
 			);

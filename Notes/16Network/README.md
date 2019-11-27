@@ -1,5 +1,6 @@
 # Network网络
 
+
 #### Reachability
 1. 监测联网状态`Reachability *reach = [Reachability     reachabilityWithHostName:@"www.baidu.com"];`
 2. 判断reach.currentReachabilityStatus值。

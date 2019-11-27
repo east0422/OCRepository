@@ -1,20 +1,6 @@
 # 基础知识点
 	源代码—》编译预处理—》编译—》链接—》运行
 
-#### 谓词NSPredicate
-1. 谓词就是通过NSPredicate给定的逻辑条件作为约束条件完成对数据的筛选。cocoa中提供了NSPredicate类，指定过滤器的条件，将符合条件的对象保留下来。
-2. 简单使用
-
-	```
-	// 定义谓词对象(对象中包含了过滤条件)
-	NSPredicate *predicate = [NSPredicate predicateWithFormat:@"age<%d", 30];
-	// 使用&&进行多条件过滤 predicate = [NSPredicate predicateWithFormat:@"name='1' && age>40"];
-	// 包含语句 predicate = [NSPredicate predicateWithFormat:@"self.name IN {'1','2','4'} || self.age IN {30,40}"];
-	// 同理有还有以什么开头BEGINSWITH，以什么结尾ENDSWITH，包含CONTAINS，匹配多个字符like，一个字符?等
-	// 使用谓词条件过滤数组中的元素，过滤之后返回查询的结果
-	NSArray *arr = [persons filteredArrayUsingPredicate:predicate];
-		
-	```
 		
 #### 编译预处理指令
 1. 在编译前进行解析处理的指令。
@@ -161,15 +147,6 @@
 1. 类方法是可继承可覆盖的。
 2. 子类中不能定义和父类同名的成员变量。
 3. private成员变量只能在定义类中访问。
-
-#### Protocol协议
-1. 一序列方法的列表，其中声明的方法可以被任何类实现，这种模式通常称为代理模式。
-2. 任何类只要遵守了Protocol，就相当于拥有了Protocol的所有方法声明。
-3. 协议中方法默认是@required必须实现的,遵守该协议的类中不实现会有警告，也可通过@optional说明为可选非必需实现，遵守该协议类中不实现不会有警告，这两个关键字是在OC2.0后加入的语法特性，若不注明则默认是@required的。在@required后面的都是@required的直到遇到@optional，在@optional后面的都是@optional直到遇到@required，与成员变量访问权限类型相似。
-4. 一个协议可遵守其他多个协议。
-5. 建议每个新的协议都要遵守NSObject协议。
-6. 通过id<协议名称>定义出来的指针变量可以指向任意实现这个协议的类的实例对象，通过该变量可以调用协议中声明的方法，从而实现多态。
-7. 可以使用conformsToProtocol判断某个类是否实现了某个protocol。
 
 #### 分类(category)
 1. 不需要通过增加子类而增加现有类的行为(方法), 且类目中的方法与原始类方法基本没有区别。

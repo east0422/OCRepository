@@ -1,5 +1,6 @@
 # Database数据库
 
+
 #### 数据存储
 1. Plist：自动存储数组、字典，但是数组和字典里面不能有自定义对象。
 2. Preference：偏好设置，NSUserDefaults。也不能存储自定义对象。

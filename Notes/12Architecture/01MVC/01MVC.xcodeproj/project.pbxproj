@@ -10,6 +10,7 @@
 		4540A45B213D37D700473509 /* LoginModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4540A45A213D37D700473509 /* LoginModel.m */; };
 		4540A45E213D37E600473509 /* LoginView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4540A45D213D37E600473509 /* LoginView.m */; };
 		4540A461213D3BC500473509 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4540A460213D3BC500473509 /* LoginViewController.m */; };
+		4567D7B7238EC97C00BA4BD1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4567D7B6238EC97C00BA4BD1 /* README.md */; };
 		4590E0B8213D25AF0064D312 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4590E0B7213D25AF0064D312 /* AppDelegate.m */; };
 		4590E0BB213D25B00064D312 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4590E0BA213D25B00064D312 /* ViewController.m */; };
 		4590E0BE213D25B00064D312 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4590E0BC213D25B00064D312 /* Main.storyboard */; };
@@ -44,6 +45,7 @@
 		4540A45D213D37E600473509 /* LoginView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginView.m; sourceTree = "<group>"; };
 		4540A45F213D3BC500473509 /* LoginViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		4540A460213D3BC500473509 /* LoginViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		4567D7B6238EC97C00BA4BD1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4590E0B3213D25AF0064D312 /* 01MVC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 01MVC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4590E0B6213D25AF0064D312 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4590E0B7213D25AF0064D312 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				4590E0CE213D25B10064D312 /* 01MVCTests */,
 				4590E0D9213D25B10064D312 /* 01MVCUITests */,
 				4590E0B4213D25AF0064D312 /* Products */,
+				4567D7B6238EC97C00BA4BD1 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -276,6 +279,7 @@
 			files = (
 				4590E0C3213D25B10064D312 /* LaunchScreen.storyboard in Resources */,
 				4590E0C0213D25B10064D312 /* Assets.xcassets in Resources */,
+				4567D7B7238EC97C00BA4BD1 /* README.md in Resources */,
 				4590E0BE213D25B00064D312 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

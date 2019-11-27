@@ -31,6 +31,7 @@
 		4542E1C42125527F00FAA71D /* Card.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Card.m; sourceTree = "<group>"; };
 		45E384DD211D865C00945257 /* Car.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
 		45E384DE211D865C00945257 /* Car.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Car.m; sourceTree = "<group>"; };
+		45FE19CA238B94AB00E78AF4 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		45FF133B211C7FCE0005FE91 /* 01ReferenceCount */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 01ReferenceCount; sourceTree = BUILT_PRODUCTS_DIR; };
 		45FF133E211C7FCE0005FE91 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		45FF1345211C96260005FE91 /* Book.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Book.h; sourceTree = "<group>"; };
@@ -55,6 +56,7 @@
 			children = (
 				45FF133D211C7FCE0005FE91 /* 01ReferenceCount */,
 				45FF133C211C7FCE0005FE91 /* Products */,
+				45FE19CA238B94AB00E78AF4 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};

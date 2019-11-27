@@ -19,6 +19,7 @@
 		4540A4A8213D770400473509 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4540A4A7213D770400473509 /* LoginViewController.m */; };
 		4540A4AB213D772B00473509 /* LoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4540A4AA213D772B00473509 /* LoginViewModel.m */; };
 		4540A4AF213D7A4200473509 /* HttpUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 4540A4AE213D7A4200473509 /* HttpUtils.m */; };
+		4567D7BB238EC9EE00BA4BD1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4567D7BA238EC9EE00BA4BD1 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		4540A4AA213D772B00473509 /* LoginViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginViewModel.m; sourceTree = "<group>"; };
 		4540A4AD213D7A4200473509 /* HttpUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HttpUtils.h; sourceTree = "<group>"; };
 		4540A4AE213D7A4200473509 /* HttpUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HttpUtils.m; sourceTree = "<group>"; };
+		4567D7BA238EC9EE00BA4BD1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 				4540A486213D73EE00473509 /* 03MVVMTests */,
 				4540A491213D73EE00473509 /* 03MVVMUITests */,
 				4540A46C213D73ED00473509 /* Products */,
+				4567D7BA238EC9EE00BA4BD1 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -289,6 +292,7 @@
 			files = (
 				4540A47B213D73EE00473509 /* LaunchScreen.storyboard in Resources */,
 				4540A478213D73EE00473509 /* Assets.xcassets in Resources */,
+				4567D7BB238EC9EE00BA4BD1 /* README.md in Resources */,
 				4540A476213D73ED00473509 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

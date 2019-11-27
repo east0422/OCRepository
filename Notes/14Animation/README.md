@@ -1,5 +1,6 @@
 # Animation动画
 
+
 #### CoreAnimation核心动画
 1. 直接作用在CALayer上的，并非UIView，并且Core Animation的动画执行过程都是在后台操作，不会阻塞主线程。
 2. 所有动画都是作用在CALayer上的，当把动画添加到layer上，是不直接修改它的属性，Core Animation维护了两个平行layer的层次结构，模型层数可以看到layer的状态，表示层树则是动画正在表现的值的近似。

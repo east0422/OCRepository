@@ -1,6 +1,7 @@
 # 运行时
 	runtime属于OC的底层实现，可以进行一些非常底层的操作，使用runtime在运行时可以动态创建一个类(KVO底层实现原理)，还可以动态的为某个类添加修改属性和方法及遍历类的所有成员和成员方法。使用时常引入<objc/message.h>和<objc/runtime.h>，message.h包含runtime.h。
 
+
 #### runtime实现机制
 1. 运行时机制，是一套C语言库。
 2. 实际上我们所编写的所有OC代码，最终都是转成了runtime库的东西(比如类转成了runtime库里面的结构体等数据类型，方法转成了runtime库里面的C语言函数，平时调用方法都是转成了objc_msgSend函数)。

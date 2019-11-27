@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4567D7BF238ECC1B00BA4BD1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4567D7BE238ECC1B00BA4BD1 /* README.md */; };
 		458D7B0E2305244C009493D8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 458D7B0D2305244C009493D8 /* AppDelegate.m */; };
 		458D7B112305244C009493D8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 458D7B102305244C009493D8 /* ViewController.m */; };
 		458D7B142305244C009493D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458D7B122305244C009493D8 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4567D7BE238ECC1B00BA4BD1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		458D7B092305244C009493D8 /* 002AFNetworking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 002AFNetworking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		458D7B0C2305244C009493D8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		458D7B0D2305244C009493D8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -44,6 +46,7 @@
 			children = (
 				458D7B0B2305244C009493D8 /* 002AFNetworking */,
 				458D7B0A2305244C009493D8 /* Products */,
+				4567D7BE238ECC1B00BA4BD1 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +133,7 @@
 			files = (
 				458D7B192305244D009493D8 /* LaunchScreen.storyboard in Resources */,
 				458D7B162305244D009493D8 /* Assets.xcassets in Resources */,
+				4567D7BF238ECC1B00BA4BD1 /* README.md in Resources */,
 				458D7B142305244C009493D8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

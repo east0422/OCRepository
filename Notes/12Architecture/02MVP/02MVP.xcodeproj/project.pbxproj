@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4540A458213D31FB00473509 /* LoginPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 4540A457213D31FB00473509 /* LoginPresenter.m */; };
+		4567D7B9238EC9B900BA4BD1 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4567D7B8238EC9B900BA4BD1 /* README.md */; };
 		4590E07A213D256E0064D312 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4590E079213D256E0064D312 /* AppDelegate.m */; };
 		4590E07D213D256E0064D312 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4590E07C213D256E0064D312 /* ViewController.m */; };
 		4590E080213D256E0064D312 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4590E07E213D256E0064D312 /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		4540A456213D31FB00473509 /* LoginPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LoginPresenter.h; sourceTree = "<group>"; };
 		4540A457213D31FB00473509 /* LoginPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LoginPresenter.m; sourceTree = "<group>"; };
+		4567D7B8238EC9B900BA4BD1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		4590E075213D256E0064D312 /* 02MVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 02MVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4590E078213D256E0064D312 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4590E079213D256E0064D312 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				4590E090213D25710064D312 /* 02MVPTests */,
 				4590E09B213D25710064D312 /* 02MVPUITests */,
 				4590E076213D256E0064D312 /* Products */,
+				4567D7B8238EC9B900BA4BD1 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -289,6 +292,7 @@
 			files = (
 				4590E085213D25710064D312 /* LaunchScreen.storyboard in Resources */,
 				4590E082213D25710064D312 /* Assets.xcassets in Resources */,
+				4567D7B9238EC9B900BA4BD1 /* README.md in Resources */,
 				4590E080213D256E0064D312 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,20 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
-   <Group
-      location = "group:01FileManager"
-      name = "01FileManager">
-      <FileRef
-         location = "group:01FileManager.xcodeproj">
-      </FileRef>
-      <Group
-         location = "group:01FileManager"
-         name = "01FileManager">
-         <FileRef
-            location = "group:main.m">
-         </FileRef>
-      </Group>
-   </Group>
+   <FileRef
+      location = "group:01FileManager/01FileManager.xcodeproj">
+   </FileRef>
    <FileRef
       location = "group:README.md">
    </FileRef>

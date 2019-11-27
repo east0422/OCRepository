@@ -1,5 +1,6 @@
 # 内存管理
 
+
 #### 内存泄露检查
 1. 使用Analyze进行代码的静态分析。
 2. 使用Leak进行动态分析。
@@ -18,34 +19,6 @@
    * 若A有个属性参照B，B中也有个属性参照A，而且都是strong参照的话那么两个对象都无法释放，从而会出现内存泄漏，常见解决方法是将一个参照改为weak避免循环参照。
    * 若有个ViewController中有无限循环，也会导致即使ViewController对应的view消失了，ViewController也不能释放，从而会出现内存泄漏。
 3. Autorelease Pool内存池，类似于release，但不等同于它，release调用后引用计数马上减1。autorelease是在创建对象的时候写的，表示加入自动释放池，当释放池销毁时，才调用引用计数减1。自动释放池需要手动创建。当调用[pool drain]方法时会调用池中全部对象release掉他们。内存池是可以嵌套的。
-
-#### 非自动内存管理MRC下单例模式实现
-1. 创建一个单例对象的静态实例，并初始化为nil。
-2. 创建一个类的类工厂方法，当且仅当这个类的实例为nil时生成一个该类的实例。
-3. 实现NSCopying协议，覆盖allocWithZone:方法，确保用户在直接分配和初始化对象时不会产生另一个对象。
-4. 覆盖release、autorelease、retain、retainCount方法，以此确保单例的状态。
-5. 在多线程的环境中，注意使用@synchronized关键字或GCD确保静态实例被正确的创建和初始化。
-
-#### block在ARC和MRC中使用区别及注意点
-1. 无论当前环境是ARC还是MRC，只要block没有访问外部变量block始终在全局区，类型都是_NSGlobalBlock_，这种类型的block可以理解成一种全局的block，不需要考虑作用域问题。
-2. MRC下
-	* block如果访问外部变量，block放在栈里面NSStackBlock。
-	* 对block使用retain，block还是在栈里面，不能保存在堆里。
-	* block只有使用copy，才能放到堆里。用copy的原因，是把block从栈区拷贝到堆区，因为栈区中的变量出了作用域之后就会被销毁，无法在全局使用，所以应该把栈区的属性拷贝到堆区中全局共享,这样就不会被销毁了。
-	* dealloc中能调用[super dealloc]，能够使用retain，release。
-	* __block修饰的变量在MRC中引用计数不变。
-3. ARC下
-	* block如果访问外部变量，block在堆里NSMallocBlock。
-	* block使用strong，尽量不要使用copy，因为ARC下的属性本来就在堆区。
-	* __block修饰的变量在ARC中引用计数会加一。
-4. block循环引用
-	* 若要在block中直接使用外部强指针会发生错误，常使用代码`__weak typeof(self) weakSelf = self;`在block外部实现可以解决。
-	* 并不是所有block都要用__weak来修饰对象，若self没有对block持有不会形成循环引用就不必使用__weak。
-	* 若在block内部使用延时操作还是用弱指针的话可能会取不到该弱指针，需要在block内部再将弱指针强引用一下`__strong typeof(self) strongSelf = weakSelf;`。
-	* 一个常见错误使用是担心循环引用而错误使用__weak，如`__weak typeof(self) weakSelf = self; dispatch_async(dispatch_get_main_queue(), ^{ [weakSelf doSomething]; });` 。因为将block作为参数传给dispatch_async时，系统会将block拷贝到堆上，而且block会持有block中用到的对象，因为dispatch_async并不知道block中对象会在什么时候被释放，为了确保系统调度执行block中的任务时其对象没有被意外释放掉，dispatch_async必须自己retain一次对象(即self)，任务完成后再release对象。但这里使用__weak使dispatch_async没有增加self的引用计数，这使得在系统在调度执行block之前，self可能已被销毁，但系统并不知道这个情况，导致block执行时访问已经被释放的self，而达不到预期结果，故需要在内部再强引用一下。
-5. 在block内部访问外部变量时，block内部会对外部的变量进行一次拷贝，在block内部操作的是拷贝后的副本，不会影响外部变量，这个变量在堆区。block内部不允许修改外部变量，若非要修改外部变量则需要使用__block修饰外部变量。
-6. 只要block中用到了对象的属性或者函数，block就会持有该对象而不是该对象中的某个属性或函数。
-7. block访问的外部变量是普通局部变量那么是值传递，外部变化不会影响里面。若访问的外部变量是__block或static或全局变量那么是指针传递，外部变化里面也跟着变化。
 
 #### 什么时候会发生内存泄漏和内存溢出
 1. 当程序在申请内存后，无法释放已申请的内存空间(例如一个对象或变量使用完成后么有释放，这个对象一直占用着内存)就会发生内存泄漏。若内存泄漏一直不停的堆积，则无论多少内存迟早都会被占光，内存泄漏会最终导致内存溢出。
@@ -71,44 +44,10 @@
 4. kCFRunLoopBeforeWaiting(32)：进入休眠状态前会自动销毁一个autorelease，然后重新创建一个新的autorelease。
 5. kCFRunLoopExit(128)：退出runloop时会自动销毁最后一个创建的autorelease。
 
-#### ARC
-1. ARC是Automatic Reference Counting的简称，称之为自动引用计数，是iOS5.0之后推出的内存管理的新特性。
-2. 是编译器特性，是Xcode帮我们处理的，当编译器发现alloc、retain等时自动帮我们插入release代码。
-3. 本质上还是使用引用计数来管理对象，只是我们在编写代码时，不需要向对象发送release或autorelease方法，也不可以调用delloc方法，编译器会在合适的位置自动给用户生成release消息(autorelease)。
-4. GC全程是garbage collection, 内存垃圾回收机制，ARC比GC性能好。iOS开发只支持手动内存管理与ARC, Mac开发支持GC垃圾回收机制，10.8之后弃用了GC, 推荐使用ARC。
-5. ARC若内存管理不当的话，同样会存在内存泄漏，例如：ARC中循环引用导致内存不能释放而泄漏，OC对象与CoreFoundation类之间桥接时管理不当也会产生内存泄漏。
-6. 不能调用release、retain、autorelease、retainCount。可以重写dealloc但不能调用[super dealloc]。
-7. 循环引用中必须有一端使用weak。
-8. 如果需要对特定文件开启或关闭ARC，可以在工程选项中选择Targets -> Compile Phases -> Compile Source，在里面找到对应文件，添加flag:
-	* 打开ARC: -fobjc-arc。
-	* 关闭ARC: -fno-objc-arc。
-
-#### ARC中强指针
-1. __strong标示，默认所有的指针都是强指针。
-2. 只要有强指针指向一个对象，那么这个对象就不会被释放，只要没有强指针指向对象，那么这个对象就会被立即释放。
-
-#### ARC中弱指针
-1. __weak标示。
-2. 弱指针不影响对象的回收。
-3. 不要对新创建的对象使用弱指针，因为这样的话对象以创建出来就被回收了没有意义。
-4. 循环引用中必须要有一个是弱指针。
-
-#### MRC
-1. 当需要一个对象时就给这个对象的引用计数器加1，当不再需要这个对象时就将该对象引用计数器减1。
-2. setter方法设置新对象时需要对新对象做一次retain操作，当原来的对象不需要了，需要对原来的对象做一次release操作。
-3. dealloc方法当一个对象即将被销毁时会调用这个方法，它就相当于对象的遗言，在这里释放其它成员所占用的内存，在释放内存前要先调用[super dealloc]。
-4. 循环引用中必须有一端是assign的。
-
 #### 内存中堆区和栈区的区别
 1. 栈区(stack)由编译器自动分配释放，存放方法(函数)的参数值，局部变量的值等。
 2. 栈区内存由系统管理，局部变量保存在栈中，当变量离开了其所在的代码块就会被回收。
 3. 堆区(heap)一般由程序员分配与释放，若程序员不释放，则内存溢出，OC中的对象保存在堆中。
-
-#### 引用计数器
-1. 引用计数器占四个字节，每个对象都有自己的引用计数器，是一个整数，表示对象的引用次数，即有多少人在使用这个OC对象。
-2. 当创建一个新的对象时，它的引用计数器默认为1；当一个对象的引用计数为0时，对象占用的内存就会被回收。
-3. 给对象发送一条retain消息，计数器加1；给对象发送一条release消息，计数器减1；
-4. 每当一个对象的引用计数为0时，那么他将被销毁(可能不是立即销毁，什么时候销毁由系统决定)，其占用的内存将被系统回收；当一个对象被销毁时，系统会自动向对象发送一条dealloc消息。若重写dealloc方法则必须在最后调用[super dealloc]。也不要直接调用dealloc方法。
 
 #### @property关键字
 1. retain默认生成set方法对旧对象release, 对新对象retain。
