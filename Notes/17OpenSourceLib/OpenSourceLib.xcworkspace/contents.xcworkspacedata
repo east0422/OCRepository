@@ -11,6 +11,9 @@
       location = "group:003RAC/003RAC.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:004Masonry/004Masonry.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:README.md">
    </FileRef>
 </Workspace>

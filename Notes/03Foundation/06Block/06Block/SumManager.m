@@ -13,7 +13,7 @@
 - (SumManager *(^)(int))add {
     return ^(int value) {
         self->_result += value;
-        return self;
+        return self; // self就是返回block的返回值
     };
 }
 

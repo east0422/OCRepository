@@ -83,8 +83,11 @@ void blockReturn () {
 
 // 链式操作
 void blockSum () {
+//    SumManager *maker = [[SumManager alloc] init];
     int result = [NSObject sum:^(SumManager *maker) {
+        // 最后执行时maker实际上是block中创建的mgr
         maker.add(5).add(18).add(7);
+        maker.add(10).add(2);
     }];
-    NSLog(@"result is %d", result);
+    NSLog(@"result is %d", result); // result is 42
 }

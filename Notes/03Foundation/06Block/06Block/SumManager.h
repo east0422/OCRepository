@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic, assign) int result;
 
+// 点语法实际上就是对应的getter方法，返回SumManager *(^)(int)类型block
 - (SumManager *(^)(int))add;
 
 @end
