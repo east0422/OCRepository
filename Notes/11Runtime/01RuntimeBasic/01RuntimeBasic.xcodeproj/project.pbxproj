@@ -10,6 +10,7 @@
 		456ECA5A2138F12900EB019A /* Person+Marry.m in Sources */ = {isa = PBXBuildFile; fileRef = 456ECA592138F12900EB019A /* Person+Marry.m */; };
 		456ECA5D2139052A00EB019A /* Teacher.m in Sources */ = {isa = PBXBuildFile; fileRef = 456ECA5C2139052A00EB019A /* Teacher.m */; };
 		456ECA60213928C300EB019A /* NSURL+url.m in Sources */ = {isa = PBXBuildFile; fileRef = 456ECA5F213928C300EB019A /* NSURL+url.m */; };
+		458377BB24756C9C0014E43A /* Person+Alien.m in Sources */ = {isa = PBXBuildFile; fileRef = 458377BA24756C9C0014E43A /* Person+Alien.m */; };
 		45B0E5462137F2C700F69CCC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B0E5452137F2C700F69CCC /* main.m */; };
 		45B0E54E2137F2D600F69CCC /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 45B0E54D2137F2D600F69CCC /* Person.m */; };
 /* End PBXBuildFile section */
@@ -33,6 +34,8 @@
 		456ECA5C2139052A00EB019A /* Teacher.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Teacher.m; sourceTree = "<group>"; };
 		456ECA5E213928C300EB019A /* NSURL+url.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSURL+url.h"; sourceTree = "<group>"; };
 		456ECA5F213928C300EB019A /* NSURL+url.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSURL+url.m"; sourceTree = "<group>"; };
+		458377B924756C9C0014E43A /* Person+Alien.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Person+Alien.h"; sourceTree = "<group>"; };
+		458377BA24756C9C0014E43A /* Person+Alien.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "Person+Alien.m"; sourceTree = "<group>"; };
 		45B0E5422137F2C700F69CCC /* 01RuntimeBasic */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 01RuntimeBasic; sourceTree = BUILT_PRODUCTS_DIR; };
 		45B0E5452137F2C700F69CCC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		45B0E54C2137F2D600F69CCC /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
@@ -78,6 +81,8 @@
 				45B0E54D2137F2D600F69CCC /* Person.m */,
 				456ECA582138F12900EB019A /* Person+Marry.h */,
 				456ECA592138F12900EB019A /* Person+Marry.m */,
+				458377B924756C9C0014E43A /* Person+Alien.h */,
+				458377BA24756C9C0014E43A /* Person+Alien.m */,
 			);
 			path = 01RuntimeBasic;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 				456ECA5D2139052A00EB019A /* Teacher.m in Sources */,
 				456ECA60213928C300EB019A /* NSURL+url.m in Sources */,
 				45B0E54E2137F2D600F69CCC /* Person.m in Sources */,
+				458377BB24756C9C0014E43A /* Person+Alien.m in Sources */,
 				456ECA5A2138F12900EB019A /* Person+Marry.m in Sources */,
 				45B0E5462137F2C700F69CCC /* main.m in Sources */,
 			);
@@ -262,6 +268,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -271,6 +278,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

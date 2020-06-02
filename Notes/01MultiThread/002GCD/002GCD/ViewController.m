@@ -28,6 +28,7 @@
     DispatchQueue *dq = [[DispatchQueue alloc] init];
 //    [dq printHello];
     
+//    [dq testNested];
 //    [dq testSerialQueueWithAsync];
 //    [dq testConcurrentQueueWithAsync];
 //    [dq testMainQueueWithAsync];
@@ -50,7 +51,11 @@
     
 //    [dq testDispatchGroup];
     
-    [dq testDispatchDelay];
+//    [dq testDispatchDelay];
+    
+//    [dq testDispatchApplyConcurrent];
+    
+    [dq testDispatchApplySerial];
     
     // 暂停3秒，使得队列能执行完成
     [NSThread sleepForTimeInterval:3];

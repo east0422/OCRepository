@@ -1,4 +1,4 @@
-# KVO
+ # KVO
 
 
 #### 简述
@@ -23,6 +23,11 @@
 7. 当监听的属性发生变动时，观察者收到observeValueForKeyPath:ofObject:change:context:消息,观察者必须实现这一方法。触发观察通知的对象和键路径、包含变更细节的字典，以及观察者注册时提交的上下文指针均被提交给观察者。
 8. 当不再需要观察时可以发送一条指定观察方对象和键路径的removeObserver:forKeyPath:消息至被观察的对象，来移除一个键值观察者。
 9. 使用了isa混写，当一个对象(假设是person对象，person的类是MYPerson)的属性值(假设person的age发生改变时，系统会自动生成一个继承自MYPerson的类NSKVONotifying_MYPerson，在这个类的setAge方法里面，调用[super setAge:age];[self willChangeValueForKey:@"age"];和[self didChangeValueForKey:@"age"];)，而这两个方法内部会主动调用监听者内部的-(void)observeValueForKeyPath这个方法。
+
+#### 注意点
+1. 对象automaticallyNotifiesObserversForKey:方法默认返回YES，是自动通知模式，若返回NO观察者不会收到改变消息需要手动通知(在更改值前后分别调用willChangeValueForKey:和didChangeValueForKey：)。
+2. 若对象属性有多个属性(例如Person有dog属性，Dog还有age和name属性)，除了使用点语法(dog.age/dog.name)还可以直接使用dog然后在Person中keyPathsForValuesAffectingValueForKey:方法中对key为dog做特殊处理。
+3. 数组属性，使用[person.arr addObject:@"aaa"]接收不到观察消息，[[person mutableArrayValueForKey:@"arr"] addObject:@"aaa"]; 能够接收得到观察者消息。
 
 
 

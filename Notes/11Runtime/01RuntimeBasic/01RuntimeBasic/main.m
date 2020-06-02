@@ -11,6 +11,7 @@
 #import <objc/message.h>
 #import "Person.h"
 #import "Teacher.h"
+#import "Person+Alien.h"
 
 // 获取aClass的成员变量和成员方法
 void getMethodsAndIvars(Class aClass);
@@ -20,6 +21,8 @@ void testObjcMsgSend();
 void testMethodAdd();
 // 方法交换
 void testMethodExchange();
+// 添加属性变量
+void testVarAdd();
 
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
@@ -33,8 +36,10 @@ int main(int argc, const char * argv[]) {
 //        getMethodsAndIvars([Teacher class]);
         
 //        testObjcMsgSend();
-        testMethodAdd();
+//        testMethodAdd();
 //        testMethodExchange();
+//        testMethodFarward();
+        testVarAdd();
     }
     
     return 0;
@@ -109,4 +114,15 @@ void testMethodAdd () {
 void testMethodExchange() {
     NSURL *url = [NSURL URLWithString:@"www.baidu.com/中文测试"]; // url is nil
     NSLog(@"%@", url); // (null)
+}
+
+void testVarAdd() {
+    Person *wang = [Person new];
+    wang.name = @"小王";
+    
+    [wang setValue:@"月球" forKey:@"planet"];
+    NSLog(@"%@来自%@", wang.name, [wang valueForKey:@"planet"]);
+    
+    wang.planet = @"地球";
+    NSLog(@"%@来自%@", wang.name, wang.planet);
 }

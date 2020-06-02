@@ -11,6 +11,9 @@
       location = "group:003NSOperation/003NSOperation.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:004ThreadSafe/004ThreadSafe.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:README.md">
    </FileRef>
 </Workspace>

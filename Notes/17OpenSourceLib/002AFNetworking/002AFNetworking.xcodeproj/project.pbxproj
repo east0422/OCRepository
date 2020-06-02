@@ -14,9 +14,12 @@
 		458D7B162305244D009493D8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 458D7B152305244D009493D8 /* Assets.xcassets */; };
 		458D7B192305244D009493D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 458D7B172305244D009493D8 /* LaunchScreen.storyboard */; };
 		458D7B1C2305244D009493D8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 458D7B1B2305244D009493D8 /* main.m */; };
+		83BC78BE0327861856617DA7 /* libPods-002AFNetworking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 208A6A1D127F38083E065A7B /* libPods-002AFNetworking.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		208A6A1D127F38083E065A7B /* libPods-002AFNetworking.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-002AFNetworking.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3748F8871021B447BC5924CC /* Pods-002AFNetworking.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-002AFNetworking.release.xcconfig"; path = "Target Support Files/Pods-002AFNetworking/Pods-002AFNetworking.release.xcconfig"; sourceTree = "<group>"; };
 		4567D7BE238ECC1B00BA4BD1 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		458D7B092305244C009493D8 /* 002AFNetworking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 002AFNetworking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		458D7B0C2305244C009493D8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -28,6 +31,7 @@
 		458D7B182305244D009493D8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		458D7B1A2305244D009493D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		458D7B1B2305244D009493D8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BC7A596F257E6C705B74ECB8 /* Pods-002AFNetworking.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-002AFNetworking.debug.xcconfig"; path = "Target Support Files/Pods-002AFNetworking/Pods-002AFNetworking.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				83BC78BE0327861856617DA7 /* libPods-002AFNetworking.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -47,6 +52,8 @@
 				458D7B0B2305244C009493D8 /* 002AFNetworking */,
 				458D7B0A2305244C009493D8 /* Products */,
 				4567D7BE238ECC1B00BA4BD1 /* README.md */,
+				B2DCD0AE0E2D4885CE7CB884 /* Pods */,
+				C949218AD436236E393BA3D9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,6 +81,24 @@
 			path = 002AFNetworking;
 			sourceTree = "<group>";
 		};
+		B2DCD0AE0E2D4885CE7CB884 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BC7A596F257E6C705B74ECB8 /* Pods-002AFNetworking.debug.xcconfig */,
+				3748F8871021B447BC5924CC /* Pods-002AFNetworking.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		C949218AD436236E393BA3D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				208A6A1D127F38083E065A7B /* libPods-002AFNetworking.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -81,6 +106,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 458D7B1F2305244D009493D8 /* Build configuration list for PBXNativeTarget "002AFNetworking" */;
 			buildPhases = (
+				51C75EF0FB8DA38FA6EA7D56 /* [CP] Check Pods Manifest.lock */,
 				458D7B052305244C009493D8 /* Sources */,
 				458D7B062305244C009493D8 /* Frameworks */,
 				458D7B072305244C009493D8 /* Resources */,
@@ -139,6 +165,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		51C75EF0FB8DA38FA6EA7D56 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-002AFNetworking-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		458D7B052305244C009493D8 /* Sources */ = {
@@ -287,6 +338,7 @@
 		};
 		458D7B202305244D009493D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BC7A596F257E6C705B74ECB8 /* Pods-002AFNetworking.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -303,6 +355,7 @@
 		};
 		458D7B212305244D009493D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3748F8871021B447BC5924CC /* Pods-002AFNetworking.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

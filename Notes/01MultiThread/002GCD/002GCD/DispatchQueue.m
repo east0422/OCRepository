@@ -15,6 +15,22 @@
 }
 
 /**
+ 串行队列中异步嵌套同步
+ 结果：死锁（5个小朋友站成一排，从前往后依次传递玩具，传到第3个时他要等所有都传递后他最后一个传递所以等着不传递，而后面的小朋友也一直等着他传递过来，所以造成了相互死等，即死锁）
+ */
+- (void)testNested {
+    dispatch_queue_t queue = dispatch_queue_create("nested", DISPATCH_QUEUE_SERIAL);
+    NSLog(@"-------nested start in: %@", [NSThread currentThread]);
+    dispatch_async(queue, ^{
+        NSLog(@"------nested 111 in: %@", [NSThread currentThread]);
+        dispatch_sync(queue, ^{
+            NSLog(@"------nested 222 in :%@", [NSThread currentThread]);
+        });
+    });
+    NSLog(@"-------nested end in: %@", [NSThread currentThread]);
+}
+
+/**
  串行队列：一个一个执行
  异步执行：肯定会开新线程，在新线程执行
  结果：只会开一个线程，而且所有任务都在这个新的线程里面执行
@@ -283,6 +299,24 @@
     dispatch_after(when, queue, ^{ // when 表示从现在开始，经过多少纳秒以后
         NSLog(@"延迟了一会儿------%@", [NSThread currentThread]);
     });
+}
+
+/** 按需自动创建新线程，异步执行，end最后 */
+- (void)testDispatchApplyConcurrent {
+    dispatch_queue_t queue = dispatch_queue_create("apply.concurrent", DISPATCH_QUEUE_CONCURRENT);
+    dispatch_apply(10, queue, ^(size_t index) {
+        NSLog(@"----%zu in %@", index, [NSThread currentThread]);
+    });
+    NSLog(@"end");
+}
+
+/** 在主线程中同步一个一个按顺序执行，end最后 */
+- (void)testDispatchApplySerial {
+    dispatch_queue_t queue = dispatch_queue_create("apply.serial", DISPATCH_QUEUE_SERIAL);
+    dispatch_apply(10, queue, ^(size_t index) {
+        NSLog(@"----%zu in %@", index, [NSThread currentThread]);
+    });
+    NSLog(@"end");
 }
 
 @end

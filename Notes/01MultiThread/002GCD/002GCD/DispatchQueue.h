@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 /** print Hello world! */
 - (void)printHello;
 
+/** 嵌套 */
+- (void)testNested;
+
 /** dispatch_async use serial queue */
 - (void)testSerialQueueWithAsync;
 /** dispatch_async use concurrent queue */
@@ -52,6 +55,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** dispatch_after */
 - (void)testDispatchDelay;
+
+/** dispatch_apply 并行队列 */
+- (void)testDispatchApplyConcurrent;
+
+/** dispatch_apply 串行队列 */
+- (void)testDispatchApplySerial;
 
 @end
 

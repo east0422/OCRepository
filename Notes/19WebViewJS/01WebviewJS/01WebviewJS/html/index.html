@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+    <title>原生与JS交互</title>
+    <script src="./js/index.js" type="text/javascript"></script>
+</head>
+<body bgcolor="lightgray">
+    <div style="font-size: 18px;">
+        <a href="javascript:alert('abc')">alert</a><br/>
+        <a href="javascript:confirm('abc')">confirm</a><br/>
+        <a href="javascript:prompt('请输入姓名', '小张')">prompt</a><br/>
+        <a href="index2.html">Open Inside</a><br/>
+        <a href="javascript:CallApp('WebViewOpen', {'name':'webview1', 'url':'html/index2'})">Open New WebView</a><br/>
+        <a href="javascript:OpenCamera()">Open Camera</a><br/>
+        <a href="javascript:OpenAlbum()">Open Photo Album</a><br/>
+        <input id="toast" size="30" /> <a href="javascript:ShowToast()">Toast</a><br/>
+        <input id="dataSaveKey" size="10" />
+        <input id="dataSave" size="30" /><a href="javascript:SaveData()">Data Save</a><br/>
+        <input id="dataGet" size="30" /> <a href="javascript:GetData()">Data Get</a><br/>
+        <input id="phoneCall" size="30" /> <a href="javascript:CallPhone()">Phone Call</a><br/>
+    </div>
+    <br>
+    <div>
+        <img id="myImg" style='display:block; width:220px;height:220px;' src="./images/100.jpg">
+    </div>
+</body>
+
+</html>

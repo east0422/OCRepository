@@ -40,6 +40,11 @@ void setMethod(id self, SEL _cmd, id newValue) {
     NSString *getNameStr = objc_getAssociatedObject(self, EASTKVO_GETTER);
     NSString *setNameStr = objc_getAssociatedObject(self, EASTKVO_SETTER);
     
+    // 调用父类get方法获取旧值
+//    struct objc_super superClass = {self, class_getSuperclass([self class])};
+//    id oldValue1 = objc_msgSendSuper(&superClass, NSSelectorFromString(getNameStr));
+//    NSLog(@"-------oldValue:%@", oldValue1);
+    
     // 获取当前类型以便后期恢复isa指针
     Class curClass = [self class];
     
@@ -81,8 +86,8 @@ void setMethod(id self, SEL _cmd, id newValue) {
     }
    
     // set方法首字母大写
-    NSString *keyPathChange = [[[keyPath substringToIndex:1] uppercaseString] stringByAppendingString:[keyPath substringFromIndex:1]];
-    NSString *setNameStr = [NSString stringWithFormat:@"set%@:", keyPathChange];
+//    NSString *keyPathChange = [[[keyPath substringToIndex:1] uppercaseString] stringByAppendingString:[keyPath substringFromIndex:1]];
+    NSString *setNameStr = [NSString stringWithFormat:@"set%@:", keyPath.capitalizedString];
     SEL setSEL = NSSelectorFromString(setNameStr);
     
 //    // 添加setName方法

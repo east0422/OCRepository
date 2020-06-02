@@ -20,13 +20,38 @@
     return self;
 }
 
+// 只处理dog属性
+//+ (NSSet<NSString *> *)keyPathsForValuesAffectingDog
+//{
+//    // 实际应用中可使用运行时获取对象属性
+//    return [NSSet setWithObjects: @"_dog.name", @"_dog.age", nil];
+//
+//}
+
+// 处理所有key，依据不同key做不同响应处理
++ (NSSet<NSString *> *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
+    NSSet *keypaths = [super keyPathsForValuesAffectingValueForKey:key];
+    if ([key isEqualToString:@"dog"]) {
+        keypaths = [keypaths setByAddingObjectsFromArray:@[@"_dog.name", @"_dog.age"]];
+    }
+    return keypaths;
+}
+
+// 默认为YES，自动通知，若返回NO则需要手动通知(主动调用willChangeValueForKey:和didChangeValueForKey:)
++ (BOOL)automaticallyNotifiesObserversForKey:(NSString *)key {
+    return YES;
+}
+
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     NSLog(@"观察到了%@的属性%@变化为%@", object, keyPath, change);
 }
 
-- (void)setNickName: (NSString *)nickname {
-    nickName = nickname;
+- (NSString *)nickname {
+    return self->nickname;
+}
+- (void)setNickname: (NSString *)nickname {
+    self->nickname = nickname;
 }
 
 - (void)dealloc

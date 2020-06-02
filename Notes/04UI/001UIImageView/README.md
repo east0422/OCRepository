@@ -11,7 +11,7 @@
 	* 加载到内存当中后，占据内存空间较小，无缓存。
 	* 相同的图片会被重复加载到内存当中，重复加载同一张图片占据内存会不断增大。
 	* 对象销毁的时候，加载到内存中的图片会随着一起销毁，图片所占用的内存会（在一些特定操作后）被清除。
-3. 放在xcassets里面的图片只能通过imageNamed方法加载，图片放在非cassettes中则可以通过[[NSBundle mainBundle] pathForResource: imageName ofType: imageType];获取对应图片路径后再使用上述2加载图片。
+3. 放在Assets里面的图片只能通过imageNamed方法加载，图片放在非Assetes中则可以通过[[NSBundle mainBundle] pathForResource: imageName ofType: imageType];获取对应图片路径后再使用上述2加载图片。
 4. 可将多张图片放入一个数组赋值给UIImageView的animationImages属性然后调用startAnimating开始动画播放，不过需要注意的是在动画播放完成后记得将animationImages置为nil避免长期占用内存资源[self.imageView performSelector:@selector(setAnimationImages:) withObject:nil after:self.imageView.animationDuration+0.1]。
 
 #### UIImageView添加圆角

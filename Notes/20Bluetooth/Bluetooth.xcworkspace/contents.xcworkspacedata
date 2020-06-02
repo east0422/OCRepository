@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:001GameKit/001GameKit.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:002MultipeerConnectivity/002MultipeerConnectivity.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:003ExternalAccessory/003ExternalAccessory.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:004CoreBluetooth/004CoreBluetooth.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:README.md">
+   </FileRef>
+</Workspace>

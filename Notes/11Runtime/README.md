@@ -190,7 +190,7 @@
 	3. 如果class中没找到foo，继续往它的superclass中找。
 	4. 一旦找到foo这个函数，就去执行它的实现IMP。
 	5. 在找到foo之后会把foo的method_name作为key，method_imp作为value放到cache中存起来，当再次收到foo消息是可以直接在cache中找到，避免去遍历objc_method_list。
-4. 如果objc_msgSend(obj, foo)中foo没有找到的话，通常情况程序会在运行时挂掉并抛出unrecognized selector sent to...异常，但在异常抛出钱，OC的运行时会给三次拯救程序的机会：
+4. 如果objc_msgSend(obj, foo)中foo没有找到的话，通常情况程序会在运行时挂掉并抛出unrecognized selector sent to...异常，但在异常抛出前，OC的运行时会给三次拯救程序的机会：
 	1. Method resolution：OC运行时会调用+resolveInstanceMethod:或+resolveClassMethod:让有机会提供一个函数实现，若添加了函数并返回YES，那么运行时系统会重新启动一次消息发送的过程。
 		
 		```
@@ -250,6 +250,7 @@
 	3. 第三步：若第二步返回的是nil，则我们首先要通过-(NSMethodSignature *)methodSignatureForSelector:(SEL)aSelector指定方法签名，若返回nil，则表示不处理。若返回方法签名，则会进入下一步。
 	4. 第四步：当第三步返回方法签名后，就会调用-(void)forwardInvocation:(NSInvocation *)anInvocation方法，我们可以通过anInvocation对象做很多处理，比如修改实现方法，修改响应对象等。
 	5. 第五步：若没有实现-(void)forwardInvocation:(NSInvocation *)anInvocation方法，那么会进入-(void)doesNotRecognizeSelector:(SEL)aSelector方法。若我们没有实现这个方法，那么就会crash，然后提示找不到响应的方法。到此，动态解析的流程就结束了。
+3. 如果对象不是继承于NSObject而是继承NSProxy则不会进入resolveInstanceMethod和forwardingTargetForSelector，而直接进入methodSignatureForSelector，forwardInvocation及doesNotRecognizeSelector。
 
 #### 方法中的隐藏参数
 1. 当objc_msgSend找到方法对应实现时，它将直接调用该方法实现并将消息中所有参数都传递给方法实现，同时它还将传递两个隐藏参数：

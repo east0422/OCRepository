@@ -1,5 +1,10 @@
 # 性能优化
 
+#### 查看app启动时间
+1. Edit Scheme -> Arguments -> Environment Variables增加字段DYLD_PRINT_STATISTICS值设为1可得出dyld耗时信息。
+2. 在main.m中定义全局变量CFAbsoluteTime startTime在main方法中初始化startTime=CFAbsoluteTimeGetCurrent()；在AppDelegate.m中使用extern CFAbsoluteTime startTime声明外部全局变量，在didFinishLaunchingWithOptions:方法中获取当前时间CFAbsoluteTimeGetCurrent再减去startTime可得出main函数后Application启动时间。
+3. 使用Time Profile工具。
+
 #### UITableview
 1. 正确使用reuseIdentifier来复用单元格。
 2. 尽量使用不透明的视图，不透明的视图可以提高渲染的速度，可将cell及其子视图的opaque属性设为YES(默认值)。单元格中尽量少使用动画效果，最好不要使用insertRowsAtIndexPaths:withRowAnimation:方法，而是直接调用reloadData方法。

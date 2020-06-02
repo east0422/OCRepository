@@ -13,6 +13,7 @@
 		45F45A83212A6B2000CF40A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F45A82212A6B2000CF40A0 /* main.m */; };
 		45F45A8B212A6CBE00CF40A0 /* Baby.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F45A8A212A6CBE00CF40A0 /* Baby.m */; };
 		45F45A8E212A6CC900CF40A0 /* Nanny.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F45A8D212A6CC900CF40A0 /* Nanny.m */; };
+		45F86ECE2473B0D100884C9D /* Dog.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F86ECD2473B0D100884C9D /* Dog.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,6 +42,8 @@
 		45F45A8A212A6CBE00CF40A0 /* Baby.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Baby.m; sourceTree = "<group>"; };
 		45F45A8C212A6CC900CF40A0 /* Nanny.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Nanny.h; sourceTree = "<group>"; };
 		45F45A8D212A6CC900CF40A0 /* Nanny.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Nanny.m; sourceTree = "<group>"; };
+		45F86ECC2473B0D100884C9D /* Dog.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Dog.h; sourceTree = "<group>"; };
+		45F86ECD2473B0D100884C9D /* Dog.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Dog.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 				45A88C2D22FA6D5A00C2B52F /* Person.m */,
 				45A88C2F22FA7C2D00C2B52F /* NSObject+KVO.h */,
 				45A88C3022FA7C2D00C2B52F /* NSObject+KVO.m */,
+				45F86ECC2473B0D100884C9D /* Dog.h */,
+				45F86ECD2473B0D100884C9D /* Dog.m */,
 			);
 			path = 03KVO;
 			sourceTree = "<group>";
@@ -149,6 +154,7 @@
 				45F45A83212A6B2000CF40A0 /* main.m in Sources */,
 				45A88C3122FA7C2D00C2B52F /* NSObject+KVO.m in Sources */,
 				45A88C3422FAC61100C2B52F /* Animal.m in Sources */,
+				45F86ECE2473B0D100884C9D /* Dog.m in Sources */,
 				45A88C2E22FA6D5A00C2B52F /* Person.m in Sources */,
 				45F45A8B212A6CBE00CF40A0 /* Baby.m in Sources */,
 			);

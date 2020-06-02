@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		452B8A40246A373A00E6B2DE /* NSObject+EASTKVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 452B8A3F246A373A00E6B2DE /* NSObject+EASTKVC.m */; };
+		452B8A43246A438E00E6B2DE /* Animal.m in Sources */ = {isa = PBXBuildFile; fileRef = 452B8A42246A438E00E6B2DE /* Animal.m */; };
+		4591FCCF24699021009FBFBC /* Human.m in Sources */ = {isa = PBXBuildFile; fileRef = 4591FCCE24699021009FBFBC /* Human.m */; };
 		45F45A6D212A5C0D00CF40A0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F45A6C212A5C0D00CF40A0 /* main.m */; };
 		45F45A75212A5C4F00CF40A0 /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = 45F45A74212A5C4F00CF40A0 /* Person.m */; };
 /* End PBXBuildFile section */
@@ -24,7 +27,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		452B8A3E246A373A00E6B2DE /* NSObject+EASTKVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSObject+EASTKVC.h"; sourceTree = "<group>"; };
+		452B8A3F246A373A00E6B2DE /* NSObject+EASTKVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSObject+EASTKVC.m"; sourceTree = "<group>"; };
+		452B8A41246A438E00E6B2DE /* Animal.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Animal.h; sourceTree = "<group>"; };
+		452B8A42246A438E00E6B2DE /* Animal.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Animal.m; sourceTree = "<group>"; };
 		4567D7AE238EC2EC00BA4BD1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		4591FCCD24699021009FBFBC /* Human.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Human.h; sourceTree = "<group>"; };
+		4591FCCE24699021009FBFBC /* Human.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Human.m; sourceTree = "<group>"; };
 		45F45A69212A5C0D00CF40A0 /* 02KVC */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = 02KVC; sourceTree = BUILT_PRODUCTS_DIR; };
 		45F45A6C212A5C0D00CF40A0 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		45F45A73212A5C4F00CF40A0 /* Person.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
@@ -65,6 +74,12 @@
 				45F45A6C212A5C0D00CF40A0 /* main.m */,
 				45F45A73212A5C4F00CF40A0 /* Person.h */,
 				45F45A74212A5C4F00CF40A0 /* Person.m */,
+				4591FCCD24699021009FBFBC /* Human.h */,
+				4591FCCE24699021009FBFBC /* Human.m */,
+				452B8A3E246A373A00E6B2DE /* NSObject+EASTKVC.h */,
+				452B8A3F246A373A00E6B2DE /* NSObject+EASTKVC.m */,
+				452B8A41246A438E00E6B2DE /* Animal.h */,
+				452B8A42246A438E00E6B2DE /* Animal.m */,
 			);
 			path = 02KVC;
 			sourceTree = "<group>";
@@ -125,6 +140,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4591FCCF24699021009FBFBC /* Human.m in Sources */,
+				452B8A40246A373A00E6B2DE /* NSObject+EASTKVC.m in Sources */,
+				452B8A43246A438E00E6B2DE /* Animal.m in Sources */,
 				45F45A75212A5C4F00CF40A0 /* Person.m in Sources */,
 				45F45A6D212A5C0D00CF40A0 /* main.m in Sources */,
 			);

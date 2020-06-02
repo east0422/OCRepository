@@ -20,6 +20,9 @@
       location = "group:006UIView/006UIView.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:007UIPickerView/007UIPickerView.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:README.md">
    </FileRef>
 </Workspace>

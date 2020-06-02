@@ -5,6 +5,9 @@
       location = "group:01RuntimeBasic/01RuntimeBasic.xcodeproj">
    </FileRef>
    <FileRef
+      location = "group:02RuntimeMsgForward/02RuntimeMsgForward.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:README.md">
    </FileRef>
 </Workspace>
