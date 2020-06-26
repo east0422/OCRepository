@@ -74,7 +74,7 @@
             
             CGRect delegateBounds = CGRectOffset(runBounds, colRect.origin.x, colRect.origin.y);
             
-            imageData.imagePosition = delegateBounds;
+            imageData.position = delegateBounds;
             imgIndex++;
             if (imgIndex == self.imageArr.count) {
                 imageData = nil;

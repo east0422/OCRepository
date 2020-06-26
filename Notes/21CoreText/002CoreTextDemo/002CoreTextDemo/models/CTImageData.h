@@ -12,11 +12,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CTImageData : NSObject
 
-@property (nonatomic, strong) NSString *name;
-@property (nonatomic, assign) NSUInteger position;
-
-/** 图片位置坐标是CoreText坐标系，需要转换为UIKit坐标系 */
-@property (nonatomic, assign) CGRect imagePosition;
+/** 图片名称 */
+@property (nonatomic, copy) NSString *name;
+/** 图片插入位置 */
+@property (nonatomic, assign) NSInteger index;
+/** 图片显示位置(CoreText坐标系) */
+@property (nonatomic, assign) CGRect position;
 
 @end
 

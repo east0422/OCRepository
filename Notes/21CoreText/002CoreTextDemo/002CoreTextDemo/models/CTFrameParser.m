@@ -95,6 +95,88 @@
     return [self parseAttributedContent:attStr config:config];
 }
 
++ (CTData *)parseTemplateFile:(NSString *)path config:(CTFrameParserConfig *)config {
+    NSMutableArray *imageArray = [NSMutableArray array];
+    NSMutableArray *linkArray = [NSMutableArray array];
+    NSAttributedString *content = [self loadTemplateFile:path config:config
+                                              imageArray:imageArray linkArray:linkArray];
+    CTData *data = [self parseAttributedContent:content config:config];
+    data.imageArr = imageArray;
+    data.linkArr = linkArray;
+    return data;
+}
+
++ (NSAttributedString *)loadTemplateFile:(NSString *)path
+                                  config:(CTFrameParserConfig*)config
+                              imageArray:(NSMutableArray *)imageArray
+                               linkArray:(NSMutableArray *)linkArray {
+    NSData *data = [NSData dataWithContentsOfFile:path];
+    NSMutableAttributedString *result = [[NSMutableAttributedString alloc] init];
+    if (data) {
+        NSArray *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:nil];
+        if ([array isKindOfClass:[NSArray class]]) {
+            for (NSDictionary *dict in array) {
+                NSString *type = dict[@"type"];
+                if ([type isEqualToString:@"txt"]) {
+                    NSAttributedString *as = [self parseAttributedContentFromNSDictionary:dict
+                                                                                   config:config];
+                    [result appendAttributedString:as];
+                } else if ([type isEqualToString:@"img"]) {
+                    // 创建 CTImageData
+                    CTImageData *imageData = [[CTImageData alloc] init];
+                    imageData.name = dict[@"name"];
+                    imageData.index = [result length];
+                    [imageArray addObject:imageData];
+                    // 创建空白占位符，并且设置它的CTRunDelegate信息
+                    NSAttributedString *as = [self parseImageDataFromNSDictionary:dict config:config];
+                    [result appendAttributedString:as];
+                } else if ([type isEqualToString:@"link"]) {
+                    NSAttributedString *as = [self parseAttributedContentFromNSDictionary:dict
+                                                                                   config:config];
+                    [result appendAttributedString:as];
+                    // 创建 CTLinkData
+                    CTLinkData *linkData = [[CTLinkData alloc] init];
+                    linkData.title = dict[@"title"];
+                    linkData.url = dict[@"url"];
+                    [linkArray addObject:linkData];
+                }
+            }
+        }
+    }
+    return result;
+}
+
++ (NSAttributedString *)parseAttributedContentFromNSDictionary:(NSDictionary *)dict
+                                                        config:(CTFrameParserConfig*)config {
+    NSMutableDictionary *attributes = [self attributesWithConfig:config];
+    // set color
+    UIColor *color = [self colorFromTemplate:dict[@"color"]];
+    if (color != nil) {
+        attributes[NSForegroundColorAttributeName] = color;
+    }
+    // set font size
+    CGFloat fontSize = [dict[@"size"] floatValue];
+    if (fontSize > 0) {
+        CTFontRef fontRef = CTFontCreateWithName((CFStringRef)@"ArialMT", fontSize, NULL);
+        attributes[NSFontAttributeName] = (__bridge id)fontRef;
+        CFRelease(fontRef);
+    }
+    NSString *content = dict[@"content"];
+    return [[NSAttributedString alloc] initWithString:content attributes:attributes];
+}
+
++ (UIColor *)colorFromTemplate:(NSString *)name {
+    if ([name isEqualToString:@"blue"]) {
+        return [UIColor blueColor];
+    } else if ([name isEqualToString:@"red"]) {
+        return [UIColor redColor];
+    } else if ([name isEqualToString:@"black"]) {
+        return [UIColor blackColor];
+    } else {
+        return nil;
+    }
+}
+
 + (CTFrameRef)createFrameWithFrameSetter:(CTFramesetterRef)frameSetter config:(CTFrameParserConfig *)config height:(CGFloat)height {
     CGMutablePathRef path = CGPathCreateMutable();
     CGPathAddRect(path, NULL, CGRectMake(0, 0, config.width, height));

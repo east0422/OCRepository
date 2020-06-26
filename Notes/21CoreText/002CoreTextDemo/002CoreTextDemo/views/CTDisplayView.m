@@ -30,7 +30,7 @@
         for (CTImageData *ctImageData in self.data.imageArr) {
             UIImage *image = [UIImage imageNamed:ctImageData.name];
             if (image) {
-                CGContextDrawImage(context, ctImageData.imagePosition, image.CGImage);
+                CGContextDrawImage(context, ctImageData.position, image.CGImage);
             }
         }
     }

@@ -1,0 +1,40 @@
+[ { 
+    "type" : "img",
+    "width" : 280,
+    "height" : 160,
+    "name" : "mars.png"
+  },
+  { "color" : "blue",
+    "content" : "通过一个排版文件，来设置需要排版文字的 ",
+    "size" : 16,
+    "type" : "txt"
+  },
+  { "color" : "red",
+    "content" : "内容、颜色、字体",
+    "size" : 22,
+    "type" : "txt"
+  },
+  { "color" : "default",
+    "content" : "学习CoreText，解析json文件依据type显示为相应图片、文本、链接，后期还会深入研究学习！",
+    "type" : "txt"
+  },
+  { 
+    "type" : "img",
+    "width" : 50,
+    "height" : 32,
+    "name" : "101.jpg"
+  },
+  { "color" : "default",
+    "content" : "这在这里尝试放一个参考链接：",
+    "type" : "txt"
+  },
+  { "color" : "blue",
+    "content" : "链接文字",
+    "url" : "http://www.baidu.com",
+    "type" : "link"
+  },
+  { "color" : "default",
+    "content" : "可以尝试点击一下",
+    "type" : "txt"
+  }
+]

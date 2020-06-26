@@ -19,6 +19,10 @@
 		452B8ABF246BA0F900E6B2DE /* CTFrameParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 452B8ABE246BA0F900E6B2DE /* CTFrameParser.m */; };
 		452B8AC5246BA12F00E6B2DE /* CTData.m in Sources */ = {isa = PBXBuildFile; fileRef = 452B8AC4246BA12F00E6B2DE /* CTData.m */; };
 		452B8AC8246C43C000E6B2DE /* CTImageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 452B8AC7246C43C000E6B2DE /* CTImageData.m */; };
+		457AECB924A4A55E004A74CB /* 101.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 457AECB824A4A55E004A74CB /* 101.jpg */; };
+		457AECBB24A4A56B004A74CB /* mars.png in Resources */ = {isa = PBXBuildFile; fileRef = 457AECBA24A4A56A004A74CB /* mars.png */; };
+		457AECBE24A4A669004A74CB /* CTLinkData.m in Sources */ = {isa = PBXBuildFile; fileRef = 457AECBD24A4A669004A74CB /* CTLinkData.m */; };
+		457AECC024A50B26004A74CB /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 457AECBF24A50B26004A74CB /* content.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +48,11 @@
 		452B8AC4246BA12F00E6B2DE /* CTData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTData.m; sourceTree = "<group>"; };
 		452B8AC6246C43C000E6B2DE /* CTImageData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTImageData.h; sourceTree = "<group>"; };
 		452B8AC7246C43C000E6B2DE /* CTImageData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTImageData.m; sourceTree = "<group>"; };
+		457AECB824A4A55E004A74CB /* 101.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 101.jpg; sourceTree = "<group>"; };
+		457AECBA24A4A56A004A74CB /* mars.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mars.png; sourceTree = "<group>"; };
+		457AECBC24A4A669004A74CB /* CTLinkData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTLinkData.h; sourceTree = "<group>"; };
+		457AECBD24A4A669004A74CB /* CTLinkData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTLinkData.m; sourceTree = "<group>"; };
+		457AECBF24A50B26004A74CB /* content.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,19 +85,28 @@
 		452B8A9D246BA07900E6B2DE /* 002CoreTextDemo */ = {
 			isa = PBXGroup;
 			children = (
+				457AECB324A4A492004A74CB /* controllers */,
+				457AECB224A4A48B004A74CB /* views */,
+				457AECB124A4A478004A74CB /* models */,
 				452B8A9E246BA07900E6B2DE /* AppDelegate.h */,
 				452B8A9F246BA07900E6B2DE /* AppDelegate.m */,
 				452B8AA1246BA07900E6B2DE /* SceneDelegate.h */,
 				452B8AA2246BA07900E6B2DE /* SceneDelegate.m */,
-				452B8AA4246BA07900E6B2DE /* ViewController.h */,
-				452B8AA5246BA07900E6B2DE /* ViewController.m */,
 				452B8AA7246BA07900E6B2DE /* Main.storyboard */,
 				452B8AAA246BA07B00E6B2DE /* Assets.xcassets */,
 				452B8AAC246BA07B00E6B2DE /* LaunchScreen.storyboard */,
+				457AECBF24A50B26004A74CB /* content.json */,
 				452B8AAF246BA07B00E6B2DE /* Info.plist */,
+				457AECB824A4A55E004A74CB /* 101.jpg */,
+				457AECBA24A4A56A004A74CB /* mars.png */,
 				452B8AB0246BA07B00E6B2DE /* main.m */,
-				452B8AB7246BA0A800E6B2DE /* CTDisplayView.h */,
-				452B8AB8246BA0A800E6B2DE /* CTDisplayView.m */,
+			);
+			path = 002CoreTextDemo;
+			sourceTree = "<group>";
+		};
+		457AECB124A4A478004A74CB /* models */ = {
+			isa = PBXGroup;
+			children = (
 				452B8ABA246BA0D600E6B2DE /* CTFrameParserConfig.h */,
 				452B8ABB246BA0D600E6B2DE /* CTFrameParserConfig.m */,
 				452B8ABD246BA0F900E6B2DE /* CTFrameParser.h */,
@@ -97,8 +115,28 @@
 				452B8AC4246BA12F00E6B2DE /* CTData.m */,
 				452B8AC6246C43C000E6B2DE /* CTImageData.h */,
 				452B8AC7246C43C000E6B2DE /* CTImageData.m */,
+				457AECBC24A4A669004A74CB /* CTLinkData.h */,
+				457AECBD24A4A669004A74CB /* CTLinkData.m */,
 			);
-			path = 002CoreTextDemo;
+			path = models;
+			sourceTree = "<group>";
+		};
+		457AECB224A4A48B004A74CB /* views */ = {
+			isa = PBXGroup;
+			children = (
+				452B8AB7246BA0A800E6B2DE /* CTDisplayView.h */,
+				452B8AB8246BA0A800E6B2DE /* CTDisplayView.m */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		457AECB324A4A492004A74CB /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				452B8AA4246BA07900E6B2DE /* ViewController.h */,
+				452B8AA5246BA07900E6B2DE /* ViewController.m */,
+			);
+			path = controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -158,9 +196,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				457AECB924A4A55E004A74CB /* 101.jpg in Resources */,
+				457AECBB24A4A56B004A74CB /* mars.png in Resources */,
 				452B8AAE246BA07B00E6B2DE /* LaunchScreen.storyboard in Resources */,
 				452B8AAB246BA07B00E6B2DE /* Assets.xcassets in Resources */,
 				452B8AA9246BA07900E6B2DE /* Main.storyboard in Resources */,
+				457AECC024A50B26004A74CB /* content.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -179,6 +220,7 @@
 				452B8AC8246C43C000E6B2DE /* CTImageData.m in Sources */,
 				452B8AA3246BA07900E6B2DE /* SceneDelegate.m in Sources */,
 				452B8ABF246BA0F900E6B2DE /* CTFrameParser.m in Sources */,
+				457AECBE24A4A669004A74CB /* CTLinkData.m in Sources */,
 				452B8ABC246BA0D600E6B2DE /* CTFrameParserConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

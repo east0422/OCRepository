@@ -12,10 +12,14 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface CTFrameParserConfig : NSObject
 
+/** 宽度 */
 @property (nonatomic, assign) CGFloat width;
+/** 文本字体大小 */
 @property (nonatomic, assign) CGFloat fontSize;
-@property (nonatomic, assign) CGFloat lineSpace;
+/** 文本颜色 */
 @property (nonatomic, strong) UIColor *textColor;
+/** 行距 */
+@property (nonatomic, assign) CGFloat lineSpace;
 
 @end
 

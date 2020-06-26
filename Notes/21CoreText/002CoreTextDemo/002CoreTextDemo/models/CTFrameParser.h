@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "CTData.h"
+#import "CTImageData.h"
+#import "CTLinkData.h"
 #import "CTFrameParserConfig.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -19,6 +21,8 @@ NS_ASSUME_NONNULL_BEGIN
 + (CTData *)parseAttributedContent:(NSAttributedString *)content config:(CTFrameParserConfig *)config;
 /** 以配置标准解析内容  */
 + (CTData *)parseContent:(NSString *)content config:(CTFrameParserConfig *)config;
+/** 解析指定路径文件内容 */
++ (CTData *)parseTemplateFile:(NSString *)path config:(CTFrameParserConfig *)config;
 
 @end
 
