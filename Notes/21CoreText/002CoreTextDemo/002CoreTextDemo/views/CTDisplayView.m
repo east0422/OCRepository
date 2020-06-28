@@ -85,45 +85,45 @@
 //    debugLog;
     
     CGPoint point = [gestureRecognizer locationInView:self];
+//    // 图片
+//    for (CTImageData *imageData in self.data.imageArr) {
+//        Boolean isAlert = [self showAlert:@"点击图片" withMessage:imageData.description ifUIPoint:point inCTRect:imageData.position];
+//        if (isAlert) {
+//            return;
+//        }
+//    }
+//
+//    // 链接
+//    for (int i = 0; i < self.data.linkArr.count; i++) {
+//        CTLinkData *linkData = self.data.linkArr[i];
+//        for (int j = 0 ;j < linkData.positions.count; j++) {
+//            NSValue *rectValue = linkData.positions[j];
+//            Boolean isAlert = [self showAlert:@"点击链接" withMessage:linkData.description ifUIPoint:point inCTRect:rectValue.CGRectValue];
+//            if (isAlert) {
+//                return;
+//            }
+//        }
+//    }
+
+    CFIndex idx = [self offsetAtPoint:point];
+    if (idx == kCFNotFound) {
+        return;
+    }
     // 图片
+    // 判断占位符索引与文本点击一样不太精准，会向左偏移一半
     for (CTImageData *imageData in self.data.imageArr) {
-        Boolean isAlert = [self showAlert:@"点击图片" withMessage:imageData.description ifUIPoint:point inCTRect:imageData.position];
-        if (isAlert) {
+        if (idx == imageData.index) {
+            [self showAlert:@"点击图片" withContent:imageData.description];
             return;
         }
     }
-
-    for (int i = 0; i < self.data.linkArr.count; i++) {
-        CTLinkData *linkData = self.data.linkArr[i];
-        for (int j = 0 ;j < linkData.positions.count; j++) {
-            NSValue *rectValue = linkData.positions[j];
-            Boolean isAlert = [self showAlert:@"点击链接" withMessage:linkData.description ifUIPoint:point inCTRect:rectValue.CGRectValue];
-            if (isAlert) {
-                return;
-            }
+    // 链接
+    for (CTLinkData *linkData in self.data.linkArr) {
+        if (NSLocationInRange(idx, linkData.range)) {
+            [self showAlert:@"点击链接" withContent:linkData.description];
+            return;
         }
     }
-
-//    CFIndex idx = [self offsetAtPoint:point];
-//    NSLog(@"idx:%ld", (long)idx);
-//    if (idx == -1) {
-//        return;
-//    }
-//    // 图片
-//    // 判断占位符索引与文本点击一样不太精准，会向左偏移一半
-//    for (CTImageData *imageData in self.data.imageArr) {
-//        if (idx == imageData.index) {
-//            [self showAlert:@"点击图片" withContent:imageData.description];
-//            return;
-//        }
-//    }
-//    // 链接
-//    for (CTLinkData *linkData in self.data.linkArr) {
-//        if (NSLocationInRange(idx, linkData.range)) {
-//            [self showAlert:@"点击链接" withContent:linkData.description];
-//            return;
-//        }
-//    }
 }
 
 - (void)longPressGestureRecognizerHandle:(UIGestureRecognizer *)gestureRecognizer {
@@ -167,16 +167,17 @@
 
     // 获得每一行的origin坐标
     CGPoint origins[count];
-    CTFrameGetLineOrigins(textFrame, CFRangeMake(0,0), origins);
+    CTFrameGetLineOrigins(textFrame, CFRangeMake(0, 0), origins);
 
     // 翻转坐标系
-    CGAffineTransform transform =  CGAffineTransformMakeTranslation(0, self.bounds.size.height);
+    CGAffineTransform transform = CGAffineTransformMakeTranslation(0, self.bounds.size.height);
     transform = CGAffineTransformScale(transform, 1.f, -1.f);
 
-    CFIndex idx = -1;
+    CFIndex idx = kCFNotFound;
     for (int i = 0; i < count; i++) {
         CGPoint linePoint = origins[i];
         CTLineRef line = CFArrayGetValueAtIndex(lines, i);
+        
         // 获得每一行的CGRect信息
         CGRect flippedRect = [self getLineBounds:line point:linePoint];
         CGRect rect = CGRectApplyAffineTransform(flippedRect, transform);
@@ -184,13 +185,20 @@
         if (CGRectContainsPoint(rect, point)) {
             // 将点击的坐标转换成相对于当前行的坐标
             CGPoint relativePoint = CGPointMake(point.x-CGRectGetMinX(rect), point.y-CGRectGetMinY(rect));
-            NSLog(@"%@", NSStringFromCGPoint(relativePoint));
-            // 获得当前点击坐标对应的字符串偏移
+            // 获得当前点击坐标对应的字符索引
             idx = CTLineGetStringIndexForPosition(line, relativePoint);
-            continue;
+            
+            // 点击图片左半边响应，右半边不响应；链接首文字前一个非链接文字右半边会响应，链接尾文字右半边不会响应
+            // fix left side hand but right side not hand
+            CGFloat secondaryOffset;
+            CGFloat primaryOffset = CTLineGetOffsetForStringIndex(line, idx, &secondaryOffset);
+//            NSLog(@"idx:%ld, primaryOffset:%f, secondaryOffset:%f", (long)idx, primaryOffset, secondaryOffset);
+            if (relativePoint.x < primaryOffset && (idx > 0)) {
+                --idx;
+            }
+            break;
         }
     }
-    NSLog(@"idx:%ld", (long)idx);
     return idx;
 }
 

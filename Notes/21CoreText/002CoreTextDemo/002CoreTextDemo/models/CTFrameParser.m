@@ -54,7 +54,7 @@
     // 使用0xFFFC作为空白的占位符
     unichar objectReplacementChar = 0xFFFC;
     NSString * content = [NSString stringWithCharacters:&objectReplacementChar length:1];
-    NSDictionary * attributes = [self attributesWithConfig:config];
+    NSDictionary *attributes = [self attributesWithConfig:config];
     NSMutableAttributedString * space = [[NSMutableAttributedString alloc] initWithString:content attributes:attributes];
     CFAttributedStringSetAttribute((CFMutableAttributedStringRef)space, CFRangeMake(0, 1), kCTRunDelegateAttributeName, delegate);
     CFRelease(delegate);
