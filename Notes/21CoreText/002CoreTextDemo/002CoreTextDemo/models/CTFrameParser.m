@@ -131,13 +131,18 @@
                     NSAttributedString *as = [self parseImageDataFromNSDictionary:dict config:config];
                     [result appendAttributedString:as];
                 } else if ([type isEqualToString:@"link"]) {
-                    NSAttributedString *as = [self parseAttributedContentFromNSDictionary:dict
-                                                                                   config:config];
+                    NSUInteger start = result.length;
+                    
+                    NSAttributedString *as = [self parseAttributedContentFromNSDictionary:dict config:config];
                     [result appendAttributedString:as];
+                    
+                    NSUInteger length = result.length - start;
+                    NSRange linkRange = NSMakeRange(start, length);
                     // 创建 CTLinkData
                     CTLinkData *linkData = [[CTLinkData alloc] init];
                     linkData.title = dict[@"title"];
                     linkData.url = dict[@"url"];
+                    linkData.range = linkRange;
                     [linkArray addObject:linkData];
                 }
             }

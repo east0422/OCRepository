@@ -5,7 +5,7 @@
     "name" : "mars.png"
   },
   { "color" : "blue",
-    "content" : "通过一个排版文件，来设置需要排版文字的 ",
+    "content" : "通过一个排版文件，来设置需要排版文字的",
     "size" : 16,
     "type" : "txt"
   },
@@ -29,8 +29,9 @@
     "type" : "txt"
   },
   { "color" : "blue",
+    "title": "链接标题",
     "content" : "链接文字",
-    "url" : "http://www.baidu.com",
+    "url" : "http://localhost/test",
     "type" : "link"
   },
   { "color" : "default",

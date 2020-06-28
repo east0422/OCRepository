@@ -14,7 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 /** 图片名称 */
 @property (nonatomic, copy) NSString *name;
-/** 图片插入位置 */
+/** 图片占位符插入位置 */
 @property (nonatomic, assign) NSInteger index;
 /** 图片显示位置(CoreText坐标系) */
 @property (nonatomic, assign) CGRect position;

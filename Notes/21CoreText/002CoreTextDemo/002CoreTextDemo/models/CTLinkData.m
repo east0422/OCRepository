@@ -10,4 +10,9 @@
 
 @implementation CTLinkData
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"title:%@, url:%@, range:%@", _title, _url, NSStringFromRange(_range)];
+}
+
 @end

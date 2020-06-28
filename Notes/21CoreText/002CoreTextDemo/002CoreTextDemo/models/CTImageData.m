@@ -10,4 +10,9 @@
 
 @implementation CTImageData
 
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"name:%@, index:%ld, position:%@", _name, (long)_index, NSStringFromCGRect(_position)];
+}
+
 @end
