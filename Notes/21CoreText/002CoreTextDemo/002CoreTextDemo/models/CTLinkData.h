@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, copy) NSString *url;
 /** 链接文字显示位置(CoreText坐标系) */
 @property (nonatomic, assign) NSRange range;
+/** 链接文字坐标(一个长链接可能会有多行有多个区域，valueWithCGRect:) */
+@property (nonatomic, strong) NSMutableArray<NSValue *> *positions;
 
 @end
 

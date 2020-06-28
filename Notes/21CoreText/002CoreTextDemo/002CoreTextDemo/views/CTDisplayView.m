@@ -86,40 +86,44 @@
     
     CGPoint point = [gestureRecognizer locationInView:self];
     // 图片
+    for (CTImageData *imageData in self.data.imageArr) {
+        Boolean isAlert = [self showAlert:@"点击图片" withMessage:imageData.description ifUIPoint:point inCTRect:imageData.position];
+        if (isAlert) {
+            return;
+        }
+    }
+
+    for (int i = 0; i < self.data.linkArr.count; i++) {
+        CTLinkData *linkData = self.data.linkArr[i];
+        for (int j = 0 ;j < linkData.positions.count; j++) {
+            NSValue *rectValue = linkData.positions[j];
+            Boolean isAlert = [self showAlert:@"点击链接" withMessage:linkData.description ifUIPoint:point inCTRect:rectValue.CGRectValue];
+            if (isAlert) {
+                return;
+            }
+        }
+    }
+
+//    CFIndex idx = [self offsetAtPoint:point];
+//    NSLog(@"idx:%ld", (long)idx);
+//    if (idx == -1) {
+//        return;
+//    }
+//    // 图片
+//    // 判断占位符索引与文本点击一样不太精准，会向左偏移一半
 //    for (CTImageData *imageData in self.data.imageArr) {
-//        // 翻转坐标系，ctrect是CoreText的坐标系
-//        CGRect ctRect = imageData.position;
-//        CGPoint origin = ctRect.origin;
-//        origin.y = self.bounds.size.height - ctRect.origin.y - ctRect.size.height;
-//        CGRect rect = CGRectMake(origin.x, origin.y, ctRect.size.width, ctRect.size.height);
-//        // 检测点击位置是否在rect之内
-//        if (CGRectContainsPoint(rect, point)) {
-//            // 在这里处理点击后的逻辑
+//        if (idx == imageData.index) {
 //            [self showAlert:@"点击图片" withContent:imageData.description];
 //            return;
 //        }
 //    }
-    
-    CFIndex idx = [self offsetAtPoint:point];
-    NSLog(@"idx:%ld", (long)idx);
-    if (idx == -1) {
-        return;
-    }
-    // 图片
-    // 判断占位符索引与文本点击一样不太精准，会向左偏移一半
-    for (CTImageData *imageData in self.data.imageArr) {
-        if (idx == imageData.index) {
-            [self showAlert:@"点击图片" withContent:imageData.description];
-            return;
-        }
-    }
-    // 链接
-    for (CTLinkData *linkData in self.data.linkArr) {
-        if (NSLocationInRange(idx, linkData.range)) {
-            [self showAlert:@"点击链接" withContent:linkData.description];
-            return;
-        }
-    }
+//    // 链接
+//    for (CTLinkData *linkData in self.data.linkArr) {
+//        if (NSLocationInRange(idx, linkData.range)) {
+//            [self showAlert:@"点击链接" withContent:linkData.description];
+//            return;
+//        }
+//    }
 }
 
 - (void)longPressGestureRecognizerHandle:(UIGestureRecognizer *)gestureRecognizer {
@@ -130,19 +134,26 @@
     debugLog;
 }
 
+- (Boolean)showAlert:(NSString *)title withMessage:(NSString *)message ifUIPoint:(CGPoint)uiPoint inCTRect:(CGRect)ctRect {
+    CGPoint origin = ctRect.origin;
+    origin.y = self.bounds.size.height - ctRect.origin.y - ctRect.size.height;
+    CGRect rect = CGRectMake(origin.x, origin.y, ctRect.size.width, ctRect.size.height);
+    // 检测点击位置是否在rect之内
+    if (CGRectContainsPoint(rect, uiPoint)) {
+        // 在这里处理点击后的逻辑
+        [self showAlert:title withContent:message];
+        return true;
+    }
+    return false;
+}
+
 - (void)showAlert:(NSString *)title withContent:(NSString *)content {
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:content preferredStyle:(UIAlertControllerStyleAlert)];
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:(UIAlertActionStyleDefault) handler:^(UIAlertAction * _Nonnull action) {
     }];
     [alert addAction:okAction];
     
-    // 创建用于显示alert的UIViewController
-    UIViewController *alertVC = [[UIViewController alloc] init];
-    [self addSubview:alertVC.view];
-    [alertVC presentViewController:alert animated:YES completion:^{
-      // 移除用于显示alert的UIViewController
-      [alertVC.view removeFromSuperview];
-    }];
+    [UIApplication.sharedApplication.windows.firstObject.rootViewController presentViewController:alert animated:YES completion:nil];
 }
 
 // point点在当前视图data中的偏移量
@@ -173,13 +184,13 @@
         if (CGRectContainsPoint(rect, point)) {
             // 将点击的坐标转换成相对于当前行的坐标
             CGPoint relativePoint = CGPointMake(point.x-CGRectGetMinX(rect), point.y-CGRectGetMinY(rect));
-//            NSLog(@"%@", NSStringFromCGPoint(relativePoint));
+            NSLog(@"%@", NSStringFromCGPoint(relativePoint));
             // 获得当前点击坐标对应的字符串偏移
             idx = CTLineGetStringIndexForPosition(line, relativePoint);
             continue;
         }
     }
-//    NSLog(@"idx:%ld", (long)idx);
+    NSLog(@"idx:%ld", (long)idx);
     return idx;
 }
 

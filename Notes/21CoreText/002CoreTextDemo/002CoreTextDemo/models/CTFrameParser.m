@@ -55,12 +55,34 @@
     unichar objectReplacementChar = 0xFFFC;
     NSString * content = [NSString stringWithCharacters:&objectReplacementChar length:1];
     NSDictionary * attributes = [self attributesWithConfig:config];
-    NSMutableAttributedString * space = [[NSMutableAttributedString alloc] initWithString:content
-                                                                               attributes:attributes];
-    CFAttributedStringSetAttribute((CFMutableAttributedStringRef)space, CFRangeMake(0, 1),
-                                   kCTRunDelegateAttributeName, delegate);
+    NSMutableAttributedString * space = [[NSMutableAttributedString alloc] initWithString:content attributes:attributes];
+    CFAttributedStringSetAttribute((CFMutableAttributedStringRef)space, CFRangeMake(0, 1), kCTRunDelegateAttributeName, delegate);
     CFRelease(delegate);
     return space;
+}
+
++ (NSAttributedString *)parseLinkDataFromNSDictionary:(NSDictionary *)dict config:(CTFrameParserConfig *)config {
+    // kCTUnderlineStyleAttributeName
+    NSMutableDictionary *attributes = [self attributesWithConfig:config];
+    // set color
+    UIColor *color = [self colorFromTemplate:dict[@"color"]];
+    if (color != nil) {
+        attributes[NSForegroundColorAttributeName] = color;
+    }
+    // set font size
+    CGFloat fontSize = [dict[@"size"] floatValue];
+    if (fontSize > 0) {
+        CTFontRef fontRef = CTFontCreateWithName((CFStringRef)@"ArialMT", fontSize, NULL);
+        attributes[NSFontAttributeName] = (__bridge id)fontRef;
+        CFRelease(fontRef);
+    }
+    
+    // 添加下划线
+    attributes[NSUnderlineStyleAttributeName] = [NSNumber numberWithInt:NSUnderlineStyleSingle];
+    
+    NSString *content = dict[@"content"];
+    
+    return [[NSAttributedString alloc] initWithString:content attributes:attributes];
 }
 
 + (CTData *)parseAttributedContent:(NSAttributedString *)content config:(CTFrameParserConfig *)config {
@@ -106,10 +128,7 @@
     return data;
 }
 
-+ (NSAttributedString *)loadTemplateFile:(NSString *)path
-                                  config:(CTFrameParserConfig*)config
-                              imageArray:(NSMutableArray *)imageArray
-                               linkArray:(NSMutableArray *)linkArray {
++ (NSAttributedString *)loadTemplateFile:(NSString *)path config:(CTFrameParserConfig*)config imageArray:(NSMutableArray *)imageArray linkArray:(NSMutableArray *)linkArray {
     NSData *data = [NSData dataWithContentsOfFile:path];
     NSMutableAttributedString *result = [[NSMutableAttributedString alloc] init];
     if (data) {
@@ -118,8 +137,7 @@
             for (NSDictionary *dict in array) {
                 NSString *type = dict[@"type"];
                 if ([type isEqualToString:@"txt"]) {
-                    NSAttributedString *as = [self parseAttributedContentFromNSDictionary:dict
-                                                                                   config:config];
+                    NSAttributedString *as = [self parseAttributedContentFromNSDictionary:dict config:config];
                     [result appendAttributedString:as];
                 } else if ([type isEqualToString:@"img"]) {
                     // 创建 CTImageData
@@ -133,7 +151,7 @@
                 } else if ([type isEqualToString:@"link"]) {
                     NSUInteger start = result.length;
                     
-                    NSAttributedString *as = [self parseAttributedContentFromNSDictionary:dict config:config];
+                    NSAttributedString *as = [self parseLinkDataFromNSDictionary:dict config:config];
                     [result appendAttributedString:as];
                     
                     NSUInteger length = result.length - start;
@@ -151,8 +169,7 @@
     return result;
 }
 
-+ (NSAttributedString *)parseAttributedContentFromNSDictionary:(NSDictionary *)dict
-                                                        config:(CTFrameParserConfig*)config {
++ (NSAttributedString *)parseAttributedContentFromNSDictionary:(NSDictionary *)dict config:(CTFrameParserConfig*)config {
     NSMutableDictionary *attributes = [self attributesWithConfig:config];
     // set color
     UIColor *color = [self colorFromTemplate:dict[@"color"]];
@@ -177,6 +194,8 @@
         return [UIColor redColor];
     } else if ([name isEqualToString:@"black"]) {
         return [UIColor blackColor];
+    } else if ([name isEqualToString:@"yellow"]) {
+        return [UIColor yellowColor];
     } else {
         return nil;
     }

@@ -4,10 +4,12 @@
     "height" : 160,
     "name" : "mars.png"
   },
-  { "color" : "blue",
+  { "color" : "yellow",
+    "title" : "标题",
     "content" : "通过一个排版文件，来设置需要排版文字的",
     "size" : 16,
-    "type" : "txt"
+    "url" : "http://localhost/111",
+    "type" : "link"
   },
   { "color" : "red",
     "content" : "内容、颜色、字体",
@@ -29,8 +31,8 @@
     "type" : "txt"
   },
   { "color" : "blue",
-    "title": "链接标题",
-    "content" : "链接文字",
+    "title" : "链接标题",
+    "content" : "链接文字链接文字链接文字链接文字链接文字链接文字链接文字",
     "url" : "http://localhost/test",
     "type" : "link"
   },
