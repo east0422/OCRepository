@@ -36,7 +36,7 @@
     config.textColor = [UIColor blackColor];
     config.width = self.ctView.bounds.size.width;
     
-    //    CTData *data = [CTFrameParser parseContent:@"测试CoreText绘制" config:config];
+//    CTData *data = [CTFrameParser parseContent:@"测试CoreText绘制" config:config];
     
     NSString *content = @"好好学习，努力向上！前面10个红色，后面文字保持配置黑色，仅仅只是测试啊啊啊啊啊啊啊";
     NSDictionary *attr = [CTFrameParser attributesWithConfig:config];
@@ -83,6 +83,7 @@
 
 - (void)showTextAndImageAndLink {
     CTFrameParserConfig *config = [[CTFrameParserConfig alloc] init];
+    config.width = self.ctView.bounds.size.width;
     NSString *path = [[NSBundle mainBundle] pathForResource:@"content" ofType:@"json"];
     CTData *data = [CTFrameParser parseTemplateFile:path config:config];
     self.ctView.data = data;

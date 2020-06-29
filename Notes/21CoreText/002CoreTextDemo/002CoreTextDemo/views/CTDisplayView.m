@@ -9,14 +9,28 @@
 //
 
 #import "CTDisplayView.h"
+#import "MagnifierView.h"
 
 #define debugLog NSLog(@"%s %@", __FILE__, NSStringFromSelector(_cmd))
 
 @interface CTDisplayView () <UIGestureRecognizerDelegate>
 
+@property (nonatomic, strong) MagnifierView *magnifierView;
+
 @end
 
 @implementation CTDisplayView
+
+- (MagnifierView *)magnifierView {
+    if (_magnifierView == nil) {
+        _magnifierView = [[MagnifierView alloc] init];
+        _magnifierView.viewToMagnify = self;
+        
+        [self addSubview:_magnifierView];
+    }
+    
+    return _magnifierView;
+}
 
 - (void)drawRect:(CGRect)rect {
     [super drawRect:rect];
@@ -70,14 +84,17 @@
 - (void)addGestureRecognizerHandle {
     // 点击
     UIGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapGestureRecognizerHandle:)];
+    tapGestureRecognizer.delegate = self;
     [self addGestureRecognizer:tapGestureRecognizer];
     
     // 长按
     UIGestureRecognizer *longPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPressGestureRecognizerHandle:)];
+    longPressGestureRecognizer.delegate = self;
     [self addGestureRecognizer:longPressGestureRecognizer];
     
     // 滑动
     UIGestureRecognizer *panGestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognizerHandle:)];
+    panGestureRecognizer.delegate = self;
     [self addGestureRecognizer:panGestureRecognizer];
 }
 
@@ -127,11 +144,25 @@
 }
 
 - (void)longPressGestureRecognizerHandle:(UIGestureRecognizer *)gestureRecognizer {
-    debugLog;
+//    debugLog;
+    CGPoint point = [gestureRecognizer locationInView:self];
+    
+    if (gestureRecognizer.state == UIGestureRecognizerStateBegan ||
+        gestureRecognizer.state == UIGestureRecognizerStateChanged) {
+        self.magnifierView.touchPoint = point;
+    } else {
+        [self removeMaginfierView];
+    }
 }
 
 - (void)panGestureRecognizerHandle:(UIGestureRecognizer *)gestureRecognizer {
-    debugLog;
+//    debugLog;
+}
+
+#pragma --- UIGestureRecognizerDelegate
+// 允许多个相似手势并发
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return true;
 }
 
 - (Boolean)showAlert:(NSString *)title withMessage:(NSString *)message ifUIPoint:(CGPoint)uiPoint inCTRect:(CGRect)ctRect {
@@ -211,4 +242,10 @@
     return CGRectMake(point.x, point.y - descent, width, height);
 }
 
+- (void)removeMaginfierView {
+    if (_magnifierView) {
+        [_magnifierView removeFromSuperview];
+        _magnifierView = nil;
+    }
+}
 @end

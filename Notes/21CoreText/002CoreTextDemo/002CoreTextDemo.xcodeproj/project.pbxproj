@@ -23,6 +23,7 @@
 		457AECBB24A4A56B004A74CB /* mars.png in Resources */ = {isa = PBXBuildFile; fileRef = 457AECBA24A4A56A004A74CB /* mars.png */; };
 		457AECBE24A4A669004A74CB /* CTLinkData.m in Sources */ = {isa = PBXBuildFile; fileRef = 457AECBD24A4A669004A74CB /* CTLinkData.m */; };
 		457AECC024A50B26004A74CB /* content.json in Resources */ = {isa = PBXBuildFile; fileRef = 457AECBF24A50B26004A74CB /* content.json */; };
+		45CE069224A9A22900C85E01 /* MagnifierView.m in Sources */ = {isa = PBXBuildFile; fileRef = 45CE069124A9A22900C85E01 /* MagnifierView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +54,8 @@
 		457AECBC24A4A669004A74CB /* CTLinkData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CTLinkData.h; sourceTree = "<group>"; };
 		457AECBD24A4A669004A74CB /* CTLinkData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CTLinkData.m; sourceTree = "<group>"; };
 		457AECBF24A50B26004A74CB /* content.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = content.json; sourceTree = "<group>"; };
+		45CE069024A9A22900C85E01 /* MagnifierView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MagnifierView.h; sourceTree = "<group>"; };
+		45CE069124A9A22900C85E01 /* MagnifierView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MagnifierView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +129,8 @@
 			children = (
 				452B8AB7246BA0A800E6B2DE /* CTDisplayView.h */,
 				452B8AB8246BA0A800E6B2DE /* CTDisplayView.m */,
+				45CE069024A9A22900C85E01 /* MagnifierView.h */,
+				45CE069124A9A22900C85E01 /* MagnifierView.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -216,6 +221,7 @@
 				452B8AB9246BA0A800E6B2DE /* CTDisplayView.m in Sources */,
 				452B8AA0246BA07900E6B2DE /* AppDelegate.m in Sources */,
 				452B8AB1246BA07B00E6B2DE /* main.m in Sources */,
+				45CE069224A9A22900C85E01 /* MagnifierView.m in Sources */,
 				452B8AC5246BA12F00E6B2DE /* CTData.m in Sources */,
 				452B8AC8246C43C000E6B2DE /* CTImageData.m in Sources */,
 				452B8AA3246BA07900E6B2DE /* SceneDelegate.m in Sources */,
@@ -362,7 +368,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = 002CoreTextDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -379,7 +387,9 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = 002CoreTextDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

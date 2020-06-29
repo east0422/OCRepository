@@ -32,7 +32,7 @@
   },
   { "color" : "blue",
     "title" : "链接标题",
-    "content" : "链接文字链接文字链接文字链接文字链接文字链接文字链接文字",
+    "content" : "链接文字链接文字链接文字链接文字链接文字链接文字链接文字链接文字链接文字",
     "url" : "http://localhost/test",
     "type" : "link"
   },

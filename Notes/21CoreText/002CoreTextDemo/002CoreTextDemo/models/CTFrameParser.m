@@ -101,6 +101,7 @@
     CTData *data = [[CTData alloc] init];
     data.ctFrame = frame;
     data.height = textHeight;
+    data.content = content;
     
     // 释放
     CFRelease(frame);
