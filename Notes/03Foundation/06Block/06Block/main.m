@@ -12,6 +12,8 @@
 #import "NSObject+Sum.h"
 #import "SumManager.h"
 
+// block中使用外部参数
+void blockVar(void);
 // 完整block
 void block1(void);
 // block属性
@@ -27,6 +29,8 @@ int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
         
+        blockVar();
+        
 //        block1();
 
 //        blockAttr();
@@ -35,9 +39,20 @@ int main(int argc, const char * argv[]) {
         
 //        blockReturn();
         
-        blockSum();
+//        blockSum();
     }
     return 0;
+}
+
+// 注意oc与swift区别(swift为8)
+void blockVar () {
+    int outA = 8;
+    int (^myPtr)(int) = ^(int a) {
+        return outA + a;
+    };
+    outA = 5;
+    int result = myPtr(3);
+    NSLog(@"result is: %d", result); // 11
 }
 
 // 完整block，若有返回值需要在实现时加上返回值类型

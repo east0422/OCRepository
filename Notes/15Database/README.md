@@ -3,10 +3,11 @@
 
 #### 数据存储
 1. Plist：自动存储数组、字典，但是数组和字典里面不能有自定义对象。
-2. Preference：偏好设置，NSUserDefaults。也不能存储自定义对象。
-3. 归档：NSCoding(NSKeyedArchiver/NSKeyedUnarchiver)，存储自定义对象。一次性读取和存储操作，即一次只能读取或存储所有内容。
-4. SQLite：是一款轻型的嵌入式数据库，占用资源非常的低、在嵌入式设备中只需几百K内存就够了。处理速度比Mysql、PostgreSQL都还快。
-5. Core Data。
+2. Preference：偏好设置，NSUserDefaults，常用来保存应用程序设置和属性及用户数据，用户再次打开程序或开机后这些数据仍然存在。NSUserDefaults可以存储的数据类型包括NSData, NSString, NSNumber, NSDate, NSArray, NSDictionary, 其他类型数据需先进行转换，也不能存储自定义对象。
+3. 归档：数据对象需要遵守NSCoding协议(NSKeyedArchiver/NSKeyedUnarchiver)，并且该对象对应的类必须提供encodeWithCoder:(告诉系统如何对对象进行编码)和initWithCoder:(告诉系统如何对对象进行解码)方法，存储自定义对象。一次性读取和存储操作，即一次只能读取或存储所有内容。
+4. 文件：获得文件保存路径 -> 生成该路径下的文件 -> 往文件中写入数据 -> 从文件中读取数据。
+5. SQLite：是一款轻型的嵌入式数据库，占用资源非常的低、在嵌入式设备中只需几百K内存就够了。处理速度比Mysql、PostgreSQL都还快。添加SQLite相关库及头文件 -> 用数据库存取数据(打开数据库，编写数据库语句，执行，关闭数据库。写入数据库字符串可以采用char方式，而从数据库中取出char类型当char类型有表示中文字符时会出现乱码这是因为数据库默认使用ascII编码方式，所以想要正确从数据库中取出中文需要使用NSString来接收从数据库取出的字符串)。
+6. Core Data：对SQLite的封装，不需要接触sql语句就可以对数据库进行操作。
 
 #### SQL
 1. 增加表字段：ALTER TABLE 表名 ADD COLUMN 字段名 字段类型；
