@@ -16,8 +16,8 @@
 6. Weex。
 
 #### 加载html图片及样式显示不正确解决方案
-1. 将整个html文件夹拖入到工程中勾选Create folder references，加载html时指定其目录([[NSBundle mainBundle] URLForResource:@"html/index.html" withExtension:nil];)。
-2. 勾选Create groups，加载html只指定html文件([[NSBundle mainBundle] URLForResource:@"index.html" withExtension:nil];)，修改index.html中样式引用及图片资源文件路径不加目录(./images/101.jpg -> 101.jpg)。
+1. 将整个html文件夹拖入到工程中勾选Create folder references(蓝色文件夹，打包到bundle中包含文件夹目录)，加载html时指定其目录([[NSBundle mainBundle] URLForResource:@"html/index.html" withExtension:nil];)。
+2. 勾选Create groups(黄色文件夹，打包到bundle中不包含文件夹目录)，加载html只指定html文件([[NSBundle mainBundle] URLForResource:@"index.html" withExtension:nil];)，修改index.html中样式引用及图片资源文件路径不加目录(./images/101.jpg -> 101.jpg)。
 3. 在2基础上不更改html内容，加载之后在原生代码中处理遍历<img src>替换src值。
 
 #### WKWebView

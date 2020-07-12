@@ -211,8 +211,10 @@
         
         // 获得每一行的CGRect信息
         CGRect flippedRect = [self getLineBounds:line point:linePoint];
+        // 1. 使用transform转换
         CGRect rect = CGRectApplyAffineTransform(flippedRect, transform);
-
+        // 2. 手动计算转换
+//        CGRect rect = CGRectMake(flippedRect.origin.x, self.bounds.size.height - flippedRect.origin.y - flippedRect.size.height, flippedRect.size.width, flippedRect.size.height);
         if (CGRectContainsPoint(rect, point)) {
             // 将点击的坐标转换成相对于当前行的坐标
             CGPoint relativePoint = CGPointMake(point.x-CGRectGetMinX(rect), point.y-CGRectGetMinY(rect));
@@ -238,7 +240,7 @@
     CGFloat descent = 0.0f;
     CGFloat leading = 0.0f;
     CGFloat width = (CGFloat)CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
-    CGFloat height = ascent + descent;
+    CGFloat height = ascent + descent + leading;
     return CGRectMake(point.x, point.y - descent, width, height);
 }
 
